@@ -8,6 +8,7 @@ public class SplitAndShareApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SplitAndShareApplication.class, args);
+		System.out.println("✅ Split-And-Share is up and running! ✅");
 	}
 
 }
