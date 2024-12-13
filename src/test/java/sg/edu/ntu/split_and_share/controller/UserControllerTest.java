@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 // import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.RequestBuilder;
@@ -15,6 +16,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import static org.mockito.ArgumentMatchers.any;
 // import com.fasterxml.jackson.databind.ObjectMapper;
 import static org.mockito.Mockito.when;
 // import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
@@ -35,29 +37,27 @@ public class UserControllerTest {
 	@Autowired
 	private MockMvc mockMvc;
 
-	@Mock
-	private UserService userService;
-
 	@Autowired
-	private ObjectMapper objectMapper; // Used to serialize Java objects to JSON
+	private ObjectMapper objectMapper;
 
-	// @Mock
-	// private UserRepository UserRepository;
+	@Mock
+	private UserService userService; // Mocking the service layer
 
+	@Test
 	void shouldCreateUser() throws Exception {
 		// Create a User object
 		User user = new User(null, "jane_doe", "mypassword123", "Jane Joe", null);
 
-		// Mocking the service layer if needed (optional, depending on how the
-		// controller is implemented)
+		// Mock the user service to return the user when createUser is called
 		// given(userService.createUser(any(User.class))).willReturn(user);
 
 		// Perform the POST request to the /api/user endpoint
-		mockMvc.perform(post("/api/user")
+		mockMvc.perform(MockMvcRequestBuilders
+				.post("/api/user")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapper.writeValueAsString(user))) // Serialize the user object to JSON
 				.andExpect(status().isCreated()) // Expect a 201 status code
-				.andExpect(jsonPath("$.name").value("jane_doe")); // Verify the name in the response
+				.andExpect(jsonPath("$.username").value("jane_doe")); // Verify the name in the response
 	}
 
 	// @Test
@@ -79,10 +79,24 @@ public class UserControllerTest {
 	// }
 	// }
 
-	private MockHttpServletRequestBuilder post(String string) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'post'");
-	}
+	// @Test
+    // public void testGetUserById() throws Exception {
+    //     // Arrange
+    //     User user = new User(null, "jane_doe", "mypassword123", "Jane Joe", null);
+
+    //     // Mock the service to return the user when getUser("jane_doe") is called
+    //     // given(userService.getUser("jane_doe")).willReturn(user);
+
+    //     // GET request to /api/user/jane_doe
+    //     RequestBuilder request = MockMvcRequestBuilders.get("/api/user/jane_doe");
+
+    //     // Perform the request and assert the response
+    //     mockMvc.perform(request)
+    //             .andExpect(status().isOk())  // Expect HTTP 200 OK
+    //             .andExpect(content().contentType(MediaType.APPLICATION_JSON))  // Expect JSON response
+    //             .andExpect(jsonPath("$.username").value("jane_doe"))  // Check the 'username' field in the response
+    //             .andExpect(jsonPath("$.name").value("Jane Doe"));  // Optionally check other fields (e.g., name)
+    // }
 
 	@Test
 	public void testGetUserById() throws Exception {

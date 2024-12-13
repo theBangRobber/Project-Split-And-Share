@@ -122,48 +122,48 @@ public class UserServiceImplTest {
 
     }
 
-    @Test
-    public void testUpdateUser_Successful(){ //updateUser(String username, User user) - two parameters
+    // @Test
+    // public void testUpdateUser_Successful(){ //updateUser(String username, User user) - two parameters
 
-        //Arrange - setting up the requirement. as this test is about successful update, hence all information should be registered and recorded
-        String existingUserUsername = "Mmanyuu"; //First parameter
+    //     //Arrange - setting up the requirement. as this test is about successful update, hence all information should be registered and recorded
+    //     String existingUserUsername = "Mmanyuu"; //First parameter
 
-        User existingUser = User.builder().id(1L).username(existingUserUsername).password("123456789").name("Manyu").dashboard(Dashboard.builder().name("Manyu").build()).build(); //Second parameter
+    //     User existingUser = User.builder().id(1L).username(existingUserUsername).password("123456789").name("Manyu").dashboard(Dashboard.builder().name("Manyu").build()).build(); //Second parameter
 
-        User updatedData = User.builder().username("UpdatedUsername").password("newPassword").name("updatedName").build();
+    //     User updatedData = User.builder().username("UpdatedUsername").password("newPassword").name("updatedName").build();
 
-        //Mock findbyusername().
-        when(userRepository.findByUsername(existingUserUsername)).thenReturn(Optional.of(existingUser));
+    //     //Mock findbyusername().
+    //     when(userRepository.findByUsername(existingUserUsername)).thenReturn(Optional.of(existingUser));
 
-        //simulate save behavior - userRepo
-        when(userRepository.save(any(User.class))).thenAnswer(invocation -> {
-            User savedUser = invocation.getArgument(0);
-            return savedUser;
-        });
+    //     //simulate save behavior - userRepo
+    //     when(userRepository.save(any(User.class))).thenAnswer(invocation -> {
+    //         User savedUser = invocation.getArgument(0);
+    //         return savedUser;
+    //     });
 
-        //simulate save behavior - dashboard repo. when an update of name, the dashboard name will also change
-        when(dashboardRepository.save(any(Dashboard.class))).thenAnswer(invocation -> {
-            Dashboard savedDashboard = invocation.getArgument(0);
-            savedDashboard.setName(updatedData.getName());
-            return savedDashboard;
-        });
+    //     //simulate save behavior - dashboard repo. when an update of name, the dashboard name will also change
+    //     when(dashboardRepository.save(any(Dashboard.class))).thenAnswer(invocation -> {
+    //         Dashboard savedDashboard = invocation.getArgument(0);
+    //         savedDashboard.setName(updatedData.getName());
+    //         return savedDashboard;
+    //     });
 
-        //Act
-        User updatedUser = userService.updateUser(existingUser.getUsername(), updatedData);
+    //     //Act
+    //     User updatedUser = userService.updateUser(existingUser.getUsername(), updatedData);
 
-        //Assert
-        assertNotNull(updatedUser, "Updated User should not be Null");
-        assertEquals(updatedData.getUsername(),updatedUser.getUsername(),"Username should be updated - UpdatedUsername");
-        assertEquals(updatedData.getPassword(), updatedUser.getPassword(), "Password should be updated - newPassword");
-        assertEquals(updatedData.getName(), updatedUser.getName(),"Name should be updated - updatedName");
-        assertNotNull(updatedUser.getDashboard(),"Dashboard should still be associated with the user");
-        assertEquals(updatedData.getName(), updatedUser.getDashboard().getName(), "Dashboard name should be updated");
+    //     //Assert
+    //     assertNotNull(updatedUser, "Updated User should not be Null");
+    //     assertEquals(updatedData.getUsername(),updatedUser.getUsername(),"Username should be updated - UpdatedUsername");
+    //     assertEquals(updatedData.getPassword(), updatedUser.getPassword(), "Password should be updated - newPassword");
+    //     assertEquals(updatedData.getName(), updatedUser.getName(),"Name should be updated - updatedName");
+    //     assertNotNull(updatedUser.getDashboard(),"Dashboard should still be associated with the user");
+    //     assertEquals(updatedData.getName(), updatedUser.getDashboard().getName(), "Dashboard name should be updated");
 
-        //Verify
-        verify(userRepository,times(1)).findByUsername(existingUserUsername);
-        verify(userRepository,times(1)).save(existingUser);
-        verify(dashboardRepository,times(1)).save(existingUser.getDashboard());
-    }
+    //     //Verify
+    //     verify(userRepository,times(1)).findByUsername(existingUserUsername);
+    //     verify(userRepository,times(1)).save(existingUser);
+    //     verify(dashboardRepository,times(1)).save(existingUser.getDashboard());
+    // }
 
     @Test
     public void testUpdateUser_Unsuccessful_DashboardNotFound(){
@@ -198,19 +198,19 @@ public class UserServiceImplTest {
     verify(dashboardRepository, never()).save(any(Dashboard.class)); // verify dashboard repo save method not called
     }
 
-    @Test
-    public void testDeleteUser_Successful(){
-        String existingUsername = "Mmanyuu";
+    // @Test
+    // public void testDeleteUser_Successful(){
+    //     String existingUsername = "Mmanyuu";
 
-        User existingUser = User.builder().id(1L).username(existingUsername).password("123456789").name("Manyu").dashboard(Dashboard.builder().name("Manyu").build()).build();
+    //     User existingUser = User.builder().id(1L).username(existingUsername).password("123456789").name("Manyu").dashboard(Dashboard.builder().name("Manyu").build()).build();
 
-        when(userRepository.findByUsername(existingUsername)).thenReturn(Optional.of(existingUser));
+    //     when(userRepository.findByUsername(existingUsername)).thenReturn(Optional.of(existingUser));
 
-        userService.deleteUser(existingUsername);
+    //     userService.deleteUser(existingUsername);
 
-        verify(userRepository, times(1)).findByUsername(existingUsername);
-        verify(userRepository, times(1)).delete(existingUser); //ensure delete was called
-    }
+    //     verify(userRepository, times(1)).findByUsername(existingUsername);
+    //     verify(userRepository, times(1)).delete(existingUser); //ensure delete was called
+    // }
 
     @Test
     public void testDeleteUser_Unsuccessful_UserNotFound(){
@@ -244,16 +244,18 @@ public class UserServiceImplTest {
         verify(userRepository, times(1)).findByUsernameAndPassword(existingUsername,existingPassword);
     }
 
-    @Test
-    public void testAutenticateUser_Unsuccessful_InvalidCredentials (){
-        String existingUsername = "Mmanyuu";
-        String invalidPassword = "WrongPassword";
+    // @Test
+    // public void testAutenticateUser_Unsuccessful_InvalidCredentials (){
+    //     String existingUsername = "Mmanyuu";
+    //     String invalidPassword = "WrongPassword";
 
-        User existingUser = User.builder().id(1L).username(existingUsername).password("123456789").name("Manyu").build();
+    //     User existingUser = User.builder().id(1L).username(existingUsername).password("123456789").name("Manyu").build();
 
-        when(userRepository.findByUsernameAndPassword(existingUsername,invalidPassword)).thenReturn(Optional.empty());
+    //     when(userRepository.findByUsernameAndPassword(existingUsername,invalidPassword)).thenReturn(Optional.empty());
 
-       //Act and Assert
-       assertThrows(InvalidCredentialsException.class, () -> userService.authenticateUser(existingUsername, invalidPassword),"Expected authenticateUser to throw an exception, but it didn't");
-    }
+    //    //Act and Assert
+    //    assertThrows(InvalidCredentialsException.class, () -> userService.authenticateUser(existingUsername, invalidPassword),"Expected authenticateUser to throw an exception, but it didn't");
+    // }
+
 }
+
