@@ -23,7 +23,8 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ErrorResponse> handleUserNotFoundException(UserNotFoundException e) {
         ErrorResponse errorResponse = new ErrorResponse(e.getMessage(),
                 LocalDateTime.now());
-        logger.warn("User not found : {}", errorResponse);
+                logger.error("User with username not found.");
+        // logger.error("User not found : {}", errorResponse.toString());
         return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
     }
 
@@ -31,7 +32,7 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ErrorResponse> handleInvalidCredentialsException(InvalidCredentialsException e) {
         ErrorResponse errorResponse = new ErrorResponse(e.getMessage(),
                 LocalDateTime.now());
-        logger.warn("Authentication failed: {}", errorResponse);
+        logger.warn("Authentication failed", errorResponse.toString());
         return new ResponseEntity<>(errorResponse, HttpStatus.UNAUTHORIZED);
     }
 
@@ -39,7 +40,7 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ErrorResponse> handleUserNameIsTakenException(UsernameIsTakenException e) {
         ErrorResponse errorResponse = new ErrorResponse(e.getMessage(),
                 LocalDateTime.now());
-        logger.warn("Username is already taken: {}", errorResponse);
+        logger.warn("Username is already taken", errorResponse.toString());
         return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
     }
 
@@ -48,7 +49,7 @@ public class GlobalExceptionHandler {
             DashboardNotFoundException.class })
     public ResponseEntity<ErrorResponse> handleResourceNotFoundException(RuntimeException e) {
         ErrorResponse errorResponse = new ErrorResponse(e.getMessage(), LocalDateTime.now());
-        logger.warn("Resource not found: {}", e.getMessage());
+        logger.warn("Resource not found", e.getMessage());
 
         return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
     };
