@@ -28,12 +28,12 @@ public class DashboardServiceImplTest {
 
     @Test
     public void testCalculateTotalSum_Successful (){
-        //Arrange - got one parameter which is String username
-        String username = "Mmanyuu";
-        List<Expense> expenses = Arrays.asList(
-            new Expense(1L,"Expense 1", 100.0, username, username, null, null),
+        // //Arrange - got one parameter which is String username
+        // String username = "Mmanyuu";
+        // List<Expense> expenses = Arrays.asList(
+        //     new Expense(1L,"Expense 1", 100.0, username, username, null, null),
             
-        )
+        // )
 
     }
 
