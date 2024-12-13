@@ -19,7 +19,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import sg.edu.ntu.split_and_share.entity.Dashboard;
 import sg.edu.ntu.split_and_share.entity.User;
 import sg.edu.ntu.split_and_share.exception.DashboardNotFoundException;
-import sg.edu.ntu.split_and_share.exception.InvalidCredentialsException;
+// import sg.edu.ntu.split_and_share.exception.InvalidCredentialsException;
 import sg.edu.ntu.split_and_share.exception.UserNotFoundException;
 import sg.edu.ntu.split_and_share.exception.UsernameIsTakenException;
 import sg.edu.ntu.split_and_share.repository.DashboardRepository;
