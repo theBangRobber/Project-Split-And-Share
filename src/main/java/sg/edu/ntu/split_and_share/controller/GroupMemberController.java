@@ -30,6 +30,7 @@ public class GroupMemberController {
   @PostMapping("/add/{username}")
   public ResponseEntity<Set<String>> addGroupMembers(@PathVariable String username,
       @Valid @RequestBody Set<String> groupMemberList) {
+
     return new ResponseEntity<>(groupMemberService.addGroupMembers(groupMemberList, username), HttpStatus.CREATED);
   }
 

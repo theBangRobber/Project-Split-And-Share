@@ -1,12 +1,18 @@
 package sg.edu.ntu.split_and_share.service;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import sg.edu.ntu.split_and_share.entity.Dashboard;
 import sg.edu.ntu.split_and_share.entity.User;
+
 import sg.edu.ntu.split_and_share.exception.DashboardNotFoundException;
+import sg.edu.ntu.split_and_share.exception.InvalidCredentialsException;
 import sg.edu.ntu.split_and_share.exception.UserNotFoundException;
 import sg.edu.ntu.split_and_share.exception.UsernameIsTakenException;
 import sg.edu.ntu.split_and_share.repository.UserRepository;
@@ -24,6 +30,11 @@ import jakarta.transaction.Transactional;
 public class UserServiceImpl implements UserService {
 
   private UserRepository userRepository;
+
+  // Adding Password Encoder 
+  private   PasswordEncoder passwordEncoder;
+
+
   private DashboardRepository dashboardRepository;
   private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
 
@@ -31,6 +42,7 @@ public class UserServiceImpl implements UserService {
   public UserServiceImpl(UserRepository userRepository, DashboardRepository dashboardRepository) {
     this.userRepository = userRepository;
     this.dashboardRepository = dashboardRepository;
+    this.passwordEncoder = new BCryptPasswordEncoder();
   }
 
   // Create user and initialize a new dashboard
@@ -42,6 +54,11 @@ public class UserServiceImpl implements UserService {
       logger.error("Username {} is already taken", user.getUsername());
       throw new UsernameIsTakenException();
     }
+    // Encrypt the password before saving in the db
+    String encodedPassword = this.passwordEncoder.encode(user.getPassword());
+    user.setPassword(encodedPassword);
+    logger.info("User {} registered successfully", user.getUsername());
+    // return userRepository.save(user);
 
     // Initialize the dashboard and set up the relationship
     Dashboard dashboard = new Dashboard();
@@ -80,7 +97,8 @@ public class UserServiceImpl implements UserService {
 
     userToUpdate.setName(user.getName());
     userToUpdate.setUsername(user.getUsername());
-    userToUpdate.setPassword(user.getPassword());
+    String encodedPassword = this.passwordEncoder.encode(user.getPassword());
+    userToUpdate.setPassword(encodedPassword);
 
     // Fetch associated dashboard using the user object (not the old username)
     Dashboard dashboard = userToUpdate.getDashboard(); // This directly gets the dashboard associated with the user
@@ -118,15 +136,38 @@ public class UserServiceImpl implements UserService {
   }
 
   // Authenticate user credentials
+  // public User authenticateUser(String username, String password) {
+    // logger.info("Attempting to authenticate user with username: {}", username);
+
+    // logger.info("User with username '{}' authenticated successfully.", username);
+    // return userRepository.findByUsernameAndPassword(username, password)
+        // .orElseThrow(() -> {
+          // logger.warn("Authentication failed for username: '{}'", username);
+          // return new InvalidCredentialsException("Authentication failed for username: '{}'");
+        // });
+  // }
+  // Authenticate user credentials and displays the user after authentication successful
   public User authenticateUser(String username, String password) {
     logger.info("Attempting to authenticate user with username: {}", username);
-
     logger.info("User with username '{}' authenticated successfully.", username);
-    return userRepository.findByUsernameAndPassword(username, password)
+    User user = userRepository.findByUsername(username)
         .orElseThrow(() -> {
-          logger.warn("Authentication failed for username: '{}'", username);
+          logger.warn("Authentication failed for username: '{}' Username not valid,check username", username);
           return new UserNotFoundException();
         });
-  }
+        if (!passwordEncoder.matches(password, user.getPassword())) {
+          logger.warn("Invalid password for username: '{}'", username);
+          throw new InvalidCredentialsException("Invalid password for username: '" + username + "'");
+      }
+      logger.info("User with username '{}' authenticated successfully.", username);
+      return user;
+}
+
+  @Override
+  
+    public List<User> getAllUsers() {
+      return userRepository.findAll();
+    }
+  
 
 }
