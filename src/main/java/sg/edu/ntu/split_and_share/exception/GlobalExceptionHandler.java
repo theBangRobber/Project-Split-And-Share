@@ -94,4 +94,12 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
+    @ExceptionHandler(DuplicatedGroupMembersException.class)
+    public ResponseEntity<ErrorResponse> handleDuplicatedGroupMember(RuntimeException e) {
+        ErrorResponse errorResponse = new ErrorResponse(e.getMessage(), LocalDateTime.now());
+        logger.warn("There are duplication of group member", e.getMessage());
+
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+    };
+
 }
