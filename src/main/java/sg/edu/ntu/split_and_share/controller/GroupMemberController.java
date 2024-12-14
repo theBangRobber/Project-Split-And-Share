@@ -27,7 +27,7 @@ public class GroupMemberController {
 
   // Add group member(s) to user's dashboard
   // http://localhost:8080/api/group-members/add/{username}
-  @PostMapping("/add/{username}")
+  @PostMapping("/add/{username}") 
   public ResponseEntity<List<String>> addGroupMembers(@PathVariable String username,
       @Valid @RequestBody List<String> groupMemberList) {
     return new ResponseEntity<>(groupMemberService.addGroupMembers(groupMemberList, username), HttpStatus.CREATED);
