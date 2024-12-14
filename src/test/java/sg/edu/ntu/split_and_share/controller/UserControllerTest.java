@@ -17,7 +17,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import sg.edu.ntu.split_and_share.entity.User;
 import sg.edu.ntu.split_and_share.service.UserService;
-// import sg.edu.ntu.split_and_share.repository.UserRepository;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -30,11 +29,12 @@ public class UserControllerTest {
 	private ObjectMapper objectMapper;
 
 	@Mock
-	private UserService userService; // Mocking the service layer
+	// Mocking the service layer
+	private UserService userService;
 
 	@Test
 	void shouldCreateUser() throws Exception {
-		// // Create User with POST request
+		// Create User with POST request
 		User user = new User(null, "jane_doe", "mypassword123", "Jane Joe", null);
 
 		// Mock the user service to return the user when createUser is called
@@ -44,9 +44,12 @@ public class UserControllerTest {
 		mockMvc.perform(MockMvcRequestBuilders
 				.post("/api/user")
 				.contentType(MediaType.APPLICATION_JSON)
-				.content(objectMapper.writeValueAsString(user))) // Serialize the user object to JSON
-				.andExpect(status().isCreated()) // Expect a 201 status code
-				.andExpect(jsonPath("$.username").value("jane_doe")); // Verify the name in the response
+				// Serialize the user object to JSON
+				.content(objectMapper.writeValueAsString(user)))
+				// Expect a 201 status code
+				.andExpect(status().isCreated())
+				// Verify the name in the response
+				.andExpect(jsonPath("$.username").value("jane_doe"));
 	}
 
 	@Test
@@ -58,75 +61,100 @@ public class UserControllerTest {
 		mockMvc.perform(MockMvcRequestBuilders
 				.post("/api/user")
 				.contentType(MediaType.APPLICATION_JSON)
-				.content(objectMapper.writeValueAsString(user))) // Serialize the user object to JSON
-				.andExpect(status().isCreated()) // Expect a 201 status code
-				.andExpect(jsonPath("$.username").value("jane_doe")); // Verify the name in the response
+				// Serialize the user object to JSON
+				.content(objectMapper.writeValueAsString(user)))
+				// Expect a 201 status code
+				.andExpect(status().isCreated())
+				// Verify the name in the response
+				.andExpect(jsonPath("$.username").value("jane_doe"));
 
 		when(userService.getUser("jane_doe")).thenReturn(user);
 
 		// Act & Assert
 		mockMvc.perform(MockMvcRequestBuilders
 				.get("/api/user/jane_doe"))
-				.andExpect(status().isOk()) // HTTP 200 OK
-				.andExpect(content().contentType(MediaType.APPLICATION_JSON)) // Expect JSON response
-				.andExpect(jsonPath("$.username").value("jane_doe")) // Check username field
-				.andExpect(jsonPath("$.name").value("Jane Joe")); // Check fullName field
+				// HTTP 200 OK
+				.andExpect(status().isOk())
+				// Expect JSON response
+				.andExpect(content().contentType(MediaType.APPLICATION_JSON))
+				// Check username field
+				.andExpect(jsonPath("$.username").value("jane_doe"))
+				// Check name field
+				.andExpect(jsonPath("$.name").value("Jane Joe"));
 	}
 
 	@Test
 	public void shouldUpdateUser() throws Exception {
 		// Arrange: Create a user object
 		User user = new User(null, "jane_doe", "mypassword123", "Jane Joe", null);
-		User updatedUser = new User(null, "jane_doe", "mypassword123", "Kelly Joe", null); // Updated user
+		// Updated user
+		User updatedUser = new User(null, "jane_doe", "mypassword123", "Kelly Joe", null);
 
 		// Step 1: Create the user via POST request
 		mockMvc.perform(MockMvcRequestBuilders
-				.post("/api/user") // Assuming the user creation endpoint is /api/user
+				// Assuming the user creation endpoint is /api/user
+				.post("/api/user")
 				.contentType(MediaType.APPLICATION_JSON)
-				.content(objectMapper.writeValueAsString(user))) // Serialize user object to JSON
-				.andExpect(status().isCreated()) // Expect 201 (Created)
-				.andExpect(jsonPath("$.username").value("jane_doe")); // Verify the username in the response
+				// Serialize user object to JSON
+				.content(objectMapper.writeValueAsString(user)))
+				// Expect 201 (Created)
+				.andExpect(status().isCreated())
+				// Verify the username in the response
+				.andExpect(jsonPath("$.username").value("jane_doe"));
 
 		// Step 2: Mock the service to return the updated user
 		when(userService.getUser("jane_doe")).thenReturn(updatedUser);
 
 		// Step 3: Update the user using PUT request and validate the response
 		mockMvc.perform(MockMvcRequestBuilders
-				.put("/api/user/jane_doe") // Correct the path for updating the user
+				// Correct the path for updating the user
+				.put("/api/user/jane_doe")
 				.contentType(MediaType.APPLICATION_JSON)
-				.content(objectMapper.writeValueAsString(updatedUser))) // Send updated user info
-				.andExpect(status().isOk()) // Expect 200 (OK)
-				.andExpect(content().contentType(MediaType.APPLICATION_JSON)) // Expect JSON response
-				.andExpect(jsonPath("$.name").value("Kelly Joe")); // Check that the full name is updated to "Jane Doe"
+				// Send updated user info
+				.content(objectMapper.writeValueAsString(updatedUser)))
+				// Expect 200 (OK)
+				.andExpect(status().isOk())
+				// Expect JSON response
+				.andExpect(content().contentType(MediaType.APPLICATION_JSON))
+				// Check that the full name is updated to "Jane Doe"
+				.andExpect(jsonPath("$.name").value("Kelly Joe"));
 	}
 
-	// @Test
-	// public void testDeleteUser() throws Exception {
-	// // Step 1: Build a GET request to /customers/1
-	// RequestBuilder request = MockMvcRequestBuilders.get("/users/1");
+	@Test
+	public void testDeleteUser() throws Exception {
 
-	// // Step 2: Perform the request, get response and assert
-	// mockMvc.perform(request)
-	// // Assert that the status code is 200 OK
-	// .andExpect(status().isOk())
-	// // Assert that the content type is JSON
-	// .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-	// // Assert that the id returned is 1
-	// .andExpect(jsonPath("$.id").value(1));
-	// }
+		// Step 1: Create a User with POST request
+		User user = new User(null, "jane_doe", "mypassword123", "Jane Joe", null);
 
-	// @Test
-	// public void shouldReturnNotFoundWhenUserDoesNotExist() throws Exception {
-	// // Arrange
-	// when(userService.getUser("non_existing_user")).thenThrow(new
-	// UserNotFoundException());
+		mockMvc.perform(MockMvcRequestBuilders
+				.post("/api/user")
+				.contentType(MediaType.APPLICATION_JSON)
+				// Serialize the user object to JSON
+				.content(objectMapper.writeValueAsString(user)))
+				// Expect a 201 status code
+				.andExpect(status().isCreated())
+				// Verify the name in the response
+				.andExpect(jsonPath("$.username").value("jane_doe"));
 
-	// // Act & Assert
-	// mockMvc.perform(MockMvcRequestBuilders
-	// .get("/api/user/non_existing_user"))
-	// .andExpect(status().isNotFound()) // HTTP 404 Not Found
-	// .andExpect(jsonPath("$.error").value("User not found")); // Assuming an error
-	// message in the response
-	// }
+		// Step 2: Mock the service method to return the user
+		when(userService.getUser("jane_doe")).thenReturn(user);
+
+		// Step 3: Send DELETE request
+		mockMvc.perform(MockMvcRequestBuilders
+				// Send a DELETE request with the username path variable
+				.delete("/api/user/{username}", "jane_doe"))
+				// Expect a 204 status code (No Content), meaning successful deletion
+				.andExpect(status().isNoContent());
+
+		// Step 4: Verify that the user was deleted by mocking the service to return
+		// null after deletion
+		when(userService.getUser("jane_doe")).thenReturn(null);
+
+		// Optionally, you could check that the user does not exist anymore
+		mockMvc.perform(MockMvcRequestBuilders
+				.get("/api/user/{username}", "jane_doe"))
+				// Expect a 404 status code, meaning the user is not found
+				.andExpect(status().isNotFound());
+	}
 
 }
