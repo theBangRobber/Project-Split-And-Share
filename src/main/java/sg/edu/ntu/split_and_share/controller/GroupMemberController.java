@@ -1,6 +1,6 @@
 package sg.edu.ntu.split_and_share.controller;
 
-import java.util.List;
+import java.util.Set;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,9 +27,10 @@ public class GroupMemberController {
 
   // Add group member(s) to user's dashboard
   // http://localhost:8080/api/group-members/add/{username}
-  @PostMapping("/add/{username}") 
-  public ResponseEntity<List<String>> addGroupMembers(@PathVariable String username,
-      @Valid @RequestBody List<String> groupMemberList) {
+  @PostMapping("/add/{username}")
+  public ResponseEntity<Set<String>> addGroupMembers(@PathVariable String username,
+      @Valid @RequestBody Set<String> groupMemberList) {
+
     return new ResponseEntity<>(groupMemberService.addGroupMembers(groupMemberList, username), HttpStatus.CREATED);
   }
 
@@ -44,7 +45,7 @@ public class GroupMemberController {
   // Get all group members
   // http://localhost:8080/api/group-members/list/{username}
   @GetMapping("/list/{username}")
-  public ResponseEntity<List<String>> getAllGroupMembers(@PathVariable String username) {
+  public ResponseEntity<Set<String>> getAllGroupMembers(@PathVariable String username) {
     return new ResponseEntity<>(groupMemberService.getAllGroupMembers(username), HttpStatus.OK);
   }
 
