@@ -17,7 +17,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import sg.edu.ntu.split_and_share.entity.User;
 import sg.edu.ntu.split_and_share.service.UserService;
-// import sg.edu.ntu.split_and_share.repository.UserRepository;
 
 @SpringBootTest
 @AutoConfigureMockMvc
