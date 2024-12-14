@@ -5,6 +5,7 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import static org.mockito.ArgumentMatchers.any;
@@ -15,11 +16,12 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import sg.edu.ntu.split_and_share.entity.Dashboard;
 import sg.edu.ntu.split_and_share.entity.User;
 import sg.edu.ntu.split_and_share.exception.DashboardNotFoundException;
-// import sg.edu.ntu.split_and_share.exception.InvalidCredentialsException;
 import sg.edu.ntu.split_and_share.exception.UserNotFoundException;
 import sg.edu.ntu.split_and_share.exception.UsernameIsTakenException;
 import sg.edu.ntu.split_and_share.repository.DashboardRepository;
@@ -36,22 +38,35 @@ public class UserServiceImplTest {
     private UserRepository userRepository;
 
     @Mock
+    private PasswordEncoder passwordEncoder;
+
+    @Mock
     private DashboardRepository dashboardRepository;
 
     @InjectMocks
-    UserServiceImpl userService;
+    private UserServiceImpl userService;
 
     @Test // Create User Test for Success Creation - Checked correct
     public void testCreateUser_Successful() {
         // Arrange
+        String rawPassword = "123456789";
+        String encryptedPassword = "encryptedPassword1234"; //mocked encrypted password
+
         when(userRepository.findByUsername("Mmanyuu")).thenReturn(Optional.empty()); //this is when findbyusername() is called, the username is not occupied.
 
-        User newUser = User.builder().username("Mmanyuu").password("123456789").name("Manyu").build(); //Proceed to create new user
+        when(passwordEncoder.encode(rawPassword)).thenReturn(encryptedPassword);
+
+        User newUser = User.builder()
+                            .username("Mmanyuu")
+                            .password(rawPassword)
+                            .name("Manyu")
+                            .build(); //Proceed to create new user. 
 
         //simlulating saving the new user and uses thenAnswer instead of thenReturn is to have more flexibility in determining how the method should response if called.
         when(userRepository.save(any(User.class))).thenAnswer(invocation -> {
             User savedUser = invocation.getArgument(0); // Access the first argument of save() which is the entity User (everything within the entity)
             savedUser.setId(1L); // Setting the ID within the enity after access the entity from the code before this
+            // savedUser.setPassword(passwordEncoder.encode(rawPassword));
             Dashboard dashboard = new Dashboard();
             dashboard.setName(savedUser.getName() + "'s Dashboard"); // Dynamically set dashboard name
             savedUser.setDashboard(dashboard); // Associate dashboard with user
@@ -60,16 +75,21 @@ public class UserServiceImplTest {
 
         // Act
         User createdUser = userService.createUser(newUser);
+        System.out.println("raw password: " + passwordEncoder.encode(rawPassword));
+        System.out.println("Created User encoded password:" + createdUser.getPassword());
 
         // Assert - checking individual fields of savedUser
         assertNotNull(createdUser, "Newly created user should not be null");
         assertNotNull(createdUser.getDashboard(), "Dashboard should be created and associated with the user");
-        assertEquals("Mmanyuu", createdUser.getUsername(), "Username should match the input");
-        assertEquals("123456789", createdUser.getPassword(), "Password should match the input");
-        assertEquals("Manyu", createdUser.getName(), "Name should match the input");
-        assertEquals("Manyu's Dashboard", createdUser.getDashboard().getName(), "Dashboard name should match the user's name");
+        assertEquals(newUser.getUsername(), createdUser.getUsername(), "Username should match the input");
+        //Assert true false for whether the password is encoded.
+        assertTrue(passwordEncoder.matches(rawPassword, createdUser.getPassword()), "Password should be encrypted");
+
+        assertEquals(newUser.getName(), createdUser.getName(), "Name should match the input");
+        assertEquals(newUser.getDashboard().getName(), createdUser.getDashboard().getName(), "Dashboard name should match the user's name");
 
         // Verify
+        verify(passwordEncoder, times(1)).encode(rawPassword);
         verify(userRepository, times(1)).findByUsername("Mmanyuu");
         verify(userRepository,times(1)).save(any(User.class));
     }
@@ -107,7 +127,7 @@ public class UserServiceImplTest {
 
         //Assert - compare result
         assertNotNull(foundUser);
-        assertEquals("Mmanyuu", foundUser.getUsername(),"Username input should be the same as in the data");
+        assertEquals(user.getUsername(), foundUser.getUsername(),"Username input should be the same as in the data");
     }
 
     @Test
@@ -122,48 +142,56 @@ public class UserServiceImplTest {
 
     }
 
-    // @Test
-    // public void testUpdateUser_Successful(){ //updateUser(String username, User user) - two parameters
+    @Test
+    public void testUpdateUser_Successful(){ //updateUser(String username, User user) - two parameters
 
-    //     //Arrange - setting up the requirement. as this test is about successful update, hence all information should be registered and recorded
-    //     String existingUserUsername = "Mmanyuu"; //First parameter
+        //Arrange - setting up the requirement. as this test is about successful update, hence all information should be registered and recorded
+        String existingUserUsername = "Mmanyuu"; //First parameter
+        String encryptedPassword = "encryptedPassword12345";
 
-    //     User existingUser = User.builder().id(1L).username(existingUserUsername).password("123456789").name("Manyu").dashboard(Dashboard.builder().name("Manyu").build()).build(); //Second parameter
+        User existingUser = User.builder().id(1L).username(existingUserUsername).password("123456789").name("Manyu").dashboard(Dashboard.builder().name("Manyu").build()).build(); //Second parameter
 
-    //     User updatedData = User.builder().username("UpdatedUsername").password("newPassword").name("updatedName").build();
+        User userToUpdate = User.builder().username("UpdatedUsername").password("newPassword").name("updatedName").build();
 
-    //     //Mock findbyusername().
-    //     when(userRepository.findByUsername(existingUserUsername)).thenReturn(Optional.of(existingUser));
+        //Mock findbyusername().
+        when(userRepository.findByUsername(existingUserUsername)).thenReturn(Optional.of(existingUser));
 
-    //     //simulate save behavior - userRepo
-    //     when(userRepository.save(any(User.class))).thenAnswer(invocation -> {
-    //         User savedUser = invocation.getArgument(0);
-    //         return savedUser;
-    //     });
+        //Mock passwordEncoder.encode()
+        when(passwordEncoder.encode(userToUpdate.getPassword())).thenReturn(encryptedPassword);
 
-    //     //simulate save behavior - dashboard repo. when an update of name, the dashboard name will also change
-    //     when(dashboardRepository.save(any(Dashboard.class))).thenAnswer(invocation -> {
-    //         Dashboard savedDashboard = invocation.getArgument(0);
-    //         savedDashboard.setName(updatedData.getName());
-    //         return savedDashboard;
-    //     });
+        //simulate save behavior - userRepo
+        when(userRepository.save(any(User.class))).thenAnswer(invocation -> {
+            User savedUser = invocation.getArgument(0);
+            savedUser.setName(userToUpdate.getName());
+            savedUser.setUsername(userToUpdate.getUsername());
+            savedUser.setPassword(passwordEncoder.encode(userToUpdate.getPassword()));
+            return savedUser;
+        });
 
-    //     //Act
-    //     User updatedUser = userService.updateUser(existingUser.getUsername(), updatedData);
+        //simulate save behavior - dashboard repo. when an update of name, the dashboard name will also change
+        when(dashboardRepository.save(any(Dashboard.class))).thenAnswer(invocation -> {
+            Dashboard savedDashboard = invocation.getArgument(0);
+            savedDashboard.setName(userToUpdate.getName());
+            return savedDashboard;
+        });
 
-    //     //Assert
-    //     assertNotNull(updatedUser, "Updated User should not be Null");
-    //     assertEquals(updatedData.getUsername(),updatedUser.getUsername(),"Username should be updated - UpdatedUsername");
-    //     assertEquals(updatedData.getPassword(), updatedUser.getPassword(), "Password should be updated - newPassword");
-    //     assertEquals(updatedData.getName(), updatedUser.getName(),"Name should be updated - updatedName");
-    //     assertNotNull(updatedUser.getDashboard(),"Dashboard should still be associated with the user");
-    //     assertEquals(updatedData.getName(), updatedUser.getDashboard().getName(), "Dashboard name should be updated");
+        //Act
+        User updatedUser = userService.updateUser(existingUser.getUsername(), userToUpdate);
 
-    //     //Verify
-    //     verify(userRepository,times(1)).findByUsername(existingUserUsername);
-    //     verify(userRepository,times(1)).save(existingUser);
-    //     verify(dashboardRepository,times(1)).save(existingUser.getDashboard());
-    // }
+        //Assert
+        assertNotNull(updatedUser, "Updated User should not be Null");
+        assertEquals(userToUpdate.getUsername(),updatedUser.getUsername(),"Username should be updated - UpdatedUsername");
+        assertEquals(encryptedPassword, updatedUser.getPassword(), "Password should be encryped");
+        assertEquals(userToUpdate.getName(), updatedUser.getName(),"Name should be updated - updatedName");
+        assertNotNull(updatedUser.getDashboard(),"Dashboard should still be associated with the user");
+        assertEquals(userToUpdate.getName(), updatedUser.getDashboard().getName(), "Dashboard name should be updated");
+
+        //Verify
+        verify(userRepository,times(1)).findByUsername(existingUserUsername);
+        verify(passwordEncoder, times(1)).encode(userToUpdate.getPassword());
+        verify(userRepository,times(1)).save(existingUser);
+        verify(dashboardRepository,times(1)).save(existingUser.getDashboard());
+    }
 
     @Test
     public void testUpdateUser_Unsuccessful_DashboardNotFound(){
@@ -198,19 +226,19 @@ public class UserServiceImplTest {
     verify(dashboardRepository, never()).save(any(Dashboard.class)); // verify dashboard repo save method not called
     }
 
-    // @Test
-    // public void testDeleteUser_Successful(){
-    //     String existingUsername = "Mmanyuu";
+    @Test
+    public void testDeleteUser_Successful(){
+        String existingUsername = "Mmanyuu";
 
-    //     User existingUser = User.builder().id(1L).username(existingUsername).password("123456789").name("Manyu").dashboard(Dashboard.builder().name("Manyu").build()).build();
+        User existingUser = User.builder().id(1L).username(existingUsername).password("123456789").name("Manyu").dashboard(Dashboard.builder().name("Manyu").build()).build();
 
-    //     when(userRepository.findByUsername(existingUsername)).thenReturn(Optional.of(existingUser));
+        when(userRepository.findByUsername(existingUsername)).thenReturn(Optional.of(existingUser));
 
-    //     userService.deleteUser(existingUsername);
+        userService.deleteUser(existingUsername);
 
-    //     verify(userRepository, times(1)).findByUsername(existingUsername);
-    //     verify(userRepository, times(1)).delete(existingUser); //ensure delete was called
-    // }
+        verify(userRepository, times(1)).findByUsername(existingUsername);
+        verify(userRepository, times(1)).delete(existingUser); //ensure delete was called
+    }
 
     @Test
     public void testDeleteUser_Unsuccessful_UserNotFound(){
@@ -227,35 +255,60 @@ public class UserServiceImplTest {
     }
 
     @Test
-    public void testAutenticateUser_Successful(){
-        String existingUsername = "Mmanyuu";
-        String existingPassword = "123456789";
+    void testAuthenticateUser_Success() {
+        // Arrange
+        String username = "testUser";
+        String rawPassword = "password123";
 
-        User existingUser = User.builder().id(1L).username(existingUsername).password(existingPassword).name("Manyu").build();
+        //see Act for explaination
+        BCryptPasswordEncoder realEncoder = new BCryptPasswordEncoder();
+        String encryptedPassword = realEncoder.encode(rawPassword);
 
-        when(userRepository.findByUsernameAndPassword(existingUsername,existingPassword)).thenReturn(Optional.of(existingUser));
+        User mockUser = User.builder()
+                .username(username)
+                .password(encryptedPassword)
+                .build();
 
-        User authenticatedUser = userService.authenticateUser(existingUsername,existingPassword);
+        when(userRepository.findByUsername(username)).thenReturn(Optional.of(mockUser));
 
-        assertNotNull(authenticatedUser, "Authenticated User should not be null");
-        assertEquals(existingUsername, authenticatedUser.getUsername(), "Username should match");
-        assertEquals(existingPassword, authenticatedUser.getPassword(), "Password should match");
+        when(passwordEncoder.matches(rawPassword, encryptedPassword)).thenReturn(true);
 
-        verify(userRepository, times(1)).findByUsernameAndPassword(existingUsername,existingPassword);
+        System.out.println("Mocked password matches: " + passwordEncoder.matches(rawPassword, encryptedPassword));
+
+        // Act - i got error at this point that state Encoded password does not look like BCrypt. When i search for information, i understand that when passwordEncoder.encode is called, it generate a unique hashed string
+        //Hence, cannot directly compare the rawPassword with the encryptedPassword because the encryption process is non-deterministic. Every time encode is called, it produces a different hashed output (due to salting).
+        User authenticatedUser = userService.authenticateUser(username, rawPassword);
+
+        // Assert
+        assertNotNull(authenticatedUser, "Authenticated user should not be null");
+        assertEquals(username, authenticatedUser.getUsername(), "Username should match");
+        verify(userRepository, times(1)).findByUsername(username);
+        verify(passwordEncoder, times(1)).matches(rawPassword, encryptedPassword);
     }
+    @Test
+    public void testAuthenticateUser_Unsuccessful_InvalidUsername (){
+        String invalidUsername = "WrongUsername";
+        String password = "12345678";
 
+        when(userRepository.findByUsername(invalidUsername)).thenReturn(Optional.empty());
+
+        Exception exception = assertThrows(UserNotFoundException.class, ()-> userService.authenticateUser(invalidUsername, password), "Expected authenticateUser to throw an exception, but it didn't");
+        assertEquals("User not found.", exception.getMessage()); //this should align with UserNotFoundException file
+
+        verify(userRepository,times(1)).findByUsername(invalidUsername);
+    }
+    
+    
     // @Test
-    // public void testAutenticateUser_Unsuccessful_InvalidCredentials (){
-    //     String existingUsername = "Mmanyuu";
+    // public void testAuthenticateUser_Unsuccessful_InvalidCredentials (){
     //     String invalidPassword = "WrongPassword";
 
-    //     User existingUser = User.builder().id(1L).username(existingUsername).password("123456789").name("Manyu").build();
-
-    //     when(userRepository.findByUsernameAndPassword(existingUsername,invalidPassword)).thenReturn(Optional.empty());
+    //     when(userRepository.findByUsername(user.getName())).thenReturn(Optional.of(user));
 
     //    //Act and Assert
     //    assertThrows(InvalidCredentialsException.class, () -> userService.authenticateUser(existingUsername, invalidPassword),"Expected authenticateUser to throw an exception, but it didn't");
     // }
+
 
 }
 
