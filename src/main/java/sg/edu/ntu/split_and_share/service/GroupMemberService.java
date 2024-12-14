@@ -1,12 +1,12 @@
 package sg.edu.ntu.split_and_share.service;
 
-import java.util.List;
+import java.util.Set;
 
 public interface GroupMemberService {
 
-  List<String> addGroupMembers(List<String> groupMemberList, String username);
+  Set<String> addGroupMembers(Set<String> groupMemberList, String username);
 
   void removeGroupMember(String memberName, String username);
 
-  List<String> getAllGroupMembers(String username);
+  Set<String> getAllGroupMembers(String username);
 }
