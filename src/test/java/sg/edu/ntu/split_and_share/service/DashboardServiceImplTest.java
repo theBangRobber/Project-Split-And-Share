@@ -185,7 +185,7 @@ public class DashboardServiceImplTest {
     }
 
     @Test
-    void getAllIndividualExpenses_ShouldReturnCorrectList() {
+    void testGetAllIndividualExpenses_ShouldReturnCorrectList() {
         when(dashboardRepository.findByUser_Username("Jane"))
                 .thenReturn(Optional.of(mockDashboard));
 
@@ -196,7 +196,7 @@ public class DashboardServiceImplTest {
     }
 
     @Test
-    void getAllIndividualExpenses_ShouldReturnEmptyList_WhenNoExpenses() {
+    void testGetAllIndividualExpenses_ShouldReturnEmptyList_WhenNoExpenses() {
         mockDashboard.setExpenses(Collections.emptyList());
         when(dashboardRepository.findByUser_Username("otherUser"))
                 .thenReturn(Optional.of(mockDashboard));
@@ -208,7 +208,7 @@ public class DashboardServiceImplTest {
     }
 
     @Test
-    void resetDashboard_ShouldClearExpensesAndGroupMembers() {
+    void testResetDashboard_ShouldClearExpensesAndGroupMembers() {
         when(dashboardRepository.findByUser_Username("Jane"))
                 .thenReturn(Optional.of(mockDashboard));
 
@@ -220,7 +220,7 @@ public class DashboardServiceImplTest {
     }
 
     @Test
-    void resetDashboard_ShouldThrowException_WhenDashboardNotFound() {
+    void testResetDashboard_ShouldThrowException_WhenDashboardNotFound() {
         when(dashboardRepository.findByUser_Username("nonExistenceUser"))
                 .thenReturn(Optional.empty());
 
