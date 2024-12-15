@@ -179,6 +179,12 @@ public class DashboardServiceImpl implements DashboardService {
     logger.info("Net balances calculated: {}", netBalances);
 
     // Initialize PriorityQueues for debtors and creditors
+    // PriorityQueue class is part of the Java Collections Framework and is used to
+    // maintain a collection of elements where each element has a priority.
+    // Here I use PriorityQueue to sort debtors and creditors, Comparator will
+    // decide the order in the PriorityQueue
+    // Debtors - members who owe money, ordered by the smallest debt first
+    // Creditors - members who are owed money, ordered by the largest credit first
     PriorityQueue<MemberBalance> debtors = new PriorityQueue<>(Comparator.comparing(MemberBalance::getAmount));
     PriorityQueue<MemberBalance> creditors = new PriorityQueue<>(
         Comparator.comparing(MemberBalance::getAmount).reversed());
@@ -196,6 +202,10 @@ public class DashboardServiceImpl implements DashboardService {
     Map<String, List<String>> settlements = new HashMap<>();
 
     // Match debtors to creditors
+    // This while loop will keep going until both debtors and creditors have zero
+    // balance
+    // poll() removes any debtor or creditor once their balance is zero, and then
+    // retrieves the next member from their respective PriorityQueue
     while (!debtors.isEmpty() && !creditors.isEmpty()) {
       MemberBalance debtor = debtors.poll();
       MemberBalance creditor = creditors.poll();
@@ -204,12 +214,28 @@ public class DashboardServiceImpl implements DashboardService {
       logger.info("Processing debtor: {}", debtor);
       logger.info("Processing creditor: {}", creditor);
 
+      // min() method is provided by BigDecimal, it compares two BigDecimal values and
+      // returns the smaller one
+      // the usage of min() here is because of two factors
+      // 1 - The debtor can only pay up to what they owe
+      // 2 - The creditor can only receive up to what they are owed
+      // If the debtor has a smaller amount than creditor, the debtor can only pay up
+      // what they owe
+      // If the creditor has smaller amount than debtor, the creditor can only receive
+      // up to what they are owed.
+      // reset debtor's and creditor's balance after each settlement
       BigDecimal settleAmount = debtor.getAmount().min(creditor.getAmount());
       debtor.setAmount(debtor.getAmount().subtract(settleAmount));
       creditor.setAmount(creditor.getAmount().subtract(settleAmount));
 
+      // Set settlement string as legible output for user
+      // It generates a string describing the settlement transaction and adds it to a
+      // list of settlements for the debtor.
+      // output example - "Pay 30.00 to Johnny"
+      // Create new key of debtor.getMember() in the Map if it does not not already
+      // exists
       String settlement = String.format("Pay %.2f to %s", settleAmount, creditor.getMember());
-      settlements.computeIfAbsent(debtor.getMember(), k -> new ArrayList<>()).add(settlement);
+      settlements.computeIfAbsent(debtor.getMember(), key -> new ArrayList<>()).add(settlement);
 
       logger.info("{} should pay {} to {}", debtor.getMember(), settleAmount, creditor.getMember());
 
