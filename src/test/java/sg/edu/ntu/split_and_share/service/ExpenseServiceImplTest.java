@@ -49,7 +49,7 @@ private ExpenseRepository expenseRepository;
    
   
   @Test
-  void testAddExpense_Success() {
+  void testAddExpense_Successful() {
     // Arrange - Mock expense, group member and sharedby
     Expense newExpense = new Expense();
     newExpense.setAmount(100.0);
@@ -84,7 +84,7 @@ private ExpenseRepository expenseRepository;
   }
 
   @Test
-  void testAddExpense_DashboardNotFound() {
+  void testAddExpense_Unsuccessful_DashboardNotFound() {
       // Arrange - mock expense
       Expense newExpense = new Expense();
       newExpense.setAmount(100.0);
@@ -97,7 +97,7 @@ private ExpenseRepository expenseRepository;
   }
 
   @Test
-  void testGetExpense_Success() {
+  void testGetExpense_Successful() {
       // Arrange - mock expense
       Expense existingExpense = new Expense();
       existingExpense.setId(1L);
@@ -114,7 +114,7 @@ private ExpenseRepository expenseRepository;
   }
 
   @Test
-  void testGetExpense_NotFound() {
+  void testGetExpense_Unsuccessful_NotFound() {
       //Arrange - mock behevior of repo when find expense by id, its not there
       when(expenseRepository.findById(1L)).thenReturn(Optional.empty());
 
@@ -138,7 +138,7 @@ private ExpenseRepository expenseRepository;
   }
 
   @Test
-  void testUpdateExpense_Success() {
+  void testUpdateExpense_Successful() {
       // Arrange - mock existing expenses information
       Expense existingExpense = new Expense();
       existingExpense.setId(1L);
@@ -168,7 +168,7 @@ private ExpenseRepository expenseRepository;
   }
 
   @Test
-  void testUpdateExpense_NotFound() {
+  void testUpdateExpense_Unsuccessful_NotFound() {
       // Arrange
       when(expenseRepository.findById(1L)).thenReturn(Optional.empty());
 
@@ -177,7 +177,7 @@ private ExpenseRepository expenseRepository;
   }
 
   @Test
-  void testDeleteExpense_Success() {
+  void testDeleteExpense_Successful() {
       // Arrange
       Expense existingExpense = new Expense();
       existingExpense.setAmount(100.0);
@@ -206,7 +206,7 @@ private ExpenseRepository expenseRepository;
   }
 
   @Test
-  void testDeleteExpense_NotFound() {
+  void testDeleteExpense_Unsuccuessful_NotFound() {
       // Arrange
       when(entityManager.find(Expense.class, 1L)).thenReturn(null);
 
