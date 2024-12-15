@@ -78,4 +78,12 @@ public class GroupMember {
     this.dashboard = dashboard;
   }
 
+  public Set<Expense> getExpenses() {
+    return expenses;
+  }
+
+  public void setExpenses(Set<Expense> expenses) {
+    this.expenses = expenses;
+  }
+
 }
