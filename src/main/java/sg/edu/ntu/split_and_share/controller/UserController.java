@@ -31,16 +31,16 @@ public class UserController {
   public ResponseEntity<User> createUser(@Valid @RequestBody User user) {
     return new ResponseEntity<>(userService.createUser(user), HttpStatus.CREATED);
   }
-////--------------------------------------------------------------------------------------------------
-/// @Team , Bindu just coded this as we need to be more careful when we are getting the user by user name .
-/// The username is case sensitive and exact match needed .So for testing we can refer the list and 
-/// get the user by username and perform the CRUD for validation and testing.
-///  Read - get all users
-  @GetMapping("/allusers")
-  public ResponseEntity<List<User>> getAllUsers() {
-    List<User> allUsers = userService.getAllUsers();
-    return new ResponseEntity<>(allUsers, HttpStatus.OK);
-  }
+  ////--------------------------------------------------------------------------------------------------
+  /// @Team , Bindu just coded this as we need to be more careful when we are getting the user by user name .
+  /// The username is case sensitive and exact match needed .So for testing we can refer the list and 
+  /// get the user by username and perform the CRUD for validation and testing.
+  ///  Read - get all users
+@GetMapping("/allusers")
+public ResponseEntity<List<User>> getAllUsers() {
+  List<User> allUsers = userService.getAllUsers();
+  return new ResponseEntity<>(allUsers, HttpStatus.OK);
+}
 // ----------------------------------------------------------------------------------------------------------
   // Get user by username
   // http://localhost:8080/api/user/{username}

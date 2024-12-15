@@ -1,6 +1,7 @@
 package sg.edu.ntu.split_and_share.service;
 
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 import sg.edu.ntu.split_and_share.entity.Dashboard;
 import sg.edu.ntu.split_and_share.entity.GroupMember;
 import sg.edu.ntu.split_and_share.exception.DashboardNotFoundException;
+import sg.edu.ntu.split_and_share.exception.DuplicateGroupMemberException;
 import sg.edu.ntu.split_and_share.exception.GroupMemberNotFoundException;
 import sg.edu.ntu.split_and_share.exception.UserNotFoundException;
 import sg.edu.ntu.split_and_share.repository.DashboardRepository;
@@ -33,7 +35,7 @@ public class GroupMemberServiceImpl implements GroupMemberService {
   // Create group member(s)
   @Transactional
   @Override
-  public List<String> addGroupMembers(List<String> groupMemberList, String username) {
+  public Set<String> addGroupMembers(Set<String> groupMemberList, String username) {
     logger.info("Attempting to add group members to the active dashboard");
 
     // Validate existence of a dashboard
@@ -42,9 +44,19 @@ public class GroupMemberServiceImpl implements GroupMemberService {
           logger.error("No dashboard found in the database");
           return new DashboardNotFoundException();
         });
+    logger.info("Fetched dashboard for username: {}", username);
 
-    // Save each group member using a for loop
+    // Check for duplicates and save each group member
     for (String groupMember : groupMemberList) {
+      boolean isDuplicate = dashboard.getGroupMembers()
+          .stream()
+          .anyMatch(member -> member.getMemberName().equals(groupMember));
+
+      if (isDuplicate) {
+        logger.error("Duplicate member '{}' detected", groupMember);
+        throw new DuplicateGroupMemberException();
+      }
+
       GroupMember member = new GroupMember();
       member.setMemberName(groupMember);
       member.setBalance(0.0);
@@ -53,7 +65,7 @@ public class GroupMemberServiceImpl implements GroupMemberService {
       groupMemberRepository.save(member);
       logger.info("Added member '{}' successfully to the dashboard '{}'", groupMember, dashboard.getName());
     }
-
+    logger.info("Successfully added all group members to the dashboard for username: {}", username);
     return groupMemberList;
   }
 
@@ -89,7 +101,7 @@ public class GroupMemberServiceImpl implements GroupMemberService {
 
   // List all group members
   @Override
-  public List<String> getAllGroupMembers(String username) {
+  public Set<String> getAllGroupMembers(String username) {
     logger.info("Fetching all group members");
 
     // Validate existence of a dashboard
@@ -102,7 +114,7 @@ public class GroupMemberServiceImpl implements GroupMemberService {
     List<GroupMember> members = groupMemberRepository.findByDashboard_Id(dashboard.getId());
     logger.info("Found {} members in the dashboard", members.size());
 
-    return members.stream().map(GroupMember::getMemberName).collect(Collectors.toList());
+    return members.stream().map(GroupMember::getMemberName).collect(Collectors.toSet());
     /*
      * Syntax explanation - the stream puts the members that fetched from dashboard
      * into the pipeline, for every group member in the stream, map() extracts the
