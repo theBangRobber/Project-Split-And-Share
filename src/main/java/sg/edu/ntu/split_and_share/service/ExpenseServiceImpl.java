@@ -18,6 +18,7 @@ import sg.edu.ntu.split_and_share.entity.GroupMember;
 import sg.edu.ntu.split_and_share.exception.DashboardNotFoundException;
 import sg.edu.ntu.split_and_share.exception.ExpenseNotFoundException;
 import sg.edu.ntu.split_and_share.exception.GroupMemberNotFoundException;
+import sg.edu.ntu.split_and_share.exception.PaidByMemberNotFoundException;
 import sg.edu.ntu.split_and_share.repository.DashboardRepository;
 import sg.edu.ntu.split_and_share.repository.ExpenseRepository;
 import sg.edu.ntu.split_and_share.repository.GroupMemberRepository;
@@ -53,7 +54,7 @@ public class ExpenseServiceImpl implements ExpenseService {
           return new DashboardNotFoundException();
         });
 
-    // Validate that all sharedBy group members exist, now using only memberName
+    // Validate that all sharedBy group members exist
     if (expense.getSharedBy() != null && !expense.getSharedBy().isEmpty()) {
       Set<GroupMember> validatedMembers = expense.getSharedBy().stream()
           .map(groupMember -> {
@@ -67,8 +68,20 @@ public class ExpenseServiceImpl implements ExpenseService {
           })
           .collect(Collectors.toSet());
       expense.setSharedBy(validatedMembers);
+
+      // Validate that paidBy exists in sharedBy
+      GroupMember paidByMember = groupMemberRepository.findByMemberName(expense.getPaidBy())
+          .orElseThrow(() -> {
+            logger.error("The payer '{}' does not exist", expense.getPaidBy());
+            return new GroupMemberNotFoundException();
+          });
+
+      if (!validatedMembers.contains(paidByMember)) {
+        logger.error("The payer '{}' is not part of the shared group members", expense.getPaidBy());
+        throw new PaidByMemberNotFoundException();
+      }
     } else {
-      logger.warn("The expense does not have any shared group members");
+      logger.error("The expense does not have any shared group members");
     }
 
     // Attach the expense to the dashboard
@@ -156,10 +169,19 @@ public class ExpenseServiceImpl implements ExpenseService {
 
           if (!validMember.isPresent()) {
             logger.error("Member {} does not belong to the same dashboard", member.getMemberName());
-            throw new IllegalArgumentException("GroupMember does not belong to the same dashboard");
+            throw new GroupMemberNotFoundException();
           }
 
           newSharedBy.add(validMember.get());
+        }
+
+        // Validate that paidBy exists in newSharedBy
+        if (!newSharedBy.stream()
+            .map(GroupMember::getMemberName)
+            .collect(Collectors.toSet())
+            .contains(newDetails.getPaidBy())) {
+          logger.error("The payer '{}' is not part of the shared group members", newDetails.getPaidBy());
+          throw new PaidByMemberNotFoundException();
         }
       }
 
