@@ -1,5 +1,6 @@
 package sg.edu.ntu.split_and_share.service;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
@@ -20,7 +21,10 @@ public interface DashboardService {
   long countTotalNumberOfExpenses(String username);
 
   // Calculate individual/group member balances
-  Map<String, Double> calculateNetBalances(String username);
+  Map<String, BigDecimal> calculateNetBalances(String username);
+
+  // Settle balance among group members
+  Map<String, List<String>> settleBalances(String username);
 
   // Fetch all individual expenses
   List<Expense> getAllIndividualExpenses(String username);

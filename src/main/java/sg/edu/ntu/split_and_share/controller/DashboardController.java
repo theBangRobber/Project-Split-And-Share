@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import sg.edu.ntu.split_and_share.entity.Expense;
 import sg.edu.ntu.split_and_share.service.DashboardService;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
@@ -55,9 +56,17 @@ public class DashboardController {
   // Calculate individual/group member balances
   // http://localhost:8080/api/dashboard/{username}/balances
   @GetMapping("/{username}/balances")
-  public ResponseEntity<Map<String, Double>> calculateNetBalances(@PathVariable String username) {
-    Map<String, Double> balances = dashboardService.calculateNetBalances(username);
+  public ResponseEntity<Map<String, BigDecimal>> calculateNetBalances(@PathVariable String username) {
+    Map<String, BigDecimal> balances = dashboardService.calculateNetBalances(username);
     return new ResponseEntity<>(balances, HttpStatus.OK);
+  }
+
+  // Settle balance among group members
+  // http://localhost:8080/api/dashboard/{username}settlement
+  @GetMapping("/{username}/settlement")
+  public ResponseEntity<Map<String, List<String>>> SettleBalances(@PathVariable String username) {
+    Map<String, List<String>> settlement = dashboardService.settleBalances(username);
+    return new ResponseEntity<>(settlement, HttpStatus.OK);
   }
 
   // Fetch all expenses details
