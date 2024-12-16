@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.ObjectError;
@@ -23,7 +24,7 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ErrorResponse> handleUserNotFoundException(UserNotFoundException e) {
         ErrorResponse errorResponse = new ErrorResponse(e.getMessage(),
                 LocalDateTime.now());
-                logger.error("User with username not found.");
+        logger.error("User with username not found.");
         // logger.error("User not found : {}", errorResponse.toString());
         return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
     }
@@ -73,15 +74,22 @@ public class GlobalExceptionHandler {
 
         return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
     }
-// Exception when a client sends a GET request to a URL endpoint, but there is no controller method defined to handle GET requests for that URL.
+
+    // Exception when a client sends a GET request to a URL endpoint, but there is
+    // no controller method defined to handle GET requests for that URL.
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
     public ResponseEntity<ErrorResponse> handleHttpRequestMethodNotSupported(HttpRequestMethodNotSupportedException e) {
         ErrorResponse errorResponse = new ErrorResponse(
-            "The requested HTTP method is not supported for this endpoint. Please check your request method and try again.",
-            LocalDateTime.now()
-        );
+                "The requested HTTP method is not supported for this endpoint. Please check your request method and try again.",
+                LocalDateTime.now());
 
         return new ResponseEntity<>(errorResponse, HttpStatus.METHOD_NOT_ALLOWED);
+    }
+
+    @ExceptionHandler(DataAccessException.class)
+    public ResponseEntity<String> handleDataAccessException(DataAccessException e) {
+        logger.error("An internal inconsistency was detected. Please check your Response or contact support. {}", e.getMessage());
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An internal inconsistency was detected. Please check your input or contact support.: " + e.getMessage());
     }
 
     // General Exception Handler
