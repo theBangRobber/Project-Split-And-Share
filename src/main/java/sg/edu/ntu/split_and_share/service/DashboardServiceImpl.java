@@ -1,8 +1,11 @@
 package sg.edu.ntu.split_and_share.service;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.PriorityQueue;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.math.BigDecimal;
@@ -106,7 +109,7 @@ public class DashboardServiceImpl implements DashboardService {
 
   // Calculate individual member's net balances
   @Override
-  public Map<String, Double> calculateNetBalances(String username) {
+  public Map<String, BigDecimal> calculateNetBalances(String username) {
     logger.info("Calculating net balances for all members on {}", username + "'s dashboard");
     // Fetch the dashboard
     Dashboard dashboard = dashboardRepository.findByUser_Username(username)
@@ -114,12 +117,10 @@ public class DashboardServiceImpl implements DashboardService {
           logger.error("Dashboard not found for username: {}", username);
           return new DashboardNotFoundException();
         });
-
-    // Initialize balances with all group members set to zero
-    // Add each member to the map with a balance of 0.0
-    Map<String, Double> balances = new HashMap<>();
+    // Initialize balances with all group members set to BigDecimal.ZERO
+    Map<String, BigDecimal> balances = new HashMap<>();
     for (GroupMember member : dashboard.getGroupMembers()) {
-      balances.put(member.getMemberName(), 0.0);
+      balances.put(member.getMemberName(), BigDecimal.ZERO);
     }
     logger.info("Initialized balances for all group members to zero.");
 
@@ -144,9 +145,9 @@ public class DashboardServiceImpl implements DashboardService {
       // Update payer's balance
       // Retrieves the current balance for the payer or defaults to 0.0 if not present
       // Adds the payer's net contribution to their balance
-      BigDecimal payerBalance = BigDecimal.valueOf(balances.getOrDefault(payer, 0.0))
+      BigDecimal payerBalance = balances.getOrDefault(payer, BigDecimal.ZERO)
           .add(totalAmount.subtract(individualShare));
-      balances.put(payer, payerBalance.setScale(2, RoundingMode.HALF_UP).doubleValue());
+      balances.put(payer, payerBalance.setScale(2, RoundingMode.HALF_UP));
       logger.info("Updated balance for payer '{}': {}", payer, payerBalance.setScale(2, RoundingMode.HALF_UP));
 
       // Update shared members' balances
@@ -155,9 +156,9 @@ public class DashboardServiceImpl implements DashboardService {
         if (!sharer.equals(payer)) {
           // Retrieves the current balance for the sharer and subtracts their share of the
           // expense.
-          BigDecimal sharerBalance = BigDecimal.valueOf(balances.getOrDefault(sharer, 0.0))
+          BigDecimal sharerBalance = balances.getOrDefault(sharer, BigDecimal.ZERO)
               .subtract(individualShare);
-          balances.put(sharer, sharerBalance.setScale(2, RoundingMode.HALF_UP).doubleValue());
+          balances.put(sharer, sharerBalance.setScale(2, RoundingMode.HALF_UP));
           logger.info("Updated balance for sharer '{}': {}", sharer, sharerBalance.setScale(2, RoundingMode.HALF_UP));
         }
       }
@@ -165,6 +166,90 @@ public class DashboardServiceImpl implements DashboardService {
 
     logger.info("Calculated net balances for username all members: {}", balances);
     return balances;
+  }
+
+  // Settle balance among group members
+  @Override
+  @Transactional
+  public Map<String, List<String>> settleBalances(String username) {
+    logger.info("Calculating settlement transactions for all members on {}'s dashboard", username);
+
+    // Calculate net balances for each member
+    Map<String, BigDecimal> netBalances = calculateNetBalances(username);
+    logger.info("Net balances calculated: {}", netBalances);
+
+    // Initialize PriorityQueues for debtors and creditors
+    // PriorityQueue class is part of the Java Collections Framework and is used to
+    // maintain a collection of elements where each element has a priority.
+    // Here I use PriorityQueue to sort debtors and creditors, Comparator will
+    // decide the order in the PriorityQueue
+    // Debtors - members who owe money, ordered by the smallest debt first
+    // Creditors - members who are owed money, ordered by the largest credit first
+    PriorityQueue<MemberBalance> debtors = new PriorityQueue<>(Comparator.comparing(MemberBalance::getAmount));
+    PriorityQueue<MemberBalance> creditors = new PriorityQueue<>(
+        Comparator.comparing(MemberBalance::getAmount).reversed());
+
+    // Separate members into debtors and creditors
+    netBalances.forEach((member, balance) -> {
+      if (balance.compareTo(BigDecimal.ZERO) > 0) {
+        creditors.add(new MemberBalance(member, balance));
+      } else if (balance.compareTo(BigDecimal.ZERO) < 0) {
+        debtors.add(new MemberBalance(member, balance.negate()));
+      }
+    });
+
+    // Map to store settlement instructions
+    Map<String, List<String>> settlements = new HashMap<>();
+
+    // Match debtors to creditors
+    // This while loop will keep going until both debtors and creditors have zero
+    // balance
+    // poll() removes any debtor or creditor once their balance is zero, and then
+    // retrieves the next member from their respective PriorityQueue
+    while (!debtors.isEmpty() && !creditors.isEmpty()) {
+      MemberBalance debtor = debtors.poll();
+      MemberBalance creditor = creditors.poll();
+
+      // Log the current debtor and creditor
+      logger.info("Processing debtor: {}", debtor);
+      logger.info("Processing creditor: {}", creditor);
+
+      // min() method is provided by BigDecimal, it compares two BigDecimal values and
+      // returns the smaller one
+      // the usage of min() here is because of two factors
+      // 1 - The debtor can only pay up to what they owe
+      // 2 - The creditor can only receive up to what they are owed
+      // If the debtor has a smaller amount than creditor, the debtor can only pay up
+      // what they owe
+      // If the creditor has smaller amount than debtor, the creditor can only receive
+      // up to what they are owed.
+      // reset debtor's and creditor's balance after each settlement
+      BigDecimal settleAmount = debtor.getAmount().min(creditor.getAmount());
+      debtor.setAmount(debtor.getAmount().subtract(settleAmount));
+      creditor.setAmount(creditor.getAmount().subtract(settleAmount));
+
+      // Set settlement string as legible output for user
+      // It generates a string describing the settlement transaction and adds it to a
+      // list of settlements for the debtor.
+      // output example - "Pay 30.00 to Johnny"
+      // Create new key of debtor.getMember() in the Map if it does not not already
+      // exists
+      String settlement = String.format("Pay %.2f to %s", settleAmount, creditor.getMember());
+      settlements.computeIfAbsent(debtor.getMember(), key -> new ArrayList<>()).add(settlement);
+
+      logger.info("{} should pay {} to {}", debtor.getMember(), settleAmount, creditor.getMember());
+
+      // Add remaining balance back to queues if any
+      if (debtor.getAmount().compareTo(BigDecimal.ZERO) > 0) {
+        debtors.add(debtor);
+      }
+      if (creditor.getAmount().compareTo(BigDecimal.ZERO) > 0) {
+        creditors.add(creditor);
+      }
+    }
+
+    logger.info("Calculated settlements for all members: {}", settlements);
+    return settlements;
   }
 
   // Fetch all individual expenses
