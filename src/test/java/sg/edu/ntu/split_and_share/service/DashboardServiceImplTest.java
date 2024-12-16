@@ -29,6 +29,7 @@ import sg.edu.ntu.split_and_share.exception.DashboardNotFoundException;
 import sg.edu.ntu.split_and_share.repository.DashboardRepository;
 
 
+
 @ExtendWith(MockitoExtension.class) 
 public class DashboardServiceImplTest {
 
@@ -62,15 +63,15 @@ public class DashboardServiceImplTest {
     //Expense 1: expenses paid by john and shared by two member - jane and doe
     Expense expense1 = new Expense();
     expense1.setType("Food");
-    expense1.setAmount(20.0);
-    expense1.setPaidBy("John");
+    expense1.setAmount(120.0);
+    expense1.setPaidBy("Jane");
     expense1.setSharedBy(new HashSet<>(List.of(memberJane, memberDoe))); // set share
 
     //Expense 2: expenses paid by jane and shared by two member - john and doe
     Expense expense2 = new Expense();
     expense2.setType("Travel");
     expense2.setAmount(50.0);
-    expense2.setPaidBy("Jane");
+    expense2.setPaidBy("Doe");
     expense2.setSharedBy(new HashSet<>(List.of(memberJohn, memberDoe)));
 
     // Assign expenses to members
@@ -92,7 +93,7 @@ public class DashboardServiceImplTest {
 
         double totalSum = dashboardService.calculateTotalSum("Jane");
 
-        assertEquals(70.0, totalSum);
+        assertEquals(170.0, totalSum);
         verify(dashboardRepository, times(1)).findByUser_Username("Jane");
     }
 
@@ -115,7 +116,7 @@ public class DashboardServiceImplTest {
         Map<String, Double> expensesByType = dashboardService.sumExpensesByType("Jane");
 
         assertEquals(2, expensesByType.size());
-        assertEquals(20.0, expensesByType.get("Food"));
+        assertEquals(120.0, expensesByType.get("Food"));
         assertEquals(50.0, expensesByType.get("Travel"));
         verify(dashboardRepository, times(1)).findByUser_Username("Jane");
     }
@@ -160,28 +161,45 @@ public class DashboardServiceImplTest {
 
     @Test //was wondering if there is a better way to do this test instead of myself calculating the expected. hmm..
     void testCalculateNetBalances_ShouldReturnCorrectBalances() {
+        // Arrange: Mock the dashboard for "Jane" user
         when(dashboardRepository.findByUser_Username("Jane"))
                 .thenReturn(Optional.of(mockDashboard));
 
+        // Act: Call the method under test to calculate the balances
         Map<String, BigDecimal> balances = dashboardService.calculateNetBalances("Jane");
 
+        // Assert: Check that the returned balances are correct
         assertEquals(3, balances.size());
-        assertEquals(-5, balances.get("John"));
-        assertEquals(40.0, balances.get("Jane"));
-        assertEquals(-35.0, balances.get("Doe"));
+
+        assertEquals(BigDecimal.valueOf(-25).setScale(2), balances.get("John"),"John should owe Doe 25 bucks");  
+        assertEquals(BigDecimal.valueOf(60).setScale(2), balances.get("Jane"), "Jane should be paid 60, and by Doe");
+        assertEquals(BigDecimal.valueOf(-35).setScale(2), balances.get("Doe"),"Doe should pay Jane 60 and given back 25 by John");
+
+        verify(dashboardRepository, times(1)).findByUser_Username("Jane");
+
+
+        // Verify that the repository's find method was called exactly once for "Jane"
         verify(dashboardRepository, times(1)).findByUser_Username("Jane");
     }
 
     @Test
     void testCalculateNetBalances_ShouldReturnZeroBalances_WhenNoExpenses() {
-        mockDashboard.setExpenses(Collections.emptyList());
+
+        mockDashboard.setExpenses(Collections.emptyList()); //User had no expenses
+
         when(dashboardRepository.findByUser_Username("otherUser"))
                 .thenReturn(Optional.of(mockDashboard));
 
         Map<String, BigDecimal> balances = dashboardService.calculateNetBalances("otherUser");
 
-        assertEquals(0, balances.size());
-        balances.values().forEach(balance -> assertEquals(0.0, balance));
+        System.out.println(balances);
+
+        //This is to verify individual members balances is zero.
+        for (GroupMember member : mockDashboard.getGroupMembers()) {
+                assertEquals(BigDecimal.ZERO, balances.get(member.getMemberName()));
+            }
+        
+        // Verify that the repository method was called once with the username "otherUser"
         verify(dashboardRepository, times(1)).findByUser_Username("otherUser");
     }
 
