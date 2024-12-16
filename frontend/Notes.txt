@@ -1,0 +1,13 @@
+Steps for Integrating the Backend API with the Frontend App
+Need to create a react app using command: 
+"npx create-react-app frontend"
+cd frontend -Go into the folder and we need to do key in command: "npm start" .
+React app is started in the desired port localhost:3000
+we can see default app functions.
+These are the Key files:
+src/index.js: The entry point for your app. This file renders the root component (App.js) to the DOM.
+src/App.js: The main component of your app.
+public/index.html: The HTML template that gets served. It includes a <div id="root"></div>, where your React app is rendered.
+If any dependencies missing, just add the dependencies
+using the "npm install <package-name>"
+To build for production: Run "npm run build" to create an optimized build of your app.
