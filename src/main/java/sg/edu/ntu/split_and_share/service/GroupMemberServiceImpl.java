@@ -77,7 +77,7 @@ public class GroupMemberServiceImpl implements GroupMemberService {
     // Validate existence of a dashboard
     Dashboard dashboard = dashboardRepository.findByUser_Username(username)
         .orElseThrow(() -> {
-          logger.error("No dashboard found in the database");
+          logger.error("No dashboard found in the database with username '{}'", username);
           return new UserNotFoundException();
         });
 

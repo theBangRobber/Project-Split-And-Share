@@ -185,6 +185,7 @@ public class DashboardServiceImpl implements DashboardService {
     // decide the order in the PriorityQueue
     // Debtors - members who owe money, ordered by the smallest debt first
     // Creditors - members who are owed money, ordered by the largest credit first
+    // This approach minimizes the number of transactions needed to settle balances
     PriorityQueue<MemberBalance> debtors = new PriorityQueue<>(Comparator.comparing(MemberBalance::getAmount));
     PriorityQueue<MemberBalance> creditors = new PriorityQueue<>(
         Comparator.comparing(MemberBalance::getAmount).reversed());
