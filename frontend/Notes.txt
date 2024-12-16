@@ -11,3 +11,7 @@ public/index.html: The HTML template that gets served. It includes a <div id="ro
 If any dependencies missing, just add the dependencies
 using the "npm install <package-name>"
 To build for production: Run "npm run build" to create an optimized build of your app.
+Run both front end and the back end in different terminal.
+Test the backend API using postman and see if that is reflected in the ReactApp
+It should display the all the users as that is the url set "http://localhost:8080/api/user/allusers"
+Update/create the user list and see if its reflected in the ReactApp
