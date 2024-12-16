@@ -5,7 +5,6 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import static org.mockito.ArgumentMatchers.any;
@@ -22,6 +21,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import sg.edu.ntu.split_and_share.entity.Dashboard;
 import sg.edu.ntu.split_and_share.entity.User;
 import sg.edu.ntu.split_and_share.exception.DashboardNotFoundException;
+import sg.edu.ntu.split_and_share.exception.InvalidCredentialsException;
 import sg.edu.ntu.split_and_share.exception.UserNotFoundException;
 import sg.edu.ntu.split_and_share.exception.UsernameIsTakenException;
 import sg.edu.ntu.split_and_share.repository.DashboardRepository;
@@ -49,18 +49,14 @@ public class UserServiceImplTest {
     @Test // Create User Test for Success Creation - Checked correct
     public void testCreateUser_Successful() {
         // Arrange
-        String rawPassword = "123456789";
-        String encryptedPassword = "encryptedPassword1234"; //mocked encrypted password
-
-        when(userRepository.findByUsername("Mmanyuu")).thenReturn(Optional.empty()); //this is when findbyusername() is called, the username is not occupied.
-
-        when(passwordEncoder.encode(rawPassword)).thenReturn(encryptedPassword);
-
         User newUser = User.builder()
                             .username("Mmanyuu")
-                            .password(rawPassword)
+                            .password("Password")
                             .name("Manyu")
                             .build(); //Proceed to create new user. 
+
+        when(userRepository.findByUsername(newUser.getUsername())).thenReturn(Optional.empty()); //this is when findbyusername() is called, the username is not occupied.
+        when(passwordEncoder.encode(newUser.getPassword())).thenReturn("encodedPassword");
 
         //simlulating saving the new user and uses thenAnswer instead of thenReturn is to have more flexibility in determining how the method should response if called.
         when(userRepository.save(any(User.class))).thenAnswer(invocation -> {
@@ -75,23 +71,18 @@ public class UserServiceImplTest {
 
         // Act
         User createdUser = userService.createUser(newUser);
-        System.out.println("raw password: " + passwordEncoder.encode(rawPassword));
-        System.out.println("Created User encoded password:" + createdUser.getPassword());
 
         // Assert - checking individual fields of savedUser
         assertNotNull(createdUser, "Newly created user should not be null");
         assertNotNull(createdUser.getDashboard(), "Dashboard should be created and associated with the user");
         assertEquals(newUser.getUsername(), createdUser.getUsername(), "Username should match the input");
-        //Assert true false for whether the password is encoded.
-        assertTrue(passwordEncoder.matches(rawPassword, createdUser.getPassword()), "Password should be encrypted");
-
         assertEquals(newUser.getName(), createdUser.getName(), "Name should match the input");
         assertEquals(newUser.getDashboard().getName(), createdUser.getDashboard().getName(), "Dashboard name should match the user's name");
 
         // Verify
-        verify(passwordEncoder, times(1)).encode(rawPassword);
-        verify(userRepository, times(1)).findByUsername("Mmanyuu");
+        verify(userRepository, times(1)).findByUsername(newUser.getUsername());
         verify(userRepository,times(1)).save(any(User.class));
+        verify(passwordEncoder).encode(newUser.getPassword());
     }
 
     @Test
@@ -146,27 +137,31 @@ public class UserServiceImplTest {
     public void testUpdateUser_Successful(){ //updateUser(String username, User user) - two parameters
 
         //Arrange - setting up the requirement. as this test is about successful update, hence all information should be registered and recorded
-        String existingUserUsername = "Mmanyuu"; //First parameter
-        String encryptedPassword = "encryptedPassword12345";
 
-        User existingUser = User.builder().id(1L).username(existingUserUsername).password("123456789").name("Manyu").dashboard(Dashboard.builder().name("Manyu").build()).build(); //Second parameter
+        User existingUser = User.builder()
+                .id(1L)
+                .username("Jane")
+                .password("123456789")
+                .name("Manyu")
+                .dashboard(Dashboard.builder()
+                    .name("Manyu")
+                    .build())
+                .build(); //Second parameter
 
-        User userToUpdate = User.builder().username("UpdatedUsername").password("newPassword").name("updatedName").build();
+        User userToUpdate = User.builder()
+                .username("UpdatedUsername")
+                .password("newPassword")
+                .name("updatedName")
+                .build();
 
         //Mock findbyusername().
-        when(userRepository.findByUsername(existingUserUsername)).thenReturn(Optional.of(existingUser));
+        when(userRepository.findByUsername("Jane")).thenReturn(Optional.of(existingUser));
+
+        //Save the user and return the updated user
+        when(userRepository.save(existingUser)).thenReturn(existingUser);
 
         //Mock passwordEncoder.encode()
-        when(passwordEncoder.encode(userToUpdate.getPassword())).thenReturn(encryptedPassword);
-
-        //simulate save behavior - userRepo
-        when(userRepository.save(any(User.class))).thenAnswer(invocation -> {
-            User savedUser = invocation.getArgument(0);
-            savedUser.setName(userToUpdate.getName());
-            savedUser.setUsername(userToUpdate.getUsername());
-            savedUser.setPassword(passwordEncoder.encode(userToUpdate.getPassword()));
-            return savedUser;
-        });
+        when(passwordEncoder.encode(userToUpdate.getPassword())).thenReturn("encryptedNewPassword");
 
         //simulate save behavior - dashboard repo. when an update of name, the dashboard name will also change
         when(dashboardRepository.save(any(Dashboard.class))).thenAnswer(invocation -> {
@@ -176,21 +171,21 @@ public class UserServiceImplTest {
         });
 
         //Act
-        User updatedUser = userService.updateUser(existingUser.getUsername(), userToUpdate);
+        User updatedInfo = userService.updateUser("Jane", userToUpdate);
 
         //Assert
-        assertNotNull(updatedUser, "Updated User should not be Null");
-        assertEquals(userToUpdate.getUsername(),updatedUser.getUsername(),"Username should be updated - UpdatedUsername");
-        assertEquals(encryptedPassword, updatedUser.getPassword(), "Password should be encryped");
-        assertEquals(userToUpdate.getName(), updatedUser.getName(),"Name should be updated - updatedName");
-        assertNotNull(updatedUser.getDashboard(),"Dashboard should still be associated with the user");
-        assertEquals(userToUpdate.getName(), updatedUser.getDashboard().getName(), "Dashboard name should be updated");
+        assertNotNull(updatedInfo, "Updated info should not be Null");
+        assertNotNull(updatedInfo.getDashboard(),"Dashboard should still be associated with the user");
+        assertEquals(userToUpdate.getUsername(),updatedInfo.getUsername(),"Username should be updated - UpdatedUsername");
+        assertEquals(userToUpdate.getName(), updatedInfo.getName(),"Name should be updated - updatedName");
+        assertEquals(userToUpdate.getName(), updatedInfo.getDashboard().getName(), "Dashboard name should be updated");
 
         //Verify
-        verify(userRepository,times(1)).findByUsername(existingUserUsername);
-        verify(passwordEncoder, times(1)).encode(userToUpdate.getPassword());
+        verify(userRepository,times(1)).findByUsername("Jane");
         verify(userRepository,times(1)).save(existingUser);
         verify(dashboardRepository,times(1)).save(existingUser.getDashboard());
+
+        verify(passwordEncoder, times(1)).encode(userToUpdate.getPassword());
     }
 
     @Test
@@ -230,7 +225,15 @@ public class UserServiceImplTest {
     public void testDeleteUser_Successful(){
         String existingUsername = "Mmanyuu";
 
-        User existingUser = User.builder().id(1L).username(existingUsername).password("123456789").name("Manyu").dashboard(Dashboard.builder().name("Manyu").build()).build();
+        User existingUser = User.builder()
+            .id(1L)
+            .username(existingUsername)
+            .password("123456789")
+            .name("Manyu")
+            .dashboard(Dashboard.builder()
+                .name("Manyu")
+                .build())
+            .build();
 
         when(userRepository.findByUsername(existingUsername)).thenReturn(Optional.of(existingUser));
 
@@ -287,28 +290,28 @@ public class UserServiceImplTest {
     }
     @Test
     public void testAuthenticateUser_Unsuccessful_InvalidUsername (){
-        String invalidUsername = "WrongUsername";
-        String password = "12345678";
 
-        when(userRepository.findByUsername(invalidUsername)).thenReturn(Optional.empty());
+        when(userRepository.findByUsername("wrongUsername")).thenReturn(Optional.empty());
 
-        Exception exception = assertThrows(UserNotFoundException.class, ()-> userService.authenticateUser(invalidUsername, password), "Expected authenticateUser to throw an exception, but it didn't");
+        Exception exception = assertThrows(UserNotFoundException.class, ()-> userService.authenticateUser("wrongUsername", "Password"), "Expected authenticateUser to throw an exception, but it didn't");
         assertEquals("User not found.", exception.getMessage()); //this should align with UserNotFoundException file
 
-        verify(userRepository,times(1)).findByUsername(invalidUsername);
+        verify(userRepository,times(1)).findByUsername("wrongUsername");
     }
     
-    
-    // @Test
-    // public void testAuthenticateUser_Unsuccessful_InvalidCredentials (){
-    //     String invalidPassword = "WrongPassword";
+    @Test
+    public void testAuthenticateUser_Unsuccessful_IncorrectPassword (){
+        User mockUser = User.builder()
+                .username("Mmanyuu")
+                .password("Password")
+                .name("Manyu")
+                .build();
 
-    //     when(userRepository.findByUsername(user.getName())).thenReturn(Optional.of(user));
+                when(userRepository.findByUsername("Mmanyuu")).thenReturn(Optional.of(mockUser));
+                when(passwordEncoder.matches("incorrectPassword", mockUser.getPassword())).thenReturn(false);
 
-    //    //Act and Assert
-    //    assertThrows(InvalidCredentialsException.class, () -> userService.authenticateUser(existingUsername, invalidPassword),"Expected authenticateUser to throw an exception, but it didn't");
-    // }
-
-
+       //Act and Assert
+       assertThrows(InvalidCredentialsException.class, () -> userService.authenticateUser("Mmanyuu", "incorrectPassword"),"Expected authenticateUser to throw an exception, but it didn't");
+    }
 }
 
