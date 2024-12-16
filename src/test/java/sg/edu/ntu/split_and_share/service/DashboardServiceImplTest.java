@@ -1,5 +1,6 @@
 package sg.edu.ntu.split_and_share.service;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -162,7 +163,7 @@ public class DashboardServiceImplTest {
         when(dashboardRepository.findByUser_Username("Jane"))
                 .thenReturn(Optional.of(mockDashboard));
 
-        Map<String, Double> balances = dashboardService.calculateNetBalances("Jane");
+        Map<String, BigDecimal> balances = dashboardService.calculateNetBalances("Jane");
 
         assertEquals(3, balances.size());
         assertEquals(-5, balances.get("John"));
@@ -177,7 +178,7 @@ public class DashboardServiceImplTest {
         when(dashboardRepository.findByUser_Username("otherUser"))
                 .thenReturn(Optional.of(mockDashboard));
 
-        Map<String, Double> balances = dashboardService.calculateNetBalances("otherUser");
+        Map<String, BigDecimal> balances = dashboardService.calculateNetBalances("otherUser");
 
         assertEquals(0, balances.size());
         balances.values().forEach(balance -> assertEquals(0.0, balance));
