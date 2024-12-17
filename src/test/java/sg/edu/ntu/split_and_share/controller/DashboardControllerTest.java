@@ -176,4 +176,59 @@ public class DashboardControllerTest {
 		verify(dashboardService, times(1)).sumExpensesByType("john");
 	}
 
+	// http://localhost:8080/api/dashboard/{username}/count-by-type
+	@Test
+	public void shouldGetCountByType() throws Exception {
+		// Create User object for the test
+		User user = new User(null, "john", "mypassword123", "John", null);
+
+		// Perform POST request to create a new user
+		mockMvc.perform(MockMvcRequestBuilders
+				.post("/api/user")
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(objectMapper.writeValueAsString(user)))
+				.andExpect(status().isCreated());
+
+		// Assuming group member list is represented as a list of usernames
+		List<String> groupMembers = Arrays.asList("john", "may", "june", "july", "august");
+
+		// Perform POST request to add group members
+		mockMvc.perform(MockMvcRequestBuilders
+				.post("/api/group-members/add/john")
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(objectMapper.writeValueAsString(groupMembers)))
+				.andExpect(status().isCreated());
+
+		// Prepare expense object
+		Expense expense = new Expense(1L, "Food", 10.0, "Dinner", "John", new Dashboard(), Set.of());
+		String expenseJson = objectMapper.writeValueAsString(expense);
+
+		// Mock expenseService to return created expense
+		when(expenseService.addExpense(any(Expense.class), eq("john"))).thenReturn(expense);
+
+		// Perform POST to add expense
+		mockMvc.perform(MockMvcRequestBuilders
+				.post("/api/expense/john/add")
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(expenseJson))
+				.andExpect(status().isCreated());
+
+		// Prepare mock for calculating total sum by type (sum of expenses by type)
+		Map<String, Double> expensesByType = new HashMap<>();
+		expensesByType.put("Food", 10.0); // Add a mock sum for the "Food" type
+
+		// Mock dashboardService to return sum by type
+		when(dashboardService.sumExpensesByType("john")).thenReturn(expensesByType);
+
+		// Perform GET to check total sum by type
+		mockMvc.perform(MockMvcRequestBuilders
+				.get("/api/dashboard/john/count-by-type")
+				.contentType(MediaType.APPLICATION_JSON))
+				.andExpect(status().isOk())
+				.andExpect(jsonPath("$.Food").value(10.0)); // Assuming "Food" is the key and 10.0 is the value
+
+		// Verify dashboardService method call
+		verify(dashboardService, times(1)).sumExpensesByType("john");
+	}
+
 }
