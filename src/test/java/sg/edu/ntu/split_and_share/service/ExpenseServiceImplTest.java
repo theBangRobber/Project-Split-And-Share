@@ -53,37 +53,40 @@ private ExpenseRepository expenseRepository;
   
   @Test
   void testAddExpense_Successful() {
-    // Arrange - Mock expense, group member and sharedby
-    Expense newExpense = new Expense();
-    newExpense.setAmount(100.0);
+    //Arrange - Mock dashboard
+    Dashboard janeDashboard = new Dashboard();
+    janeDashboard.setId(1L);
+    janeDashboard.setName("Jane's dashboard");
 
-    GroupMember member = new GroupMember();
-    member.setMemberName("Member1");
-    member.setBalance(0.0);
+    // Arrange - Mock expense, group member and sharedby
+    Expense expense1 = new Expense();
+    expense1.setType("Food");
+    expense1.setAmount(100.0);
+    expense1.setPaidBy("Alice");
+
+    GroupMember newMember = new GroupMember();
+    newMember.setMemberName("Alice");
+    newMember.setBalance(0.0);
 
     Set<GroupMember> sharedBy = new HashSet<>();
-    sharedBy.add(member);
+    sharedBy.add(newMember);
 
-    newExpense.setSharedBy(sharedBy);
-
-    //Arrange - Mock dashboard
-    Dashboard dashboard = new Dashboard();
-    dashboard.setId(1L);
+    expense1.setSharedBy(sharedBy); //expense1 is shared by the new member - Alice
 
     //Arrange - Mock repo beheavior. we need to find dashboard by username, save a group member into the dashboard and save the expense into the dashboard with the group member
-    when(dashboardRepository.findByUser_Username("Mmanyuu")).thenReturn(Optional.of(dashboard));
-    when(groupMemberRepository.findByMemberName("Member1")).thenReturn(Optional.of(member));
+    when(dashboardRepository.findByUser_Username("Jane")).thenReturn(Optional.of(janeDashboard));
+    when(groupMemberRepository.findByMemberName("Alice")).thenReturn(Optional.of(newMember));
     when(groupMemberRepository.save(any(GroupMember.class))).thenAnswer(invocation -> invocation.getArgument(0)); //returning this without setting any parameters mean i am just simulating a real beviour of the method save (returning the object as it is)
     when(expenseRepository.save(any(Expense.class))).thenAnswer(invocation -> invocation.getArgument(0));
 
     // Act
-    Expense result = expenseService.addExpense(newExpense, "Mmanyuu");
+    Expense result = expenseService.addExpense(expense1, "Jane");
 
     // Assert and Verify
     assertNotNull(result);
-    assertEquals(dashboard, result.getDashboard());
-    verify(expenseRepository, times(1)).save(newExpense);
-    verify(groupMemberRepository, times(1)).save(member);
+    assertEquals(janeDashboard, result.getDashboard());
+    verify(expenseRepository, times(1)).save(expense1);
+    verify(groupMemberRepository, times(1)).save(newMember);
   }
 
   @Test
