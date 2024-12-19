@@ -235,7 +235,7 @@ public class DashboardServiceImpl implements DashboardService {
       // output example - "Pay 30.00 to Johnny"
       // Create new key of debtor.getMember() in the Map if it does not not already
       // exists
-      String settlement = String.format("Pay %.2f to %s", settleAmount, creditor.getMember());
+      String settlement = String.format("Pays %.2f to %s", settleAmount, creditor.getMember());
       settlements.computeIfAbsent(debtor.getMember(), key -> new ArrayList<>()).add(settlement);
 
       logger.info("{} should pay {} to {}", debtor.getMember(), settleAmount, creditor.getMember());
@@ -299,6 +299,5 @@ public class DashboardServiceImpl implements DashboardService {
     dashboardRepository.save(dashboard);
     logger.info("Dashboard reset successfully for username: {}", username);
   }
-
 
 }
