@@ -1,0 +1,347 @@
+/* src/styles/styles.css */
+html,
+body {
+  overflow: hidden; /* Disables scroll bars globally */
+}
+
+/* General layout */
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+}
+
+.main-content {
+  margin-left: 300px; /* Leaves space for the side panel */
+  display: flex;
+  flex: 1;
+  overflow-y: auto; /* Allows the main content to scroll */
+}
+
+/* General Side Panel Styles */
+.side-panel {
+  position: fixed; /* Fixes the side panel in the viewport */
+  top: 0;
+  left: 0;
+  height: 100vh; /* Full height of the viewport */
+  width: clamp(220px, 20%, 220px);
+  background-color: #2c003e; /* Dark purple */
+  color: #f5c6c6; /* Light pink text */
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border-right: 1px solid #f5c6c6;
+  overflow-y: auto; /* Allows the side panel to scroll if content overflows */
+  z-index: 1000; /* Keeps it on top of other elements */
+}
+
+.side-panel-h2 {
+  font-size: 4rem;
+  margin-top: 0px;
+}
+
+/* Shared Dynamic Form Styles */
+.dynamic-form {
+  margin-top: 108px; /* Uniform margin-top for all forms */
+}
+
+/* General Form Container */
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-title {
+  font-size: 18px;
+  color: #f5c6c6;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-bottom: 15px;
+}
+
+.form-label {
+  width: 100%;
+  font-size: 12px;
+  color: #f5c6c6;
+  margin-bottom: 5px;
+  text-align: left;
+}
+
+.form-input {
+  width: 100%;
+  max-width: 200px;
+  padding: 8px;
+  border: 1px solid #f5c6c6;
+  background-color: transparent;
+  color: #f5c6c6;
+  border-radius: 4px;
+  transition: border-color 0.3s ease;
+}
+
+/* Ensure the background stays transparent even after user input */
+.form-input:focus {
+  outline: none; /* Removes the default outline */
+  border-color: #ff6b6b; /* Pinkish-red border on focus */
+  background-color: transparent; /* Keep background transparent on focus */
+}
+
+.error-message {
+  color: #ff6b6b;
+  font-size: 12px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* Buttons */
+.form-button {
+  background-color: #ff6b6b; /* Pinkish-red button */
+  color: #2c003e; /* Dark purple text */
+  border: none;
+  padding: 8px 12px;
+  margin-top: 5px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: bold;
+  align-self: left;
+  transition: background-color 0.3s ease;
+}
+
+.form-button:hover {
+  background-color: #f5c6c6; /* Light pink hover */
+  color: #2c003e;
+}
+
+/* General Radio and Checkbox Styles */
+.form-radio input[type="radio"],
+.form-checkbox input[type="checkbox"] {
+  background-color: transparent; /* Makes the background of radio buttons and checkboxes transparent */
+  border: 1px solid #f5c6c6; /* Light pink border to match the theme */
+  outline: none; /* Removes the outline when focused */
+  appearance: none; /* Removes default styling */
+  width: 15px; /* Custom size for radio and checkbox */
+  height: 15px; /* Custom size for radio and checkbox */
+  margin-right: 5px; /* Space between the radio/checkbox and label */
+}
+
+.form-radio input[type="radio"]:checked,
+.form-checkbox input[type="checkbox"]:checked {
+  background-color: #ff6b6b; /* Pink background for checked state */
+  border-color: #ff6b6b; /* Pink border for checked state */
+}
+
+.form-radio label,
+.form-checkbox label {
+  color: #f5c6c6; /* Light pink text color for labels */
+  font-size: 14px; /* Font size for labels */
+  display: inline-block; /* Ensures the label is aligned with the input */
+  cursor: pointer; /* Makes the label clickable */
+}
+
+.form-radio input[type="radio"]:focus,
+.form-checkbox input[type="checkbox"]:focus {
+  border-color: #ff6b6b; /* Pink border when the radio or checkbox is focused */
+}
+
+/* Specific layout for button and label */
+.form-radio,
+.form-checkbox {
+  display: flex;
+  align-items: center; /* Aligns the button and label in the center vertically */
+  gap: 10px; /* Adjusts space between the button and label */
+}
+
+/* AddMemberForm Specific Styles */
+.add-member-form .form-group {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between input and remove button */
+}
+
+.add-member-form .form-input {
+  flex: 1; /* Input takes up remaining space */
+}
+
+.add-member-form .form-button {
+  padding: 6px 10px;
+  font-size: 10px;
+}
+
+/* RegistrationForm Specific Styles */
+.registration-form .form-group {
+  margin-bottom: 15px;
+}
+
+/* Dashboard */
+.dashboard {
+  flex: 1;
+  background-color: #3e004e;
+  opacity: 0.95;
+  color: #f5c6c6;
+  /* padding: 20px; */
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-heading-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dashboard-name {
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+
+.settlement-button {
+  background-color: #ff6b6b; /* Pinkish-red button */
+  color: #2c003e; /* Dark purple text */
+  border: none;
+  padding: 8px 60px;
+  margin-top: 5px;
+  margin-right: 25px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: bold;
+  align-self: left;
+  transition: background-color 0.3s ease;
+}
+
+.settlement-button:hover {
+  background-color: #f5c6c6;
+  color: #2c003e;
+}
+
+.dashboard-summary-container {
+  border-top: 1px solid #f5c6c6;
+  padding-left: 20px;
+  height: 80px;
+}
+
+.expenses-container {
+  border-top: 1px solid #f5c6c6;
+  padding: 20px;
+  margin-top: 240px;
+  display: flex;
+  flex-wrap: wrap;
+  overflow-x: auto;
+  overflow-y: auto;
+  /* max-width: 70%; */
+}
+
+.expense-type {
+  margin-bottom: 10px;
+  margin-left: 5px;
+}
+
+.expense-type-h2 {
+  font-size: 18px;
+  margin-left: 5px;
+  margin-bottom: 10px;
+}
+
+.expense-list {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+
+.expense-item {
+  min-width: 300px;
+  height: 180px;
+  margin: 5px;
+  padding: 10px;
+  border-radius: 15px;
+  min-width: 150px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+}
+
+.expense-description,
+.expense-amount {
+  font-weight: bold;
+}
+
+/* .summary {
+  display: flex;
+  justify-content: space-between;
+} */
+
+.total-expenses,
+.individual-summary {
+  background-color: #4e005e;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.sum-by-type {
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap to the next row */
+  gap: 10px; /* Add space between items */
+  margin-top: 30px;
+}
+
+.sum-by-type div {
+  flex: 0 1 calc(8% - 10px); /* Make each item take up 50% of the row minus the gap */
+  background-color: transparent; /* Optional: Background color for better visibility */
+  border: 1px solid #f5c6c6; /* Optional: Add a border */
+  border-radius: 5px; /* Optional: Add rounded corners */
+  padding: 10px; /* Optional: Add padding inside each box */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+}
+
+.total-sum-h2 {
+  font-size: 4.125rem;
+  margin-top: 30px;
+  margin-bottom: 0;
+}
+
+.total-sum-data {
+  font-size: 4.125rem;
+  margin-top: 0;
+}
+
+.loading {
+  opacity: 0;
+}
+
+/* Hide scrollbar for Chrome, Edge, Safari */
+.side-panel::-webkit-scrollbar,
+.main-content::-webkit-scrollbar {
+  display: none !important; /* Completely hides the scrollbar */
+}
+
+/* For Firefox */
+.side-panel,
+.main-content {
+  scrollbar-width: none; /* Completely hides the scrollbar */
+}
+
+/* Fallback to ensure scrolling still works */
+.side-panel,
+.main-content {
+  overflow: auto;
+}
+
+.settlement-result-h2 {
+  color: #f06c9b;
+  font-weight: 700;
+}
+
+.settlement-result {
+  position: fixed;
+  font-size: 1.35rem;
+  font-weight: bold;
+  color: #bec0b1;
+  margin-top: 70px;
+  margin-left: 840px;
+  text-align: right;
+}
