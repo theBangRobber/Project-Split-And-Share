@@ -338,10 +338,10 @@ form {
 
 .settlement-result {
   position: fixed;
+  top: 65px; /* This replaces margin-top to position it vertically */
+  right: 30px; /* Adjust the distance from the right edge of the viewport */
   font-size: 1.35rem;
   font-weight: bold;
   color: #bec0b1;
-  margin-top: 70px;
-  margin-left: 840px;
   text-align: right;
 }
