@@ -91,6 +91,7 @@ const AddExpenseForm = ({ username, members = [], setExpenses }) => {
           type="text"
           id="type"
           className="form-input"
+          autoComplete="off"
           value={type}
           onChange={(e) => setType(e.target.value)}
           required
@@ -121,6 +122,7 @@ const AddExpenseForm = ({ username, members = [], setExpenses }) => {
           type="text"
           id="description"
           className="form-input"
+          autoComplete="off"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           required

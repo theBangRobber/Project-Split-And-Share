@@ -226,6 +226,10 @@ public class DashboardServiceImpl implements DashboardService {
       // up to what they are owed.
       // reset debtor's and creditor's balance after each settlement
       BigDecimal settleAmount = debtor.getAmount().min(creditor.getAmount());
+      BigDecimal TEN_CENTS = new BigDecimal("0.10");
+      settleAmount = settleAmount.divide(TEN_CENTS, 0, RoundingMode.CEILING)
+          .multiply(TEN_CENTS)
+          .setScale(2, RoundingMode.HALF_UP);
       debtor.setAmount(debtor.getAmount().subtract(settleAmount));
       creditor.setAmount(creditor.getAmount().subtract(settleAmount));
 
