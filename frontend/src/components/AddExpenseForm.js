@@ -87,15 +87,23 @@ const AddExpenseForm = ({ username, members = [], setExpenses }) => {
         <label htmlFor="type" className="form-label">
           Type
         </label>
-        <input
-          type="text"
+        <select
           id="type"
-          className="form-input"
-          autoComplete="off"
+          className="form-input form-drop-menu"
           value={type}
           onChange={(e) => setType(e.target.value)}
           required
-        />
+        >
+          <option value="" disabled>
+            Select Expense Type
+          </option>
+          <option value="Food">Food</option>
+          <option value="Transport">Transport</option>
+          <option value="Shopping">Shopping</option>
+          <option value="Entertainment">Entertainment</option>
+          <option value="Accommodation">Accommodation</option>
+          <option value="Misc">Misc</option>
+        </select>
       </div>
 
       <div className="form-group">

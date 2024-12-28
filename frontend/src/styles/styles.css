@@ -85,11 +85,28 @@ form {
   transition: border-color 0.3s ease;
 }
 
+.form-drop-menu {
+  width: 217px;
+  max-width: 100%;
+}
+
 /* Ensure the background stays transparent even after user input */
 .form-input:focus {
   outline: none; /* Removes the default outline */
   border-color: #ff6b6b; /* Pinkish-red border on focus */
   background-color: transparent; /* Keep background transparent on focus */
+}
+
+/* Remove spin buttons for modern browsers */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* For Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
 }
 
 .error-message {
