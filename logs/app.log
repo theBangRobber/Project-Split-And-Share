@@ -206,3 +206,86 @@
 2025-01-18 00:31:14 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Total sum of expenses for username Andrew is: 3710.4
 2025-01-18 00:31:14 [http-nio-8080-exec-10] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of each expense type for username: Andrew
 2025-01-18 00:31:14 [http-nio-8080-exec-10] INFO  s.e.n.s.service.DashboardServiceImpl - Expenses grouped by type for username Andrew: {Entertainment=430.0, Misc=90.0, Accommodation=2190.0, Transport=370.4, Food=630.0}
+2025-01-18 00:40:13 [http-nio-8080-exec-5] INFO  s.e.n.s.service.ExpenseServiceImpl - Attempting to add expense to the active dashboard
+2025-01-18 00:40:13 [http-nio-8080-exec-5] INFO  s.e.n.s.service.ExpenseServiceImpl - Successfully added expense with ID: 9
+2025-01-18 00:40:13 [http-nio-8080-exec-4] INFO  s.e.n.s.service.ExpenseServiceImpl - Fetched 9 expenses from the database
+2025-01-18 00:40:13 [http-nio-8080-exec-7] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of expenses for username: Andrew
+2025-01-18 00:40:13 [http-nio-8080-exec-7] INFO  s.e.n.s.service.DashboardServiceImpl - Total sum of expenses for username Andrew is: 4310.4
+2025-01-18 00:40:13 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of each expense type for username: Andrew
+2025-01-18 00:40:13 [http-nio-8080-exec-9] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of expenses for username: Andrew
+2025-01-18 00:40:13 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Expenses grouped by type for username Andrew: {Entertainment=430.0, Misc=90.0, Shopping=600.0, Accommodation=2190.0, Transport=370.4, Food=630.0}
+2025-01-18 00:40:13 [http-nio-8080-exec-9] INFO  s.e.n.s.service.DashboardServiceImpl - Total sum of expenses for username Andrew is: 4310.4
+2025-01-18 00:40:13 [http-nio-8080-exec-6] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of each expense type for username: Andrew
+2025-01-18 00:40:13 [http-nio-8080-exec-6] INFO  s.e.n.s.service.DashboardServiceImpl - Expenses grouped by type for username Andrew: {Entertainment=430.0, Misc=90.0, Shopping=600.0, Accommodation=2190.0, Transport=370.4, Food=630.0}
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating settlement transactions for all members on Andrew's dashboard
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating net balances for all members on Andrew's dashboard
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Initialized balances for all group members to zero.
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Processing expense paid by: Andrew
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Expense shared by: [Andrew, Joseph, Manyu, bindu]
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Total amount: 220.0, Individual share: 55.00
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for payer 'Andrew': 165.00
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Joseph': -55.00
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Manyu': -55.00
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'bindu': -55.00
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Processing expense paid by: Joseph
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Expense shared by: [Joseph, Manyu, bindu]
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Total amount: 200.0, Individual share: 66.67
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for payer 'Joseph': 78.33
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Manyu': -121.67
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'bindu': -121.67
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Processing expense paid by: Manyu
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Expense shared by: [Manyu, bindu]
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Total amount: 210.0, Individual share: 105.00
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for payer 'Manyu': -16.67
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'bindu': -226.67
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Processing expense paid by: bindu
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Expense shared by: [Andrew, Joseph, Manyu, bindu]
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Total amount: 210.0, Individual share: 52.50
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for payer 'bindu': -69.17
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Andrew': 112.50
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Joseph': 25.83
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Manyu': -69.17
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Processing expense paid by: Andrew
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Expense shared by: [Andrew, Manyu, bindu]
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Total amount: 430.0, Individual share: 143.33
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for payer 'Andrew': 399.17
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Manyu': -212.50
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'bindu': -212.50
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Processing expense paid by: Joseph
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Expense shared by: [Andrew, Joseph, Manyu, bindu]
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Total amount: 2190.0, Individual share: 547.50
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for payer 'Joseph': 1668.33
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Andrew': -148.33
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Manyu': -760.00
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'bindu': -760.00
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Processing expense paid by: bindu
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Expense shared by: [Joseph, Manyu, bindu]
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Total amount: 90.0, Individual share: 30.00
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for payer 'bindu': -700.00
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Joseph': 1638.33
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Manyu': -790.00
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Processing expense paid by: bindu
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Expense shared by: [Joseph, Manyu, bindu]
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Total amount: 160.4, Individual share: 53.47
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for payer 'bindu': -593.07
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Joseph': 1584.86
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Manyu': -843.47
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Processing expense paid by: Manyu
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Expense shared by: [Manyu, bindu]
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Total amount: 600.0, Individual share: 300.00
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for payer 'Manyu': -543.47
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'bindu': -893.07
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Calculated net balances for username all members: {Andrew=-148.33, Joseph=1584.86, Manyu=-543.47, bindu=-893.07}
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Net balances calculated: {Andrew=-148.33, Joseph=1584.86, Manyu=-543.47, bindu=-893.07}
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Processing debtor: MemberBalance{member='Andrew', amount=148.33}
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Processing creditor: MemberBalance{member='Joseph', amount=1584.86}
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Andrew should pay 148.40 to Joseph
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Processing debtor: MemberBalance{member='Manyu', amount=543.47}
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Processing creditor: MemberBalance{member='Joseph', amount=1436.46}
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Manyu should pay 543.50 to Joseph
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Processing debtor: MemberBalance{member='bindu', amount=893.07}
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Processing creditor: MemberBalance{member='Joseph', amount=892.96}
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - bindu should pay 893.00 to Joseph
+2025-01-18 00:40:24 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Calculated settlements for all members: {Andrew=[Pays 148.40 to Joseph], Manyu=[Pays 543.50 to Joseph], bindu=[Pays 893.00 to Joseph]}
+2025-01-18 00:49:40 [http-nio-8080-exec-2] INFO  s.e.n.s.service.ExpenseServiceImpl - Fetched 9 expenses from the database
+2025-01-18 00:49:40 [http-nio-8080-exec-5] INFO  s.e.n.s.service.ExpenseServiceImpl - Fetched 9 expenses from the database
