@@ -1,25 +1,30 @@
-2025-01-17 23:08:43 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
-2025-01-17 23:08:43 [restartedMain] INFO  s.e.n.s.SplitAndShareApplication - Starting SplitAndShareApplication using Java 23.0.1 with PID 57097 (/Users/andrewto/Desktop/SCTP/Project-Split-And-Share/target/classes started by andrewto in /Users/andrewto/Desktop/SCTP/Project-Split-And-Share)
-2025-01-17 23:08:43 [restartedMain] INFO  s.e.n.s.SplitAndShareApplication - No active profile set, falling back to 1 default profile: "default"
-2025-01-17 23:08:43 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2025-01-17 23:08:43 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2025-01-17 23:08:43 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-01-17 23:08:43 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 21 ms. Found 4 JPA repository interfaces.
-2025-01-17 23:08:44 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
-2025-01-17 23:08:44 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
-2025-01-17 23:08:44 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2025-01-17 23:08:44 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
-2025-01-17 23:08:44 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2025-01-17 23:08:44 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 510 ms
-2025-01-17 23:08:44 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-01-17 23:08:44 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.2.Final
-2025-01-17 23:08:44 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
-2025-01-17 23:08:44 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-01-17 23:08:44 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2025-01-17 23:08:44 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@e5be536
-2025-01-17 23:08:44 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2025-01-17 23:08:44 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-01-17 23:08:44 [restartedMain] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+2025-01-18 00:21:00 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-01-18 00:21:01 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-01-18 00:21:01 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-18 00:21:01 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-01-18 00:21:01 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-01-18 00:21:05 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2025-01-18 00:21:06 [restartedMain] INFO  s.e.n.s.SplitAndShareApplication - Starting SplitAndShareApplication using Java 23.0.1 with PID 60731 (/Users/andrewto/Desktop/SCTP/Project-Split-And-Share/target/classes started by andrewto in /Users/andrewto/Desktop/SCTP/Project-Split-And-Share)
+2025-01-18 00:21:06 [restartedMain] INFO  s.e.n.s.SplitAndShareApplication - No active profile set, falling back to 1 default profile: "default"
+2025-01-18 00:21:06 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-01-18 00:21:06 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-01-18 00:21:06 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-18 00:21:06 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 20 ms. Found 4 JPA repository interfaces.
+2025-01-18 00:21:06 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-01-18 00:21:06 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-01-18 00:21:06 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-01-18 00:21:06 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-01-18 00:21:06 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-01-18 00:21:06 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 491 ms
+2025-01-18 00:21:06 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-18 00:21:06 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.2.Final
+2025-01-18 00:21:06 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-01-18 00:21:06 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-18 00:21:06 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-01-18 00:21:06 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@350f24c0
+2025-01-18 00:21:06 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-01-18 00:21:06 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-18 00:21:06 [restartedMain] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
 	Database driver: undefined/unknown
 	Database version: 14.15
@@ -27,258 +32,177 @@
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2025-01-17 23:08:44 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-01-17 23:08:44 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-01-17 23:08:45 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-01-17 23:08:45 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
-2025-01-17 23:08:45 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
-2025-01-17 23:08:45 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
-2025-01-17 23:08:45 [restartedMain] INFO  s.e.n.s.SplitAndShareApplication - Started SplitAndShareApplication in 1.851 seconds (process running for 2.053)
-2025-01-17 23:10:39 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-01-17 23:10:39 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2025-01-17 23:10:39 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms
-2025-01-17 23:10:39 [http-nio-8080-exec-1] INFO  s.e.n.s.service.ExpenseServiceImpl - Fetched 0 expenses from the database
-2025-01-17 23:10:39 [http-nio-8080-exec-2] INFO  s.e.n.s.service.ExpenseServiceImpl - Fetched 0 expenses from the database
-2025-01-17 23:11:07 [http-nio-8080-exec-4] INFO  s.e.n.s.service.UserServiceImpl - Attempting to create user with username: Andrew
-2025-01-17 23:11:07 [http-nio-8080-exec-4] INFO  s.e.n.s.service.UserServiceImpl - User Andrew registered successfully
-2025-01-17 23:11:07 [http-nio-8080-exec-4] INFO  s.e.n.s.service.UserServiceImpl - Dashboard 'Andrew's Dashboard' initialized for user 'Andrew'
-2025-01-17 23:11:07 [http-nio-8080-exec-4] INFO  s.e.n.s.service.UserServiceImpl - Saving user and initializing dashboard
-2025-01-17 23:11:07 [http-nio-8080-exec-5] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of expenses for username: Andrew
-2025-01-17 23:11:07 [http-nio-8080-exec-5] INFO  s.e.n.s.service.DashboardServiceImpl - Total sum of expenses for username Andrew is: 0.0
-2025-01-17 23:11:07 [http-nio-8080-exec-6] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of each expense type for username: Andrew
-2025-01-17 23:11:07 [http-nio-8080-exec-6] INFO  s.e.n.s.service.DashboardServiceImpl - Expenses grouped by type for username Andrew: {}
-2025-01-17 23:11:51 [http-nio-8080-exec-9] INFO  s.e.n.s.s.GroupMemberServiceImpl - Attempting to add group members to the active dashboard
-2025-01-17 23:11:51 [http-nio-8080-exec-9] INFO  s.e.n.s.s.GroupMemberServiceImpl - Fetched dashboard for username: Andrew
-2025-01-17 23:11:51 [http-nio-8080-exec-9] INFO  s.e.n.s.s.GroupMemberServiceImpl - Added member 'Andrew' successfully to the dashboard 'Andrew's Dashboard'
-2025-01-17 23:11:51 [http-nio-8080-exec-9] INFO  s.e.n.s.s.GroupMemberServiceImpl - Added member 'Johnny' successfully to the dashboard 'Andrew's Dashboard'
-2025-01-17 23:11:51 [http-nio-8080-exec-9] INFO  s.e.n.s.s.GroupMemberServiceImpl - Added member 'Bindu' successfully to the dashboard 'Andrew's Dashboard'
-2025-01-17 23:11:51 [http-nio-8080-exec-9] INFO  s.e.n.s.s.GroupMemberServiceImpl - Added member 'Manyu' successfully to the dashboard 'Andrew's Dashboard'
-2025-01-17 23:11:51 [http-nio-8080-exec-9] INFO  s.e.n.s.s.GroupMemberServiceImpl - Successfully added all group members to the dashboard for username: Andrew
-2025-01-17 23:12:30 [http-nio-8080-exec-1] INFO  s.e.n.s.service.ExpenseServiceImpl - Attempting to add expense to the active dashboard
-2025-01-17 23:12:30 [http-nio-8080-exec-1] INFO  s.e.n.s.service.ExpenseServiceImpl - Successfully added expense with ID: 1
-2025-01-17 23:12:30 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of expenses for username: Andrew
-2025-01-17 23:12:30 [http-nio-8080-exec-2] INFO  s.e.n.s.service.ExpenseServiceImpl - Fetched 1 expenses from the database
-2025-01-17 23:12:30 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Total sum of expenses for username Andrew is: 120.0
-2025-01-17 23:12:30 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of expenses for username: Andrew
-2025-01-17 23:12:30 [http-nio-8080-exec-5] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of each expense type for username: Andrew
-2025-01-17 23:12:30 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Total sum of expenses for username Andrew is: 120.0
-2025-01-17 23:12:30 [http-nio-8080-exec-5] INFO  s.e.n.s.service.DashboardServiceImpl - Expenses grouped by type for username Andrew: {Transport=120.0}
-2025-01-17 23:12:30 [http-nio-8080-exec-6] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of each expense type for username: Andrew
-2025-01-17 23:12:30 [http-nio-8080-exec-6] INFO  s.e.n.s.service.DashboardServiceImpl - Expenses grouped by type for username Andrew: {Transport=120.0}
-2025-01-17 23:13:27 [http-nio-8080-exec-7] INFO  s.e.n.s.service.ExpenseServiceImpl - Attempting to add expense to the active dashboard
-2025-01-17 23:13:27 [http-nio-8080-exec-7] INFO  s.e.n.s.service.ExpenseServiceImpl - Successfully added expense with ID: 2
-2025-01-17 23:13:27 [http-nio-8080-exec-9] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of expenses for username: Andrew
-2025-01-17 23:13:27 [http-nio-8080-exec-8] INFO  s.e.n.s.service.ExpenseServiceImpl - Fetched 2 expenses from the database
-2025-01-17 23:13:27 [http-nio-8080-exec-9] INFO  s.e.n.s.service.DashboardServiceImpl - Total sum of expenses for username Andrew is: 440.0
-2025-01-17 23:13:27 [http-nio-8080-exec-10] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of expenses for username: Andrew
-2025-01-17 23:13:27 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of each expense type for username: Andrew
-2025-01-17 23:13:27 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Expenses grouped by type for username Andrew: {Transport=120.0, Food=320.0}
-2025-01-17 23:13:27 [http-nio-8080-exec-10] INFO  s.e.n.s.service.DashboardServiceImpl - Total sum of expenses for username Andrew is: 440.0
-2025-01-17 23:13:27 [http-nio-8080-exec-2] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of each expense type for username: Andrew
-2025-01-17 23:13:27 [http-nio-8080-exec-2] INFO  s.e.n.s.service.DashboardServiceImpl - Expenses grouped by type for username Andrew: {Transport=120.0, Food=320.0}
-2025-01-17 23:13:52 [http-nio-8080-exec-3] INFO  s.e.n.s.service.ExpenseServiceImpl - Attempting to add expense to the active dashboard
-2025-01-17 23:13:52 [http-nio-8080-exec-3] INFO  s.e.n.s.service.ExpenseServiceImpl - Successfully added expense with ID: 3
-2025-01-17 23:13:52 [http-nio-8080-exec-5] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of expenses for username: Andrew
-2025-01-17 23:13:52 [http-nio-8080-exec-4] INFO  s.e.n.s.service.ExpenseServiceImpl - Fetched 3 expenses from the database
-2025-01-17 23:13:52 [http-nio-8080-exec-5] INFO  s.e.n.s.service.DashboardServiceImpl - Total sum of expenses for username Andrew is: 710.0
-2025-01-17 23:13:52 [http-nio-8080-exec-6] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of each expense type for username: Andrew
-2025-01-17 23:13:52 [http-nio-8080-exec-7] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of expenses for username: Andrew
-2025-01-17 23:13:52 [http-nio-8080-exec-6] INFO  s.e.n.s.service.DashboardServiceImpl - Expenses grouped by type for username Andrew: {Transport=120.0, Food=590.0}
-2025-01-17 23:13:52 [http-nio-8080-exec-7] INFO  s.e.n.s.service.DashboardServiceImpl - Total sum of expenses for username Andrew is: 710.0
-2025-01-17 23:13:52 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of each expense type for username: Andrew
-2025-01-17 23:13:52 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Expenses grouped by type for username Andrew: {Transport=120.0, Food=590.0}
-2025-01-17 23:14:17 [http-nio-8080-exec-9] INFO  s.e.n.s.service.ExpenseServiceImpl - Attempting to add expense to the active dashboard
-2025-01-17 23:14:17 [http-nio-8080-exec-9] INFO  s.e.n.s.service.ExpenseServiceImpl - Successfully added expense with ID: 4
-2025-01-17 23:14:17 [http-nio-8080-exec-10] INFO  s.e.n.s.service.ExpenseServiceImpl - Fetched 4 expenses from the database
-2025-01-17 23:14:17 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of expenses for username: Andrew
-2025-01-17 23:14:17 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Total sum of expenses for username Andrew is: 1195.0
-2025-01-17 23:14:17 [http-nio-8080-exec-2] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of each expense type for username: Andrew
-2025-01-17 23:14:17 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of expenses for username: Andrew
-2025-01-17 23:14:17 [http-nio-8080-exec-2] INFO  s.e.n.s.service.DashboardServiceImpl - Expenses grouped by type for username Andrew: {Entertainment=485.0, Transport=120.0, Food=590.0}
-2025-01-17 23:14:17 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Total sum of expenses for username Andrew is: 1195.0
-2025-01-17 23:14:17 [http-nio-8080-exec-5] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of each expense type for username: Andrew
-2025-01-17 23:14:17 [http-nio-8080-exec-5] INFO  s.e.n.s.service.DashboardServiceImpl - Expenses grouped by type for username Andrew: {Entertainment=485.0, Transport=120.0, Food=590.0}
-2025-01-17 23:14:54 [http-nio-8080-exec-4] INFO  s.e.n.s.service.ExpenseServiceImpl - Attempting to add expense to the active dashboard
-2025-01-17 23:14:54 [http-nio-8080-exec-4] INFO  s.e.n.s.service.ExpenseServiceImpl - Successfully added expense with ID: 5
-2025-01-17 23:14:54 [http-nio-8080-exec-6] INFO  s.e.n.s.service.ExpenseServiceImpl - Fetched 5 expenses from the database
-2025-01-17 23:14:54 [http-nio-8080-exec-7] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of expenses for username: Andrew
-2025-01-17 23:14:54 [http-nio-8080-exec-7] INFO  s.e.n.s.service.DashboardServiceImpl - Total sum of expenses for username Andrew is: 1290.0
-2025-01-17 23:14:54 [http-nio-8080-exec-9] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of each expense type for username: Andrew
-2025-01-17 23:14:54 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of expenses for username: Andrew
-2025-01-17 23:14:54 [http-nio-8080-exec-9] INFO  s.e.n.s.service.DashboardServiceImpl - Expenses grouped by type for username Andrew: {Entertainment=485.0, Misc=95.0, Transport=120.0, Food=590.0}
-2025-01-17 23:14:54 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Total sum of expenses for username Andrew is: 1290.0
-2025-01-17 23:14:54 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of each expense type for username: Andrew
-2025-01-17 23:14:54 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Expenses grouped by type for username Andrew: {Entertainment=485.0, Misc=95.0, Transport=120.0, Food=590.0}
-2025-01-17 23:19:01 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating settlement transactions for all members on Andrew's dashboard
-2025-01-17 23:19:01 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating net balances for all members on Andrew's dashboard
-2025-01-17 23:19:01 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Initialized balances for all group members to zero.
-2025-01-17 23:19:01 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Processing expense paid by: Andrew
-2025-01-17 23:19:01 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Expense shared by: [Johnny, Andrew, Bindu, Manyu]
-2025-01-17 23:19:01 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Total amount: 120.0, Individual share: 30.00
-2025-01-17 23:19:01 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for payer 'Andrew': 90.00
-2025-01-17 23:19:01 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Johnny': -30.00
-2025-01-17 23:19:01 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Bindu': -30.00
-2025-01-17 23:19:01 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Manyu': -30.00
-2025-01-17 23:19:01 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Processing expense paid by: Johnny
-2025-01-17 23:19:01 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Expense shared by: [Johnny, Bindu, Manyu]
-2025-01-17 23:19:01 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Total amount: 320.0, Individual share: 106.67
-2025-01-17 23:19:01 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for payer 'Johnny': 183.33
-2025-01-17 23:19:01 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Bindu': -136.67
-2025-01-17 23:19:01 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Manyu': -136.67
-2025-01-17 23:19:01 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Processing expense paid by: Bindu
-2025-01-17 23:19:01 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Expense shared by: [Bindu, Manyu]
-2025-01-17 23:19:01 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Total amount: 270.0, Individual share: 135.00
-2025-01-17 23:19:01 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for payer 'Bindu': -1.67
-2025-01-17 23:19:01 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Manyu': -271.67
-2025-01-17 23:19:01 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Processing expense paid by: Manyu
-2025-01-17 23:19:01 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Expense shared by: [Johnny, Andrew, Bindu, Manyu]
-2025-01-17 23:19:01 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Total amount: 485.0, Individual share: 121.25
-2025-01-17 23:19:01 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for payer 'Manyu': 92.08
-2025-01-17 23:19:01 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Johnny': 62.08
-2025-01-17 23:19:01 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Andrew': -31.25
-2025-01-17 23:19:01 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Bindu': -122.92
-2025-01-17 23:19:01 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Processing expense paid by: Andrew
-2025-01-17 23:19:01 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Expense shared by: [Johnny, Andrew, Manyu]
-2025-01-17 23:19:01 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Total amount: 95.0, Individual share: 31.67
-2025-01-17 23:19:01 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for payer 'Andrew': 32.08
-2025-01-17 23:19:01 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Johnny': 30.41
-2025-01-17 23:19:01 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Manyu': 60.41
-2025-01-17 23:19:01 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Calculated net balances for username all members: {Andrew=32.08, Johnny=30.41, Bindu=-122.92, Manyu=60.41}
-2025-01-17 23:19:01 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Net balances calculated: {Andrew=32.08, Johnny=30.41, Bindu=-122.92, Manyu=60.41}
-2025-01-17 23:19:01 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Processing debtor: MemberBalance{member='Bindu', amount=122.92}
-2025-01-17 23:19:01 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Processing creditor: MemberBalance{member='Manyu', amount=60.41}
-2025-01-17 23:19:01 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Bindu should pay 60.50 to Manyu
-2025-01-17 23:19:01 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Processing debtor: MemberBalance{member='Bindu', amount=62.42}
-2025-01-17 23:19:01 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Processing creditor: MemberBalance{member='Andrew', amount=32.08}
-2025-01-17 23:19:01 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Bindu should pay 32.10 to Andrew
-2025-01-17 23:19:01 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Processing debtor: MemberBalance{member='Bindu', amount=30.32}
-2025-01-17 23:19:01 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Processing creditor: MemberBalance{member='Johnny', amount=30.41}
-2025-01-17 23:19:01 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Bindu should pay 30.40 to Johnny
-2025-01-17 23:19:01 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Calculated settlements for all members: {Bindu=[Pays 60.50 to Manyu, Pays 32.10 to Andrew, Pays 30.40 to Johnny]}
-2025-01-17 23:20:25 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating settlement transactions for all members on Andrew's dashboard
-2025-01-17 23:20:25 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating net balances for all members on Andrew's dashboard
-2025-01-17 23:20:25 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Initialized balances for all group members to zero.
-2025-01-17 23:20:25 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Processing expense paid by: Andrew
-2025-01-17 23:20:25 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Expense shared by: [Andrew, Johnny, Bindu, Manyu]
-2025-01-17 23:20:25 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Total amount: 120.0, Individual share: 30.00
-2025-01-17 23:20:25 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for payer 'Andrew': 90.00
-2025-01-17 23:20:25 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Johnny': -30.00
-2025-01-17 23:20:25 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Bindu': -30.00
-2025-01-17 23:20:25 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Manyu': -30.00
-2025-01-17 23:20:25 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Processing expense paid by: Johnny
-2025-01-17 23:20:25 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Expense shared by: [Johnny, Bindu, Manyu]
-2025-01-17 23:20:25 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Total amount: 320.0, Individual share: 106.67
-2025-01-17 23:20:25 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for payer 'Johnny': 183.33
-2025-01-17 23:20:25 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Bindu': -136.67
-2025-01-17 23:20:25 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Manyu': -136.67
-2025-01-17 23:20:25 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Processing expense paid by: Bindu
-2025-01-17 23:20:25 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Expense shared by: [Bindu, Manyu]
-2025-01-17 23:20:25 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Total amount: 270.0, Individual share: 135.00
-2025-01-17 23:20:25 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for payer 'Bindu': -1.67
-2025-01-17 23:20:25 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Manyu': -271.67
-2025-01-17 23:20:25 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Processing expense paid by: Manyu
-2025-01-17 23:20:25 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Expense shared by: [Andrew, Johnny, Bindu, Manyu]
-2025-01-17 23:20:25 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Total amount: 485.0, Individual share: 121.25
-2025-01-17 23:20:25 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for payer 'Manyu': 92.08
-2025-01-17 23:20:25 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Andrew': -31.25
-2025-01-17 23:20:25 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Johnny': 62.08
-2025-01-17 23:20:25 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Bindu': -122.92
-2025-01-17 23:20:25 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Processing expense paid by: Andrew
-2025-01-17 23:20:25 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Expense shared by: [Andrew, Johnny, Manyu]
-2025-01-17 23:20:25 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Total amount: 95.0, Individual share: 31.67
-2025-01-17 23:20:25 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for payer 'Andrew': 32.08
-2025-01-17 23:20:25 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Johnny': 30.41
-2025-01-17 23:20:25 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Manyu': 60.41
-2025-01-17 23:20:25 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Calculated net balances for username all members: {Andrew=32.08, Johnny=30.41, Bindu=-122.92, Manyu=60.41}
-2025-01-17 23:20:25 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Net balances calculated: {Andrew=32.08, Johnny=30.41, Bindu=-122.92, Manyu=60.41}
-2025-01-17 23:20:25 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Processing debtor: MemberBalance{member='Bindu', amount=122.92}
-2025-01-17 23:20:25 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Processing creditor: MemberBalance{member='Manyu', amount=60.41}
-2025-01-17 23:20:25 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Bindu should pay 60.50 to Manyu
-2025-01-17 23:20:25 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Processing debtor: MemberBalance{member='Bindu', amount=62.42}
-2025-01-17 23:20:25 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Processing creditor: MemberBalance{member='Andrew', amount=32.08}
-2025-01-17 23:20:25 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Bindu should pay 32.10 to Andrew
-2025-01-17 23:20:25 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Processing debtor: MemberBalance{member='Bindu', amount=30.32}
-2025-01-17 23:20:25 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Processing creditor: MemberBalance{member='Johnny', amount=30.41}
-2025-01-17 23:20:25 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Bindu should pay 30.40 to Johnny
-2025-01-17 23:20:25 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Calculated settlements for all members: {Bindu=[Pays 60.50 to Manyu, Pays 32.10 to Andrew, Pays 30.40 to Johnny]}
-2025-01-17 23:56:01 [http-nio-8080-exec-9] INFO  s.e.n.s.service.ExpenseServiceImpl - Attempting to add expense to the active dashboard
-2025-01-17 23:56:01 [http-nio-8080-exec-9] INFO  s.e.n.s.service.ExpenseServiceImpl - Successfully added expense with ID: 6
-2025-01-17 23:56:01 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of expenses for username: Andrew
-2025-01-17 23:56:01 [http-nio-8080-exec-8] INFO  s.e.n.s.service.ExpenseServiceImpl - Fetched 6 expenses from the database
-2025-01-17 23:56:01 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Total sum of expenses for username Andrew is: 1590.0
-2025-01-17 23:56:01 [http-nio-8080-exec-2] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of each expense type for username: Andrew
-2025-01-17 23:56:01 [http-nio-8080-exec-10] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of expenses for username: Andrew
-2025-01-17 23:56:01 [http-nio-8080-exec-2] INFO  s.e.n.s.service.DashboardServiceImpl - Expenses grouped by type for username Andrew: {Entertainment=485.0, Misc=95.0, Shopping=300.0, Transport=120.0, Food=590.0}
-2025-01-17 23:56:01 [http-nio-8080-exec-10] INFO  s.e.n.s.service.DashboardServiceImpl - Total sum of expenses for username Andrew is: 1590.0
-2025-01-17 23:56:01 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of each expense type for username: Andrew
-2025-01-17 23:56:01 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Expenses grouped by type for username Andrew: {Entertainment=485.0, Misc=95.0, Shopping=300.0, Transport=120.0, Food=590.0}
-2025-01-17 23:56:21 [http-nio-8080-exec-5] INFO  s.e.n.s.service.ExpenseServiceImpl - Attempting to add expense to the active dashboard
-2025-01-17 23:56:21 [http-nio-8080-exec-5] INFO  s.e.n.s.service.ExpenseServiceImpl - Successfully added expense with ID: 7
-2025-01-17 23:56:21 [http-nio-8080-exec-6] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of expenses for username: Andrew
-2025-01-17 23:56:21 [http-nio-8080-exec-4] INFO  s.e.n.s.service.ExpenseServiceImpl - Fetched 7 expenses from the database
-2025-01-17 23:56:21 [http-nio-8080-exec-6] INFO  s.e.n.s.service.DashboardServiceImpl - Total sum of expenses for username Andrew is: 2790.0
-2025-01-17 23:56:21 [http-nio-8080-exec-7] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of each expense type for username: Andrew
-2025-01-17 23:56:21 [http-nio-8080-exec-7] INFO  s.e.n.s.service.DashboardServiceImpl - Expenses grouped by type for username Andrew: {Entertainment=485.0, Misc=95.0, Shopping=300.0, Accommodation=1200.0, Transport=120.0, Food=590.0}
-2025-01-17 23:56:21 [http-nio-8080-exec-9] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of expenses for username: Andrew
-2025-01-17 23:56:21 [http-nio-8080-exec-9] INFO  s.e.n.s.service.DashboardServiceImpl - Total sum of expenses for username Andrew is: 2790.0
-2025-01-17 23:56:21 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of each expense type for username: Andrew
-2025-01-17 23:56:21 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Expenses grouped by type for username Andrew: {Entertainment=485.0, Misc=95.0, Shopping=300.0, Accommodation=1200.0, Transport=120.0, Food=590.0}
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating settlement transactions for all members on Andrew's dashboard
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating net balances for all members on Andrew's dashboard
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Initialized balances for all group members to zero.
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Processing expense paid by: Andrew
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Expense shared by: [Johnny, Andrew, Bindu, Manyu]
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Total amount: 120.0, Individual share: 30.00
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for payer 'Andrew': 90.00
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Johnny': -30.00
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Bindu': -30.00
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Manyu': -30.00
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Processing expense paid by: Johnny
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Expense shared by: [Johnny, Bindu, Manyu]
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Total amount: 320.0, Individual share: 106.67
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for payer 'Johnny': 183.33
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Bindu': -136.67
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Manyu': -136.67
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Processing expense paid by: Bindu
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Expense shared by: [Bindu, Manyu]
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Total amount: 270.0, Individual share: 135.00
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for payer 'Bindu': -1.67
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Manyu': -271.67
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Processing expense paid by: Manyu
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Expense shared by: [Johnny, Andrew, Bindu, Manyu]
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Total amount: 485.0, Individual share: 121.25
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for payer 'Manyu': 92.08
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Johnny': 62.08
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Andrew': -31.25
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Bindu': -122.92
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Processing expense paid by: Andrew
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Expense shared by: [Johnny, Andrew, Manyu]
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Total amount: 95.0, Individual share: 31.67
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for payer 'Andrew': 32.08
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Johnny': 30.41
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Manyu': 60.41
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Processing expense paid by: Bindu
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Expense shared by: [Johnny, Bindu, Manyu]
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Total amount: 300.0, Individual share: 100.00
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for payer 'Bindu': 77.08
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Johnny': -69.59
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Manyu': -39.59
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Processing expense paid by: Manyu
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Expense shared by: [Johnny, Andrew, Bindu, Manyu]
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Total amount: 1200.0, Individual share: 300.00
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for payer 'Manyu': 860.41
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Johnny': -369.59
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Andrew': -267.92
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Bindu': -222.92
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Calculated net balances for username all members: {Johnny=-369.59, Andrew=-267.92, Bindu=-222.92, Manyu=860.41}
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Net balances calculated: {Johnny=-369.59, Andrew=-267.92, Bindu=-222.92, Manyu=860.41}
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Processing debtor: MemberBalance{member='Bindu', amount=222.92}
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Processing creditor: MemberBalance{member='Manyu', amount=860.41}
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Bindu should pay 223.00 to Manyu
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Processing debtor: MemberBalance{member='Andrew', amount=267.92}
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Processing creditor: MemberBalance{member='Manyu', amount=637.41}
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Andrew should pay 268.00 to Manyu
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Processing debtor: MemberBalance{member='Johnny', amount=369.59}
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Processing creditor: MemberBalance{member='Manyu', amount=369.41}
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Johnny should pay 369.50 to Manyu
-2025-01-17 23:56:36 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Calculated settlements for all members: {Johnny=[Pays 369.50 to Manyu], Andrew=[Pays 268.00 to Manyu], Bindu=[Pays 223.00 to Manyu]}
+2025-01-18 00:21:07 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-18 00:21:07 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-18 00:21:07 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-18 00:21:07 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-01-18 00:21:07 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-01-18 00:21:07 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-01-18 00:21:07 [restartedMain] INFO  s.e.n.s.SplitAndShareApplication - Started SplitAndShareApplication in 1.831 seconds (process running for 2.006)
+2025-01-18 00:21:12 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-01-18 00:21:12 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-01-18 00:21:12 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-01-18 00:21:12 [http-nio-8080-exec-1] INFO  s.e.n.s.service.ExpenseServiceImpl - Fetched 0 expenses from the database
+2025-01-18 00:21:12 [http-nio-8080-exec-2] INFO  s.e.n.s.service.ExpenseServiceImpl - Fetched 0 expenses from the database
+2025-01-18 00:21:37 [http-nio-8080-exec-4] INFO  s.e.n.s.service.UserServiceImpl - Attempting to create user with username: Andrew
+2025-01-18 00:21:37 [http-nio-8080-exec-4] INFO  s.e.n.s.service.UserServiceImpl - User Andrew registered successfully
+2025-01-18 00:21:37 [http-nio-8080-exec-4] INFO  s.e.n.s.service.UserServiceImpl - Dashboard 'Andrew's Dashboard' initialized for user 'Andrew'
+2025-01-18 00:21:37 [http-nio-8080-exec-4] INFO  s.e.n.s.service.UserServiceImpl - Saving user and initializing dashboard
+2025-01-18 00:21:37 [http-nio-8080-exec-5] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of expenses for username: Andrew
+2025-01-18 00:21:37 [http-nio-8080-exec-5] INFO  s.e.n.s.service.DashboardServiceImpl - Total sum of expenses for username Andrew is: 0.0
+2025-01-18 00:21:37 [http-nio-8080-exec-6] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of each expense type for username: Andrew
+2025-01-18 00:21:37 [http-nio-8080-exec-6] INFO  s.e.n.s.service.DashboardServiceImpl - Expenses grouped by type for username Andrew: {}
+2025-01-18 00:22:09 [http-nio-8080-exec-8] INFO  s.e.n.s.s.GroupMemberServiceImpl - Attempting to add group members to the active dashboard
+2025-01-18 00:22:09 [http-nio-8080-exec-8] INFO  s.e.n.s.s.GroupMemberServiceImpl - Fetched dashboard for username: Andrew
+2025-01-18 00:22:09 [http-nio-8080-exec-8] INFO  s.e.n.s.s.GroupMemberServiceImpl - Added member 'Andrew' successfully to the dashboard 'Andrew's Dashboard'
+2025-01-18 00:22:09 [http-nio-8080-exec-8] INFO  s.e.n.s.s.GroupMemberServiceImpl - Added member 'Joseph' successfully to the dashboard 'Andrew's Dashboard'
+2025-01-18 00:22:09 [http-nio-8080-exec-8] INFO  s.e.n.s.s.GroupMemberServiceImpl - Added member 'Manyu' successfully to the dashboard 'Andrew's Dashboard'
+2025-01-18 00:22:09 [http-nio-8080-exec-8] INFO  s.e.n.s.s.GroupMemberServiceImpl - Added member 'bindu' successfully to the dashboard 'Andrew's Dashboard'
+2025-01-18 00:22:09 [http-nio-8080-exec-8] INFO  s.e.n.s.s.GroupMemberServiceImpl - Successfully added all group members to the dashboard for username: Andrew
+2025-01-18 00:22:37 [http-nio-8080-exec-10] INFO  s.e.n.s.service.ExpenseServiceImpl - Attempting to add expense to the active dashboard
+2025-01-18 00:22:37 [http-nio-8080-exec-10] INFO  s.e.n.s.service.ExpenseServiceImpl - Successfully added expense with ID: 1
+2025-01-18 00:22:37 [http-nio-8080-exec-2] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of expenses for username: Andrew
+2025-01-18 00:22:37 [http-nio-8080-exec-1] INFO  s.e.n.s.service.ExpenseServiceImpl - Fetched 1 expenses from the database
+2025-01-18 00:22:37 [http-nio-8080-exec-2] INFO  s.e.n.s.service.DashboardServiceImpl - Total sum of expenses for username Andrew is: 220.0
+2025-01-18 00:22:37 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of each expense type for username: Andrew
+2025-01-18 00:22:37 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of expenses for username: Andrew
+2025-01-18 00:22:37 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Total sum of expenses for username Andrew is: 220.0
+2025-01-18 00:22:37 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Expenses grouped by type for username Andrew: {Food=220.0}
+2025-01-18 00:22:37 [http-nio-8080-exec-5] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of each expense type for username: Andrew
+2025-01-18 00:22:37 [http-nio-8080-exec-5] INFO  s.e.n.s.service.DashboardServiceImpl - Expenses grouped by type for username Andrew: {Food=220.0}
+2025-01-18 00:28:10 [http-nio-8080-exec-9] INFO  s.e.n.s.service.ExpenseServiceImpl - Attempting to add expense to the active dashboard
+2025-01-18 00:28:10 [http-nio-8080-exec-9] INFO  s.e.n.s.service.ExpenseServiceImpl - Successfully added expense with ID: 2
+2025-01-18 00:28:10 [http-nio-8080-exec-10] INFO  s.e.n.s.service.ExpenseServiceImpl - Fetched 2 expenses from the database
+2025-01-18 00:28:10 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of expenses for username: Andrew
+2025-01-18 00:28:10 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Total sum of expenses for username Andrew is: 420.0
+2025-01-18 00:28:10 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of each expense type for username: Andrew
+2025-01-18 00:28:10 [http-nio-8080-exec-2] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of expenses for username: Andrew
+2025-01-18 00:28:10 [http-nio-8080-exec-2] INFO  s.e.n.s.service.DashboardServiceImpl - Total sum of expenses for username Andrew is: 420.0
+2025-01-18 00:28:10 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Expenses grouped by type for username Andrew: {Food=420.0}
+2025-01-18 00:28:10 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of each expense type for username: Andrew
+2025-01-18 00:28:10 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Expenses grouped by type for username Andrew: {Food=420.0}
+2025-01-18 00:28:59 [http-nio-8080-exec-5] INFO  s.e.n.s.service.ExpenseServiceImpl - Attempting to add expense to the active dashboard
+2025-01-18 00:28:59 [http-nio-8080-exec-5] INFO  s.e.n.s.service.ExpenseServiceImpl - Successfully added expense with ID: 3
+2025-01-18 00:28:59 [http-nio-8080-exec-7] INFO  s.e.n.s.service.ExpenseServiceImpl - Fetched 3 expenses from the database
+2025-01-18 00:28:59 [http-nio-8080-exec-6] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of expenses for username: Andrew
+2025-01-18 00:28:59 [http-nio-8080-exec-6] INFO  s.e.n.s.service.DashboardServiceImpl - Total sum of expenses for username Andrew is: 630.0
+2025-01-18 00:28:59 [http-nio-8080-exec-9] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of each expense type for username: Andrew
+2025-01-18 00:28:59 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of expenses for username: Andrew
+2025-01-18 00:28:59 [http-nio-8080-exec-9] INFO  s.e.n.s.service.DashboardServiceImpl - Expenses grouped by type for username Andrew: {Food=630.0}
+2025-01-18 00:28:59 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Total sum of expenses for username Andrew is: 630.0
+2025-01-18 00:28:59 [http-nio-8080-exec-10] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of each expense type for username: Andrew
+2025-01-18 00:28:59 [http-nio-8080-exec-10] INFO  s.e.n.s.service.DashboardServiceImpl - Expenses grouped by type for username Andrew: {Food=630.0}
+2025-01-18 00:29:23 [http-nio-8080-exec-1] INFO  s.e.n.s.service.ExpenseServiceImpl - Attempting to add expense to the active dashboard
+2025-01-18 00:29:23 [http-nio-8080-exec-1] INFO  s.e.n.s.service.ExpenseServiceImpl - Successfully added expense with ID: 4
+2025-01-18 00:29:23 [http-nio-8080-exec-2] INFO  s.e.n.s.service.ExpenseServiceImpl - Fetched 4 expenses from the database
+2025-01-18 00:29:23 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of expenses for username: Andrew
+2025-01-18 00:29:23 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Total sum of expenses for username Andrew is: 840.0
+2025-01-18 00:29:23 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of each expense type for username: Andrew
+2025-01-18 00:29:23 [http-nio-8080-exec-5] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of expenses for username: Andrew
+2025-01-18 00:29:23 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Expenses grouped by type for username Andrew: {Transport=210.0, Food=630.0}
+2025-01-18 00:29:23 [http-nio-8080-exec-5] INFO  s.e.n.s.service.DashboardServiceImpl - Total sum of expenses for username Andrew is: 840.0
+2025-01-18 00:29:23 [http-nio-8080-exec-7] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of each expense type for username: Andrew
+2025-01-18 00:29:23 [http-nio-8080-exec-7] INFO  s.e.n.s.service.DashboardServiceImpl - Expenses grouped by type for username Andrew: {Transport=210.0, Food=630.0}
+2025-01-18 00:29:58 [http-nio-8080-exec-6] INFO  s.e.n.s.service.ExpenseServiceImpl - Attempting to add expense to the active dashboard
+2025-01-18 00:29:58 [http-nio-8080-exec-6] INFO  s.e.n.s.service.ExpenseServiceImpl - Successfully added expense with ID: 5
+2025-01-18 00:29:58 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of expenses for username: Andrew
+2025-01-18 00:29:58 [http-nio-8080-exec-9] INFO  s.e.n.s.service.ExpenseServiceImpl - Fetched 5 expenses from the database
+2025-01-18 00:29:58 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Total sum of expenses for username Andrew is: 1270.0
+2025-01-18 00:29:58 [http-nio-8080-exec-10] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of each expense type for username: Andrew
+2025-01-18 00:29:58 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of expenses for username: Andrew
+2025-01-18 00:29:58 [http-nio-8080-exec-10] INFO  s.e.n.s.service.DashboardServiceImpl - Expenses grouped by type for username Andrew: {Entertainment=430.0, Transport=210.0, Food=630.0}
+2025-01-18 00:29:58 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Total sum of expenses for username Andrew is: 1270.0
+2025-01-18 00:29:58 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of each expense type for username: Andrew
+2025-01-18 00:29:58 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Expenses grouped by type for username Andrew: {Entertainment=430.0, Transport=210.0, Food=630.0}
+2025-01-18 00:30:21 [http-nio-8080-exec-2] INFO  s.e.n.s.service.ExpenseServiceImpl - Attempting to add expense to the active dashboard
+2025-01-18 00:30:21 [http-nio-8080-exec-2] INFO  s.e.n.s.service.ExpenseServiceImpl - Successfully added expense with ID: 6
+2025-01-18 00:30:21 [http-nio-8080-exec-4] INFO  s.e.n.s.service.ExpenseServiceImpl - Fetched 6 expenses from the database
+2025-01-18 00:30:21 [http-nio-8080-exec-5] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of expenses for username: Andrew
+2025-01-18 00:30:21 [http-nio-8080-exec-5] INFO  s.e.n.s.service.DashboardServiceImpl - Total sum of expenses for username Andrew is: 3460.0
+2025-01-18 00:30:21 [http-nio-8080-exec-7] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of each expense type for username: Andrew
+2025-01-18 00:30:21 [http-nio-8080-exec-6] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of expenses for username: Andrew
+2025-01-18 00:30:21 [http-nio-8080-exec-7] INFO  s.e.n.s.service.DashboardServiceImpl - Expenses grouped by type for username Andrew: {Entertainment=430.0, Accommodation=2190.0, Transport=210.0, Food=630.0}
+2025-01-18 00:30:21 [http-nio-8080-exec-6] INFO  s.e.n.s.service.DashboardServiceImpl - Total sum of expenses for username Andrew is: 3460.0
+2025-01-18 00:30:21 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of each expense type for username: Andrew
+2025-01-18 00:30:21 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Expenses grouped by type for username Andrew: {Entertainment=430.0, Accommodation=2190.0, Transport=210.0, Food=630.0}
+2025-01-18 00:30:36 [http-nio-8080-exec-9] INFO  s.e.n.s.service.ExpenseServiceImpl - Attempting to add expense to the active dashboard
+2025-01-18 00:30:36 [http-nio-8080-exec-9] INFO  s.e.n.s.service.ExpenseServiceImpl - Successfully added expense with ID: 7
+2025-01-18 00:30:36 [http-nio-8080-exec-10] INFO  s.e.n.s.service.ExpenseServiceImpl - Fetched 7 expenses from the database
+2025-01-18 00:30:36 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of expenses for username: Andrew
+2025-01-18 00:30:36 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Total sum of expenses for username Andrew is: 3550.0
+2025-01-18 00:30:36 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of each expense type for username: Andrew
+2025-01-18 00:30:36 [http-nio-8080-exec-2] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of expenses for username: Andrew
+2025-01-18 00:30:36 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Expenses grouped by type for username Andrew: {Entertainment=430.0, Misc=90.0, Accommodation=2190.0, Transport=210.0, Food=630.0}
+2025-01-18 00:30:36 [http-nio-8080-exec-2] INFO  s.e.n.s.service.DashboardServiceImpl - Total sum of expenses for username Andrew is: 3550.0
+2025-01-18 00:30:36 [http-nio-8080-exec-5] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of each expense type for username: Andrew
+2025-01-18 00:30:36 [http-nio-8080-exec-5] INFO  s.e.n.s.service.DashboardServiceImpl - Expenses grouped by type for username Andrew: {Entertainment=430.0, Misc=90.0, Accommodation=2190.0, Transport=210.0, Food=630.0}
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating settlement transactions for all members on Andrew's dashboard
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating net balances for all members on Andrew's dashboard
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Initialized balances for all group members to zero.
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Processing expense paid by: Andrew
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Expense shared by: [Andrew, Joseph, Manyu, bindu]
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Total amount: 220.0, Individual share: 55.00
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for payer 'Andrew': 165.00
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Joseph': -55.00
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Manyu': -55.00
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'bindu': -55.00
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Processing expense paid by: Joseph
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Expense shared by: [Joseph, Manyu, bindu]
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Total amount: 200.0, Individual share: 66.67
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for payer 'Joseph': 78.33
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Manyu': -121.67
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'bindu': -121.67
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Processing expense paid by: Manyu
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Expense shared by: [Manyu, bindu]
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Total amount: 210.0, Individual share: 105.00
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for payer 'Manyu': -16.67
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'bindu': -226.67
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Processing expense paid by: bindu
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Expense shared by: [Andrew, Joseph, Manyu, bindu]
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Total amount: 210.0, Individual share: 52.50
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for payer 'bindu': -69.17
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Andrew': 112.50
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Joseph': 25.83
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Manyu': -69.17
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Processing expense paid by: Andrew
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Expense shared by: [Andrew, Manyu, bindu]
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Total amount: 430.0, Individual share: 143.33
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for payer 'Andrew': 399.17
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Manyu': -212.50
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'bindu': -212.50
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Processing expense paid by: Joseph
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Expense shared by: [Andrew, Joseph, Manyu, bindu]
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Total amount: 2190.0, Individual share: 547.50
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for payer 'Joseph': 1668.33
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Andrew': -148.33
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Manyu': -760.00
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'bindu': -760.00
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Processing expense paid by: bindu
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Expense shared by: [Joseph, Manyu, bindu]
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Total amount: 90.0, Individual share: 30.00
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for payer 'bindu': -700.00
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Joseph': 1638.33
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'Manyu': -790.00
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Calculated net balances for username all members: {Andrew=-148.33, Joseph=1638.33, Manyu=-790.00, bindu=-700.00}
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Net balances calculated: {Andrew=-148.33, Joseph=1638.33, Manyu=-790.00, bindu=-700.00}
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Processing debtor: MemberBalance{member='Andrew', amount=148.33}
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Processing creditor: MemberBalance{member='Joseph', amount=1638.33}
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Andrew should pay 148.40 to Joseph
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Processing debtor: MemberBalance{member='bindu', amount=700.00}
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Processing creditor: MemberBalance{member='Joseph', amount=1489.93}
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - bindu should pay 700.00 to Joseph
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Processing debtor: MemberBalance{member='Manyu', amount=790.00}
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Processing creditor: MemberBalance{member='Joseph', amount=789.93}
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Manyu should pay 790.00 to Joseph
+2025-01-18 00:30:39 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Calculated settlements for all members: {Andrew=[Pays 148.40 to Joseph], Manyu=[Pays 790.00 to Joseph], bindu=[Pays 700.00 to Joseph]}
+2025-01-18 00:31:14 [http-nio-8080-exec-7] INFO  s.e.n.s.service.ExpenseServiceImpl - Attempting to add expense to the active dashboard
+2025-01-18 00:31:14 [http-nio-8080-exec-7] INFO  s.e.n.s.service.ExpenseServiceImpl - Successfully added expense with ID: 8
+2025-01-18 00:31:14 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of expenses for username: Andrew
+2025-01-18 00:31:14 [http-nio-8080-exec-6] INFO  s.e.n.s.service.ExpenseServiceImpl - Fetched 8 expenses from the database
+2025-01-18 00:31:14 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Total sum of expenses for username Andrew is: 3710.4
+2025-01-18 00:31:14 [http-nio-8080-exec-9] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of each expense type for username: Andrew
+2025-01-18 00:31:14 [http-nio-8080-exec-9] INFO  s.e.n.s.service.DashboardServiceImpl - Expenses grouped by type for username Andrew: {Entertainment=430.0, Misc=90.0, Accommodation=2190.0, Transport=370.4, Food=630.0}
+2025-01-18 00:31:14 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of expenses for username: Andrew
+2025-01-18 00:31:14 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Total sum of expenses for username Andrew is: 3710.4
+2025-01-18 00:31:14 [http-nio-8080-exec-10] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of each expense type for username: Andrew
+2025-01-18 00:31:14 [http-nio-8080-exec-10] INFO  s.e.n.s.service.DashboardServiceImpl - Expenses grouped by type for username Andrew: {Entertainment=430.0, Misc=90.0, Accommodation=2190.0, Transport=370.4, Food=630.0}
