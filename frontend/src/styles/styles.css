@@ -4,7 +4,7 @@ body {
   overflow: hidden; /* Disables scroll bars globally */
 }
 
-/* General layout */
+/* GENERAL LAYOUT */
 .app {
   display: flex;
   flex-direction: column;
@@ -18,7 +18,7 @@ body {
   overflow-y: auto; /* Allows the main content to scroll */
 }
 
-/* General Side Panel Styles */
+/* GENERAL SIDE PANEL STYLES */
 .side-panel {
   position: fixed; /* Fixes the side panel in the viewport */
   top: 0;
@@ -43,7 +43,7 @@ body {
 
 /* Shared Dynamic Form Styles */
 .dynamic-form {
-  margin-top: 108px; /* Uniform margin-top for all forms */
+  margin-top: 80px; /* Uniform margin-top for all forms */
 }
 
 /* General Form Container */
@@ -97,7 +97,7 @@ form {
   background-color: transparent; /* Keep background transparent on focus */
 }
 
-/* Remove spin buttons for modern browsers */
+/* Remove spin buttons at "Amount" input for modern browsers */
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
@@ -116,7 +116,7 @@ input[type="number"] {
   margin-bottom: 10px;
 }
 
-/* Buttons */
+/* BUTTONS */
 .form-button {
   background-color: #ff6b6b; /* Pinkish-red button */
   color: #2c003e; /* Dark purple text */
@@ -136,7 +136,7 @@ input[type="number"] {
   color: #2c003e;
 }
 
-/* General Radio and Checkbox Styles */
+/* Radio and Checkbox Styles */
 .form-radio input[type="radio"],
 .form-checkbox input[type="checkbox"] {
   background-color: transparent; /* Makes the background of radio buttons and checkboxes transparent */
@@ -196,7 +196,8 @@ input[type="number"] {
   margin-bottom: 15px;
 }
 
-/* Dashboard */
+/* DASHBOARD */
+
 .dashboard {
   flex: 1;
   background-color: #3e004e;
@@ -206,6 +207,8 @@ input[type="number"] {
   display: flex;
   flex-direction: column;
 }
+
+/* DASHBOARD HEADER */
 
 .dashboard-heading-container {
   display: flex;
@@ -238,11 +241,62 @@ input[type="number"] {
   color: #2c003e;
 }
 
+/* DASHBOARD SUMMARY */
+
 .dashboard-summary-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
   border-top: 1px solid #f5c6c6;
   padding-left: 20px;
   height: 80px;
 }
+
+.sum-by-type {
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap to the next row */
+  gap: 10px; /* Add space between items */
+  margin-top: 30px;
+}
+
+.sum-by-type div {
+  flex: 1 1 calc(8% - 10px); /* Make each item take up 50% of the row minus the gap */
+  background-color: transparent; /* Optional: Background color for better visibility */
+  border: 1px solid #f5c6c6; /* Optional: Add a border */
+  border-radius: 5px; /* Optional: Add rounded corners */
+  padding: 10px; /* Optional: Add padding inside each box */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+}
+
+.total-sum-h2 {
+  font-size: 4.125rem;
+  margin-top: 30px;
+  margin-bottom: 0;
+}
+
+.total-sum-data {
+  font-size: 4.125rem;
+  margin-top: 0;
+}
+
+.loading {
+  opacity: 0;
+}
+
+.settlement-result-h2 {
+  color: #f06c9b;
+  font-weight: 700;
+}
+
+.settlement-result {
+  margin-right: 20px;
+  font-size: 1.35rem;
+  font-weight: bold;
+  color: #bec0b1;
+  text-align: right;
+}
+
+/* EXPENSES LIST */
 
 .expenses-container {
   border-top: 1px solid #f5c6c6;
@@ -287,49 +341,6 @@ input[type="number"] {
   font-weight: bold;
 }
 
-/* .summary {
-  display: flex;
-  justify-content: space-between;
-} */
-
-.total-expenses,
-.individual-summary {
-  background-color: #4e005e;
-  padding: 10px;
-  border-radius: 4px;
-}
-
-.sum-by-type {
-  display: flex;
-  flex-wrap: wrap; /* Allow items to wrap to the next row */
-  gap: 10px; /* Add space between items */
-  margin-top: 30px;
-}
-
-.sum-by-type div {
-  flex: 0 1 calc(8% - 10px); /* Make each item take up 50% of the row minus the gap */
-  background-color: transparent; /* Optional: Background color for better visibility */
-  border: 1px solid #f5c6c6; /* Optional: Add a border */
-  border-radius: 5px; /* Optional: Add rounded corners */
-  padding: 10px; /* Optional: Add padding inside each box */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
-}
-
-.total-sum-h2 {
-  font-size: 4.125rem;
-  margin-top: 30px;
-  margin-bottom: 0;
-}
-
-.total-sum-data {
-  font-size: 4.125rem;
-  margin-top: 0;
-}
-
-.loading {
-  opacity: 0;
-}
-
 /* Hide scrollbar for Chrome, Edge, Safari */
 .side-panel::-webkit-scrollbar,
 .main-content::-webkit-scrollbar {
@@ -346,19 +357,4 @@ input[type="number"] {
 .side-panel,
 .main-content {
   overflow: auto;
-}
-
-.settlement-result-h2 {
-  color: #f06c9b;
-  font-weight: 700;
-}
-
-.settlement-result {
-  position: fixed;
-  top: 65px; /* This replaces margin-top to position it vertically */
-  right: 30px; /* Adjust the distance from the right edge of the viewport */
-  font-size: 1.35rem;
-  font-weight: bold;
-  color: #bec0b1;
-  text-align: right;
 }
