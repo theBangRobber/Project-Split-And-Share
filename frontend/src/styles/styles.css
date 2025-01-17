@@ -333,19 +333,18 @@ input[type="number"] {
   padding: 10px;
   border-radius: 15px;
   min-width: 150px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 
   /* Animation */
-  opacity: 0; /* Start invisible */
-  transform: translateX(-20px); /* Start 30px to the left */
-  animation: fadeInMove 0.5s ease-out forwards; /* Apply animation */
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: fadeInMove 0.5s ease-out forwards;
 }
 
-/* Keyframes for the animation */
 @keyframes fadeInMove {
   to {
-    opacity: 1; /* Fully visible */
-    transform: translateX(0); /* Move to the original position */
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 
