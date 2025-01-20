@@ -57,12 +57,7 @@ workflows:
       - test:
           requires:
             - build
-    filters:
-      branches:
-        only:
-        - main 
-        - develop         
-
+   
   cicd_flow:
     jobs:
       - build
@@ -75,8 +70,6 @@ workflows:
       - deploy:
           requires:
             - build-docker-image
-    filters:
-      branches:
-        only: release         
+            
         
 
