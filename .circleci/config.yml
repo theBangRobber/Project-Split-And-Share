@@ -59,7 +59,9 @@ workflows:
             - build
     filters:
       branches:
-        only: develop         
+        only:
+        - main 
+        - develop         
 
   cicd_flow:
     jobs:
@@ -77,3 +79,4 @@ workflows:
       branches:
         only: release         
         
+
