@@ -7,25 +7,24 @@ executors:
     working_directory: ~/repo
 
 jobs:
-  build-and-test:
+  build:
     executor: maven-executor
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - maven-cache-{{ .Branch }}-{{ checksum "pom.xml" }}
-            - maven-cache-{{ .Branch }}
       - run:
-          name: Install Dependencies and Run Tests
-          command: mvn clean test
-      - save_cache:
-          paths:
-            - ~/.m2
-          key: maven-cache-{{ .Branch }}-{{ checksum "pom.xml" }}
+          name: Install Dependencies 
+          command: mvn clean install -DskipTests
       - persist_to_workspace:
           root: ~/repo
           paths:
             - target
+  test:
+    executor: maven-executor
+    steps:
+      - checkout
+      - run:
+          name: Run Tests
+          command: mvn test           
 
   build-docker-image:
     executor: maven-executor
@@ -36,7 +35,7 @@ jobs:
       - run:
           name: Build Docker Image
           command: |
-            docker build -t bindugopinathan/project_split_and_share:tagname
+            docker build -t bindugopinathan/project_split_and_share:tagname .
             
       - run:
           name: Push Docker Image to Docker Hub
@@ -53,20 +52,28 @@ jobs:
 
 workflows:
   ci_flow:
-    when: << pipeline.git.branch >> == "develop"
+    filters:
+      branches:
+        only: develop 
     jobs:
-      - build-and-test
+      - build
+      - test:
+          requires:
+            - build
 
   cicd_flow:
-    when: << pipeline.git.branch >> == "release"
+    filters:
+      branches:
+        only: release 
     jobs:
-      - build-and-test
+      - build
+      - test:
+          requires:
+            - build
       - build-docker-image:
           requires:
-            - build-and-test
+            - test
       - deploy:
           requires:
             - build-docker-image
-          filters:
-            branches:
-              only: release
+        
