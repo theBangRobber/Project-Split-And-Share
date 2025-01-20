@@ -24,7 +24,13 @@ jobs:
       - checkout
       - run:
           name: Run Tests
-          command: mvn test           
+          command: |
+            mvn test   
+             test_count=$(mvn -q -Dexec.executable="echo" -Dexec.args='${project.build.directory}/surefire-reports/*.xml' exec:exec | grep -c '<testcase')
+            if [ "$test_count" -lt 3 ]; then
+              echo "Not enough tests passed. Only $test_count tests passed.";
+              exit 1;
+            fi        
 
   build-docker-image:
     executor: maven-executor
@@ -57,7 +63,7 @@ workflows:
       - test:
           requires:
             - build
-   
+
   cicd_flow:
     jobs:
       - build
