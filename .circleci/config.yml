@@ -73,13 +73,29 @@ workflows:
 
   cicd_flow:
     jobs:
-      - build
+      - build:
+          filters:
+            branches:
+              only:
+                - release 
       - test:
           requires:
             - build
+          filters:
+            branches:
+              only:
+                - release   
       - build-docker-image:
           requires:
             - test
+          filters:
+            branches:
+              only:
+                - release   
       - deploy:
           requires:
             - build-docker-image
+          filters:
+            branches:
+              only:
+                - release   
