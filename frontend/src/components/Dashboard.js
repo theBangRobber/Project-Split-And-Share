@@ -99,6 +99,7 @@ const Dashboard = ({ expenses, username, dashboardName }) => {
 
   return (
     <div className="dashboard">
+      {/* Dashboard Header */}
       <div className="dashboard-heading-container">
         <h1 className="dashboard-name">
           {dashboardName
@@ -117,42 +118,45 @@ const Dashboard = ({ expenses, username, dashboardName }) => {
 
       {/* Dashboard Summary */}
       <div className="dashboard-summary-container">
-        <div className="sum-by-type">
-          {/* <h2>Expenses by Type:</h2> */}
+        <div className="expenses-column">
+          {/* Expenses by Type */}
+          <div className="sum-by-type">
+            {Object.keys(sumByType).length > 0 ? (
+              Object.keys(sumByType).map((type) => (
+                <div key={type}>
+                  <p>
+                    {type}: ${sumByType[type]}
+                  </p>
+                </div>
+              ))
+            ) : (
+              <p className="loading">Loading...</p>
+            )}
+          </div>
 
-          {Object.keys(sumByType).length > 0 ? (
-            Object.keys(sumByType).map((type) => (
-              <div key={type}>
-                <p>
-                  {type}: ${sumByType[type]}
-                </p>
-              </div>
-            ))
-          ) : (
-            <p className="loading">Loading...</p>
+          {/* Total Expenses */}
+          {totalSum !== null && totalSum !== 0 && (
+            <div className="total-sum">
+              <h2 className="total-sum-h2">Total Expenses: </h2>
+              <p className="total-sum-data">${totalSum}</p>
+            </div>
           )}
         </div>
 
-        <div className="total-sum">
-          <h2 className="total-sum-h2">Total Expenses: </h2>
-          <p className="total-sum-data">
-            ${totalSum !== null ? totalSum : "Loading..."}
-          </p>
-        </div>
+        {/* Settlement Result */}
+        {settlementResult && (
+          <div className="settlement-result">
+            <h2 className="settlement-result-h2">
+              Settlement Summary:
+            </h2>
+            {settlementResult.split("\n").map((line, index) => (
+              <p key={index}>{line}</p> // Render each line separately
+            ))}
+          </div>
+        )}
       </div>
 
-      {settlementResult && (
-        <div className="settlement-result">
-          <h2 className="settlement-result-h2">
-            Settlement Summary:
-          </h2>
-          {settlementResult.split("\n").map((line, index) => (
-            <p key={index}>{line}</p> // Render each line separately
-          ))}
-        </div>
-      )}
-
-      {/* Expenses List */}
+      {/* Expense Itemized List */}
       <div className="expenses-container">
         {Object.keys(groupedExpenses).map((type) => (
           <div key={type} className="expense-type">

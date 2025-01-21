@@ -1,0 +1,72 @@
+version: 2.1
+
+executors:
+  maven-executor:
+    docker:
+      - image: cimg/openjdk:17.0
+    working_directory: ~/repo
+
+jobs:
+  build-and-test:
+    executor: maven-executor
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - maven-cache-{{ .Branch }}-{{ checksum "pom.xml" }}
+            - maven-cache-{{ .Branch }}
+      - run:
+          name: Install Dependencies and Run Tests
+          command: mvn clean test
+      - save_cache:
+          paths:
+            - ~/.m2
+          key: maven-cache-{{ .Branch }}-{{ checksum "pom.xml" }}
+      - persist_to_workspace:
+          root: ~/repo
+          paths:
+            - target
+
+  build-docker-image:
+    executor: maven-executor
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/repo
+      - run:
+          name: Build Docker Image
+          command: |
+            docker build -t bindugopinathan/project_split_and_share:tagname
+            
+      - run:
+          name: Push Docker Image to Docker Hub
+          command: |
+            echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+            docker push bindugopinathan/project_split_and_share:tagname
+  deploy:
+    executor: maven-executor
+    steps:
+      - checkout
+      - run:
+          name: Deploy Application
+          command: echo "Deploying application to the production environment..."
+
+workflows:
+  ci_flow:
+    when: << pipeline.git.branch >> == "develop"
+    jobs:
+      - build-and-test
+
+  cicd_flow:
+    when: << pipeline.git.branch >> == "release"
+    jobs:
+      - build-and-test
+      - build-docker-image:
+          requires:
+            - build-and-test
+      - deploy:
+          requires:
+            - build-docker-image
+          filters:
+            branches:
+              only: release
