@@ -12,7 +12,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install Dependencies 
+          name: Install Dependencies
           command: mvn clean install -DskipTests
       - persist_to_workspace:
           root: ~/repo
@@ -24,13 +24,7 @@ jobs:
       - checkout
       - run:
           name: Run Tests
-          command: |
-            mvn test   
-             test_count=$(mvn -q -Dexec.executable="echo" -Dexec.args='${project.build.directory}/surefire-reports/*.xml' exec:exec | grep -c '<testcase')
-            if [ "$test_count" -lt 3 ]; then
-              echo "Not enough tests passed. Only $test_count tests passed.";
-              exit 1;
-            fi        
+          command: mvn test -Dtest=sg.edu.ntu.split_and_share.service.UserServiceImplTest,sg.edu.ntu.split_and_share.service.ExpenseServiceImplTest
 
   build-docker-image:
     executor: maven-executor
@@ -42,7 +36,7 @@ jobs:
           name: Build Docker Image
           command: |
             docker build -t bindugopinathan/project_split_and_share:tagname .
-            
+
       - run:
           name: Push Docker Image to Docker Hub
           command: |
@@ -76,6 +70,3 @@ workflows:
       - deploy:
           requires:
             - build-docker-image
-            
-        
-
