@@ -5,6 +5,10 @@ executors:
     docker:
       - image: cimg/openjdk:17.0
     working_directory: ~/repo
+  docker-executor:
+    docker:
+      image: docker:20.10
+    working_directory: ~/repo    
 
 jobs:
   build:
@@ -27,9 +31,10 @@ jobs:
           command: mvn test -Dtest=sg.edu.ntu.split_and_share.service.UserServiceImplTest,sg.edu.ntu.split_and_share.service.ExpenseServiceImplTest
 
   build-docker-image:
-    executor: maven-executor
+    executor: docker-executor
     steps:
       - checkout
+      - setup_remote_docker
       - attach_workspace:
           at: ~/repo
       - run:
