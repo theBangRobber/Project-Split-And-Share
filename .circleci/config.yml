@@ -58,10 +58,11 @@ jobs:
 workflows:
   ci_flow:
     jobs:
-      - build
+      - build:
           filters:
             branches:
-              only: develop     
+              only:
+                - develop 
       - test:
           requires:
             - build
