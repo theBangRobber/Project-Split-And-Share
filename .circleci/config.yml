@@ -28,7 +28,7 @@ jobs:
       - checkout
       - run:
           name: Run Tests
-          command: mvn test -Dtest=sg.edu.ntu.split_and_share.service.UserServiceImplTest,sg.edu.ntu.split_and_share.service.ExpenseServiceImplTest,sg.edu.ntu.split_and_share.controller.ExpenseControllerTest.java
+          command: mvn test -Dtest=sg.edu.ntu.split_and_share.service.UserServiceImplTest,sg.edu.ntu.split_and_share.service.ExpenseServiceImplTest,sg.edu.ntu.split_and_share.controller.DashboardControllerTest.java
 
   build-docker-image:
     executor: docker-executor
