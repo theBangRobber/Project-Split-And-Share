@@ -59,13 +59,16 @@ workflows:
   ci_flow:
     jobs:
       - build
+          filters:
+            branches:
+              only: develop     
       - test:
           requires:
             - build
-    filters:
-      branches:
-        only:
-          - develop        
+          filters:
+            branches: 
+              only: develop  
+       
 
   cicd_flow:
     jobs:
