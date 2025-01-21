@@ -50,6 +50,8 @@ jobs:
   deploy:
     executor: maven-executor
     steps:
+      - setup_remote_docker
+      - heroku/install
       - checkout
       - run:
           name: Deploy Application
