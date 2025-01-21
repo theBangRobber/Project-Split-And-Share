@@ -54,6 +54,13 @@ jobs:
       - run:
           name: Deploy Application
           command: echo "Deploying application to the production environment..."
+      - run:
+          name: Heroku Container Push
+          command: |
+            heroku container:login
+            heroku stack:set container -a bindu-split-and-share
+            heroku container:push web -a bindu-split-and-share
+            heroku container:release web -a bindu-split-and-share    
 
 workflows:
   ci_flow:
