@@ -62,6 +62,7 @@ const AddMemberForm = ({ username, setMembers }) => {
             type="text"
             id={`memberName${index}`}
             className="form-input"
+            autoComplete="off"
             value={memberName}
             onChange={(e) => handleInputChange(index, e.target.value)}
             required

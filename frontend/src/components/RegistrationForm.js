@@ -56,6 +56,7 @@ const RegistrationForm = ({
           type="text"
           id="username"
           className="form-input"
+          autoComplete="off"
           value={usernameInput}
           onChange={(e) => setUsernameInput(e.target.value)}
           required
@@ -69,6 +70,7 @@ const RegistrationForm = ({
           type="password"
           id="password"
           className="form-input"
+          autoComplete="new-password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           minLength={8}
@@ -83,6 +85,7 @@ const RegistrationForm = ({
           type="text"
           id="name"
           className="form-input"
+          autoComplete="off"
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
@@ -98,6 +101,7 @@ const RegistrationForm = ({
           type="text"
           id="dashboardName"
           className="form-input"
+          autoComplete="off"
           value={dashboardNameState}
           onChange={(e) => setDashboardNameState(e.target.value)} // Only for frontend usage
         />

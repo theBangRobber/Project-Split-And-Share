@@ -30,9 +30,12 @@ const SidePanel = ({
 
   return (
     <div className="side-panel">
+      {/* Side Panel Header */}
       <h2 className="side-panel-h2">
         {isRegistered ? `Hello, ${username}` : "Hello There"}
       </h2>
+
+      {/* Dynamic Form */}
       {!isRegistered ? (
         <div className="registration-form">
           <RegistrationForm

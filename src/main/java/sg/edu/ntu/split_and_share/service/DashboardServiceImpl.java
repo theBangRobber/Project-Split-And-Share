@@ -223,11 +223,16 @@ public class DashboardServiceImpl implements DashboardService {
       // If the debtor has a smaller amount than creditor, the debtor can only pay up
       // what they owe
       // If the creditor has smaller amount than debtor, the creditor can only receive
-      // up to what they are owed.
+      // up to what they are owed
       // reset debtor's and creditor's balance after each settlement
       BigDecimal settleAmount = debtor.getAmount().min(creditor.getAmount());
+      BigDecimal TEN_CENTS = new BigDecimal("0.10");
+      settleAmount = settleAmount.divide(TEN_CENTS, 0, RoundingMode.CEILING)
+          .multiply(TEN_CENTS)
+          .setScale(2, RoundingMode.HALF_UP);
       debtor.setAmount(debtor.getAmount().subtract(settleAmount));
       creditor.setAmount(creditor.getAmount().subtract(settleAmount));
+      // Round up final amount to the nearest 10 cents while retain 2 decimal points
 
       // Set settlement string as legible output for user
       // It generates a string describing the settlement transaction and adds it to a
