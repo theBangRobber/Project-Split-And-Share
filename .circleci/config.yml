@@ -1,6 +1,7 @@
 version: 2.1
 
 orbs:
+  postgres: onehq/postgres@1.1.0
   heroku: circleci/heroku@2.0.0
   docker: circleci/docker@2.1.4
 
@@ -16,6 +17,19 @@ executors:
     working_directory: ~/repo    
 
 jobs:
+
+# Job to setup PostgreSQL service
+  setup-postgresql:
+    docker:
+      - image: circleci/postgres:latest
+        environment:
+          POSTGRES_DB: split_and_share
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: $POSTGRES_PASSWORD
+          # Assign the value of POSTGRES_PASSWORD
+    steps:
+      - checkout
+
   build:
     executor: maven-executor
     steps:
@@ -27,6 +41,7 @@ jobs:
           root: ~/repo
           paths:
             - target
+
   test:
     executor: maven-executor
     steps:
@@ -45,7 +60,7 @@ jobs:
       - run:
           name: Build Docker Image
           command: |
-            docker build -t bindugopinathan/project_split_and_share:tagname .
+            docker build -t bindugopinathan/project_c1split_and_share:tagname .
 
       - run:
           name: Push Docker Image to Docker Hub
@@ -67,7 +82,7 @@ jobs:
             heroku container:login
             heroku stack:set container -a bindu-split-and-share
             heroku container:push web -a bindu-split-and-share
-            heroku container:release web -a bindu-split-and-share    
+            heroku container:release web -a bindu-split-and-share
 
 workflows:
   ci_flow:
