@@ -1,0 +1,115 @@
+version: 2.1
+
+orbs:
+  heroku: circleci/heroku@2.0.0
+  docker: circleci/docker@2.1.4
+
+
+executors:
+  maven-executor:
+    docker:
+      - image: cimg/openjdk:17.0
+    working_directory: ~/repo
+  docker-executor:
+    docker:
+      - image: docker:20.10
+    working_directory: ~/repo    
+
+jobs:
+  build:
+    executor: maven-executor
+    steps:
+      - checkout
+      - run:
+          name: Install Dependencies
+          command: mvn clean install -DskipTests
+      - persist_to_workspace:
+          root: ~/repo
+          paths:
+            - target
+  test:
+    executor: maven-executor
+    steps:
+      - checkout
+      - run:
+          name: Run Tests
+          command: mvn test -Dtest=sg.edu.ntu.split_and_share.service.UserServiceImplTest,sg.edu.ntu.split_and_share.service.ExpenseServiceImplTest,sg.edu.ntu.split_and_share.controller.ExpenseControllerTest.java
+
+  build-docker-image:
+    executor: docker-executor
+    steps:
+      - checkout
+      - setup_remote_docker
+      - attach_workspace:
+          at: ~/repo
+      - run:
+          name: Build Docker Image
+          command: |
+            docker build -t bindugopinathan/project_split_and_share:tagname .
+
+      - run:
+          name: Push Docker Image to Docker Hub
+          command: |
+            echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+            docker push bindugopinathan/project_split_and_share:tagname
+  deploy:
+    executor: maven-executor
+    steps:
+      - setup_remote_docker
+      - heroku/install
+      - checkout
+      - run:
+          name: Deploy Application
+          command: echo "Deploying application to the production environment..."
+      - run:
+          name: Heroku Container Push
+          command: |
+            heroku container:login
+            heroku stack:set container -a bindu-split-and-share
+            heroku container:push web -a bindu-split-and-share
+            heroku container:release web -a bindu-split-and-share    
+
+workflows:
+  ci_flow:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only:
+                - develop 
+      - test:
+          requires:
+            - build
+          filters:
+            branches: 
+              only: develop  
+       
+
+  cicd_flow:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only:
+                - release 
+      - test:
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - release   
+      - build-docker-image:
+          requires:
+            - test
+          filters:
+            branches:
+              only:
+                - release   
+      - deploy:
+          requires:
+            - build-docker-image
+          filters:
+            branches:
+              only:
+                - release   
