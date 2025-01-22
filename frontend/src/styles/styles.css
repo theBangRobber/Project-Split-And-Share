@@ -176,6 +176,21 @@ input[type="number"] {
 }
 
 /* AddMemberForm Specific Styles */
+.add-member-form {
+  max-height: 100vh;
+  overflow-y: scroll;
+  padding-bottom: 30px;
+}
+
+.add-member-form::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Webkit-based browsers (Chrome, Safari, etc.) */
+}
+
+.add-member-form {
+  -ms-overflow-style: none; /* Hide scrollbar for Internet Explorer and Edge */
+  scrollbar-width: none; /* Hide scrollbar for Firefox */
+}
+
 .add-member-form .form-group {
   display: flex;
   align-items: center;
