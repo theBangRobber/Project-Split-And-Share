@@ -358,3 +358,664 @@
 2025-01-23 19:54:26 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
 2025-01-23 19:54:26 [restartedMain] INFO  s.e.n.s.SplitAndShareApplication - Started SplitAndShareApplication in 10.197 seconds (process running for 19910.419)
 2025-01-23 19:54:26 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2025-01-23 21:03:11 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-01-23 21:03:11 [Thread-7] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-01-23 21:03:11 [tomcat-shutdown] INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8080"]
+2025-01-23 21:03:11 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-01-23 21:03:11 [Thread-7] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2025-01-23 21:03:11 [Thread-7] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-23 21:03:11 [Thread-7] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
+2025-01-23 21:03:14 [Thread-7] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
+2025-01-23 21:03:14 [restartedMain] INFO  s.e.n.s.SplitAndShareApplication - Starting SplitAndShareApplication using Java 23.0.1 with PID 90392 (/Users/andrewto/Desktop/SCTP/Project-Split-And-Share/target/classes started by andrewto in /Users/andrewto/Desktop/SCTP/Project-Split-And-Share)
+2025-01-23 21:03:14 [restartedMain] INFO  s.e.n.s.SplitAndShareApplication - No active profile set, falling back to 1 default profile: "default"
+2025-01-23 21:03:14 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-23 21:03:14 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 4 ms. Found 4 JPA repository interfaces.
+2025-01-23 21:03:14 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-01-23 21:03:14 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-01-23 21:03:14 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-01-23 21:03:14 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-01-23 21:03:14 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-01-23 21:03:14 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 131 ms
+2025-01-23 21:03:14 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-23 21:03:14 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-01-23 21:03:14 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-23 21:03:14 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Starting...
+2025-01-23 21:03:16 [restartedMain] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 0, SQLState: 08004
+2025-01-23 21:03:16 [restartedMain] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - The server requested SCRAM-based authentication, but no password was provided.
+2025-01-23 21:03:16 [restartedMain] WARN  o.h.e.j.e.i.JdbcEnvironmentInitiator - HHH000342: Could not obtain connection to query metadata
+org.hibernate.exception.JDBCConnectionException: unable to obtain isolated JDBC connection [The server requested SCRAM-based authentication, but no password was provided.] [n/a]
+	at org.hibernate.exception.internal.SQLStateConversionDelegate.convert(SQLStateConversionDelegate.java:100)
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:58)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:108)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:94)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:116)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironmentUsingJdbcMetadata(JdbcEnvironmentInitiator.java:320)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:129)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:81)
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:130)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:238)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:215)
+	at org.hibernate.boot.model.relational.Database.<init>(Database.java:45)
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.getDatabase(InFlightMetadataCollectorImpl.java:226)
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:194)
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:171)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1431)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1502)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:66)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:419)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:400)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1849)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1798)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:601)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:336)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:288)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:334)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:204)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:970)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350)
+	at sg.edu.ntu.split_and_share.SplitAndShareApplication.main(SplitAndShareApplication.java:10)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: org.postgresql.util.PSQLException: The server requested SCRAM-based authentication, but no password was provided.
+	at org.postgresql.core.v3.ConnectionFactoryImpl.lambda$doAuthentication$5(ConnectionFactoryImpl.java:854)
+	at org.postgresql.core.v3.AuthenticationPluginManager.withPassword(AuthenticationPluginManager.java:82)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.doAuthentication(ConnectionFactoryImpl.java:851)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:213)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:268)
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:54)
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:273)
+	at org.postgresql.Driver.makeConnection(Driver.java:446)
+	at org.postgresql.Driver.connect(Driver.java:298)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:137)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:360)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:202)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:461)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:550)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:98)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:111)
+	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:126)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:467)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:61)
+	... 38 common frames omitted
+2025-01-23 21:03:16 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-23 21:03:16 [restartedMain] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (null)']
+	Database driver: undefined/unknown
+	Database version: 12.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-01-23 21:03:16 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-23 21:03:16 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Starting...
+2025-01-23 21:03:18 [restartedMain] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 0, SQLState: 08004
+2025-01-23 21:03:18 [restartedMain] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - The server requested SCRAM-based authentication, but no password was provided.
+2025-01-23 21:03:18 [restartedMain] ERROR o.s.o.j.LocalContainerEntityManagerFactoryBean - Failed to initialize JPA EntityManagerFactory: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution [The server requested SCRAM-based authentication, but no password was provided.] [n/a]
+2025-01-23 21:03:18 [restartedMain] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution [The server requested SCRAM-based authentication, but no password was provided.] [n/a]
+2025-01-23 21:03:18 [restartedMain] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2025-01-23 21:03:18 [restartedMain] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-01-23 21:03:18 [restartedMain] ERROR o.s.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution [The server requested SCRAM-based authentication, but no password was provided.] [n/a]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1802)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:601)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:336)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:288)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:334)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:204)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:970)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350)
+	at sg.edu.ntu.split_and_share.SplitAndShareApplication.main(SplitAndShareApplication.java:10)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: jakarta.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution [The server requested SCRAM-based authentication, but no password was provided.] [n/a]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:431)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:400)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1849)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1798)
+	... 18 common frames omitted
+Caused by: org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution [The server requested SCRAM-based authentication, but no password was provided.] [n/a]
+	at org.hibernate.exception.internal.SQLStateConversionDelegate.convert(SQLStateConversionDelegate.java:100)
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:58)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:108)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:94)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl.getIsolatedConnection(DdlTransactionIsolatorNonJtaImpl.java:74)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.getIsolatedConnection(GenerationTargetToDatabase.java:60)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.jdbcStatement(GenerationTargetToDatabase.java:112)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:79)
+	at org.hibernate.tool.schema.internal.Helper.applySqlString(Helper.java:233)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.dropFromMetadata(SchemaDropperImpl.java:213)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.performDrop(SchemaDropperImpl.java:186)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:156)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:116)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:238)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:144)
+	at java.base/java.util.HashMap.forEach(HashMap.java:1430)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:141)
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37)
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:324)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:463)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1506)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:66)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:419)
+	... 22 common frames omitted
+Caused by: org.postgresql.util.PSQLException: The server requested SCRAM-based authentication, but no password was provided.
+	at org.postgresql.core.v3.ConnectionFactoryImpl.lambda$doAuthentication$5(ConnectionFactoryImpl.java:854)
+	at org.postgresql.core.v3.AuthenticationPluginManager.withPassword(AuthenticationPluginManager.java:82)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.doAuthentication(ConnectionFactoryImpl.java:851)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:213)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:268)
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:54)
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:273)
+	at org.postgresql.Driver.makeConnection(Driver.java:446)
+	at org.postgresql.Driver.connect(Driver.java:298)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:137)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:360)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:202)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:461)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:550)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:98)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:111)
+	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:126)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:467)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl.getIsolatedConnection(DdlTransactionIsolatorNonJtaImpl.java:46)
+	... 42 common frames omitted
+2025-01-23 21:28:41 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2025-01-23 21:28:41 [restartedMain] INFO  s.e.n.s.SplitAndShareApplication - Starting SplitAndShareApplication using Java 23.0.1 with PID 6956 (/Users/andrewto/Desktop/SCTP/Project-Split-And-Share/target/classes started by andrewto in /Users/andrewto/Desktop/SCTP/Project-Split-And-Share)
+2025-01-23 21:28:41 [restartedMain] INFO  s.e.n.s.SplitAndShareApplication - No active profile set, falling back to 1 default profile: "default"
+2025-01-23 21:28:41 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-01-23 21:28:41 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-01-23 21:28:42 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-23 21:28:42 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 20 ms. Found 4 JPA repository interfaces.
+2025-01-23 21:28:42 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-01-23 21:28:42 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-01-23 21:28:42 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-01-23 21:28:42 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-01-23 21:28:42 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-01-23 21:28:42 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 480 ms
+2025-01-23 21:28:42 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-23 21:28:42 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.2.Final
+2025-01-23 21:28:42 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-01-23 21:28:42 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-23 21:28:42 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-01-23 21:28:45 [restartedMain] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 0, SQLState: 08004
+2025-01-23 21:28:45 [restartedMain] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - The server requested SCRAM-based authentication, but no password was provided.
+2025-01-23 21:28:45 [restartedMain] WARN  o.h.e.j.e.i.JdbcEnvironmentInitiator - HHH000342: Could not obtain connection to query metadata
+org.hibernate.exception.JDBCConnectionException: unable to obtain isolated JDBC connection [The server requested SCRAM-based authentication, but no password was provided.] [n/a]
+	at org.hibernate.exception.internal.SQLStateConversionDelegate.convert(SQLStateConversionDelegate.java:100)
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:58)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:108)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:94)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:116)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironmentUsingJdbcMetadata(JdbcEnvironmentInitiator.java:320)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:129)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:81)
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:130)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:238)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:215)
+	at org.hibernate.boot.model.relational.Database.<init>(Database.java:45)
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.getDatabase(InFlightMetadataCollectorImpl.java:226)
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:194)
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:171)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1431)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1502)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:66)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:419)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:400)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1849)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1798)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:601)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:336)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:288)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:334)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:204)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:970)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350)
+	at sg.edu.ntu.split_and_share.SplitAndShareApplication.main(SplitAndShareApplication.java:10)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: org.postgresql.util.PSQLException: The server requested SCRAM-based authentication, but no password was provided.
+	at org.postgresql.core.v3.ConnectionFactoryImpl.lambda$doAuthentication$5(ConnectionFactoryImpl.java:854)
+	at org.postgresql.core.v3.AuthenticationPluginManager.withPassword(AuthenticationPluginManager.java:82)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.doAuthentication(ConnectionFactoryImpl.java:851)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:213)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:268)
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:54)
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:273)
+	at org.postgresql.Driver.makeConnection(Driver.java:446)
+	at org.postgresql.Driver.connect(Driver.java:298)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:137)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:360)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:202)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:461)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:550)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:98)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:111)
+	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:126)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:467)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:61)
+	... 38 common frames omitted
+2025-01-23 21:28:45 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-23 21:28:45 [restartedMain] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (null)']
+	Database driver: undefined/unknown
+	Database version: 12.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-01-23 21:28:45 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-23 21:28:45 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-01-23 21:28:47 [restartedMain] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 0, SQLState: 08004
+2025-01-23 21:28:47 [restartedMain] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - The server requested SCRAM-based authentication, but no password was provided.
+2025-01-23 21:28:47 [restartedMain] ERROR o.s.o.j.LocalContainerEntityManagerFactoryBean - Failed to initialize JPA EntityManagerFactory: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution [The server requested SCRAM-based authentication, but no password was provided.] [n/a]
+2025-01-23 21:28:47 [restartedMain] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution [The server requested SCRAM-based authentication, but no password was provided.] [n/a]
+2025-01-23 21:28:47 [restartedMain] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2025-01-23 21:28:47 [restartedMain] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-01-23 21:28:47 [restartedMain] ERROR o.s.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution [The server requested SCRAM-based authentication, but no password was provided.] [n/a]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1802)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:601)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:336)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:288)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:334)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:204)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:970)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350)
+	at sg.edu.ntu.split_and_share.SplitAndShareApplication.main(SplitAndShareApplication.java:10)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: jakarta.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution [The server requested SCRAM-based authentication, but no password was provided.] [n/a]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:431)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:400)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1849)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1798)
+	... 18 common frames omitted
+Caused by: org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution [The server requested SCRAM-based authentication, but no password was provided.] [n/a]
+	at org.hibernate.exception.internal.SQLStateConversionDelegate.convert(SQLStateConversionDelegate.java:100)
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:58)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:108)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:94)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl.getIsolatedConnection(DdlTransactionIsolatorNonJtaImpl.java:74)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.getIsolatedConnection(GenerationTargetToDatabase.java:60)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.jdbcStatement(GenerationTargetToDatabase.java:112)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:79)
+	at org.hibernate.tool.schema.internal.Helper.applySqlString(Helper.java:233)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.dropFromMetadata(SchemaDropperImpl.java:213)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.performDrop(SchemaDropperImpl.java:186)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:156)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:116)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:238)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:144)
+	at java.base/java.util.HashMap.forEach(HashMap.java:1430)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:141)
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37)
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:324)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:463)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1506)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:66)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:419)
+	... 22 common frames omitted
+Caused by: org.postgresql.util.PSQLException: The server requested SCRAM-based authentication, but no password was provided.
+	at org.postgresql.core.v3.ConnectionFactoryImpl.lambda$doAuthentication$5(ConnectionFactoryImpl.java:854)
+	at org.postgresql.core.v3.AuthenticationPluginManager.withPassword(AuthenticationPluginManager.java:82)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.doAuthentication(ConnectionFactoryImpl.java:851)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:213)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:268)
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:54)
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:273)
+	at org.postgresql.Driver.makeConnection(Driver.java:446)
+	at org.postgresql.Driver.connect(Driver.java:298)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:137)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:360)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:202)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:461)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:550)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:98)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:111)
+	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:126)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:467)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl.getIsolatedConnection(DdlTransactionIsolatorNonJtaImpl.java:46)
+	... 42 common frames omitted
+2025-01-23 21:35:42 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2025-01-23 21:35:42 [restartedMain] INFO  s.e.n.s.SplitAndShareApplication - Starting SplitAndShareApplication using Java 23.0.1 with PID 7309 (/Users/andrewto/Desktop/SCTP/Project-Split-And-Share/target/classes started by andrewto in /Users/andrewto/Desktop/SCTP/Project-Split-And-Share)
+2025-01-23 21:35:42 [restartedMain] INFO  s.e.n.s.SplitAndShareApplication - No active profile set, falling back to 1 default profile: "default"
+2025-01-23 21:35:42 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-01-23 21:35:42 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-01-23 21:35:42 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-23 21:35:42 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 21 ms. Found 4 JPA repository interfaces.
+2025-01-23 21:35:42 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-01-23 21:35:42 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-01-23 21:35:42 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-01-23 21:35:42 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-01-23 21:35:42 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-01-23 21:35:42 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 512 ms
+2025-01-23 21:35:42 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-23 21:35:42 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.2.Final
+2025-01-23 21:35:42 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-01-23 21:35:42 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-23 21:35:42 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-01-23 21:35:46 [restartedMain] WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Default transaction isolation level detection failed (This connection has been closed.).
+2025-01-23 21:35:46 [restartedMain] ERROR com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Error thrown while acquiring connection from data source
+org.postgresql.util.PSQLException: This connection has been closed.
+	at org.postgresql.jdbc.PgConnection.checkClosed(PgConnection.java:1009)
+	at org.postgresql.jdbc.PgConnection.setTransactionIsolation(PgConnection.java:1071)
+	at com.zaxxer.hikari.pool.PoolBase.setupConnection(PoolBase.java:415)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:365)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:202)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:461)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:550)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:98)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:111)
+	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:126)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:467)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:61)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironmentUsingJdbcMetadata(JdbcEnvironmentInitiator.java:320)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:129)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:81)
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:130)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:238)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:215)
+	at org.hibernate.boot.model.relational.Database.<init>(Database.java:45)
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.getDatabase(InFlightMetadataCollectorImpl.java:226)
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:194)
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:171)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1431)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1502)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:66)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:419)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:400)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1849)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1798)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:601)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:336)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:288)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:334)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:204)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:970)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350)
+	at sg.edu.ntu.split_and_share.SplitAndShareApplication.main(SplitAndShareApplication.java:10)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+2025-01-23 21:35:46 [restartedMain] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 0, SQLState: 08003
+2025-01-23 21:35:46 [restartedMain] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - This connection has been closed.
+2025-01-23 21:35:46 [restartedMain] WARN  o.h.e.j.e.i.JdbcEnvironmentInitiator - HHH000342: Could not obtain connection to query metadata
+org.hibernate.exception.JDBCConnectionException: unable to obtain isolated JDBC connection [This connection has been closed.] [n/a]
+	at org.hibernate.exception.internal.SQLStateConversionDelegate.convert(SQLStateConversionDelegate.java:100)
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:58)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:108)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:94)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:116)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironmentUsingJdbcMetadata(JdbcEnvironmentInitiator.java:320)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:129)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:81)
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:130)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:238)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:215)
+	at org.hibernate.boot.model.relational.Database.<init>(Database.java:45)
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.getDatabase(InFlightMetadataCollectorImpl.java:226)
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:194)
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:171)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1431)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1502)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:66)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:419)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:400)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1849)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1798)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:601)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:336)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:288)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:334)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:204)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:970)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350)
+	at sg.edu.ntu.split_and_share.SplitAndShareApplication.main(SplitAndShareApplication.java:10)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: org.postgresql.util.PSQLException: This connection has been closed.
+	at org.postgresql.jdbc.PgConnection.checkClosed(PgConnection.java:1009)
+	at org.postgresql.jdbc.PgConnection.setTransactionIsolation(PgConnection.java:1071)
+	at com.zaxxer.hikari.pool.PoolBase.setupConnection(PoolBase.java:415)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:365)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:202)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:461)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:550)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:98)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:111)
+	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:126)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:467)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:61)
+	... 38 common frames omitted
+2025-01-23 21:35:46 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-23 21:35:46 [restartedMain] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (null)']
+	Database driver: undefined/unknown
+	Database version: 12.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-01-23 21:35:47 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-23 21:35:47 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-01-23 21:35:49 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@14b8f59d
+2025-01-23 21:35:49 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-01-23 21:35:56 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-23 21:35:56 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-23 21:35:56 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-01-23 21:35:56 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-01-23 21:35:56 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-01-23 21:35:56 [restartedMain] INFO  s.e.n.s.SplitAndShareApplication - Started SplitAndShareApplication in 14.492 seconds (process running for 14.653)
+2025-01-23 21:36:09 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-01-23 21:36:09 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-01-23 21:36:09 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-01-23 21:36:10 [http-nio-8080-exec-1] INFO  s.e.n.s.service.ExpenseServiceImpl - Fetched 0 expenses from the database
+2025-01-23 21:36:10 [http-nio-8080-exec-2] INFO  s.e.n.s.service.ExpenseServiceImpl - Fetched 0 expenses from the database
+2025-01-23 21:36:23 [http-nio-8080-exec-4] INFO  s.e.n.s.service.UserServiceImpl - Attempting to create user with username: andrew
+2025-01-23 21:36:23 [http-nio-8080-exec-4] INFO  s.e.n.s.service.UserServiceImpl - User andrew registered successfully
+2025-01-23 21:36:23 [http-nio-8080-exec-4] INFO  s.e.n.s.service.UserServiceImpl - Dashboard 'andrew's Dashboard' initialized for user 'andrew'
+2025-01-23 21:36:23 [http-nio-8080-exec-4] INFO  s.e.n.s.service.UserServiceImpl - Saving user and initializing dashboard
+2025-01-23 21:36:24 [http-nio-8080-exec-5] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of expenses for username: andrew
+2025-01-23 21:36:25 [http-nio-8080-exec-5] INFO  s.e.n.s.service.DashboardServiceImpl - Total sum of expenses for username andrew is: 0.0
+2025-01-23 21:36:25 [http-nio-8080-exec-6] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of each expense type for username: andrew
+2025-01-23 21:36:26 [http-nio-8080-exec-6] INFO  s.e.n.s.service.DashboardServiceImpl - Expenses grouped by type for username andrew: {}
+2025-01-23 21:52:25 [http-nio-8080-exec-10] INFO  s.e.n.s.s.GroupMemberServiceImpl - Attempting to add group members to the active dashboard
+2025-01-23 21:52:25 [http-nio-8080-exec-10] INFO  s.e.n.s.s.GroupMemberServiceImpl - Fetched dashboard for username: andrew
+2025-01-23 21:52:26 [http-nio-8080-exec-10] INFO  s.e.n.s.s.GroupMemberServiceImpl - Added member 'june' successfully to the dashboard 'andrew's Dashboard'
+2025-01-23 21:52:26 [http-nio-8080-exec-10] INFO  s.e.n.s.s.GroupMemberServiceImpl - Added member 'james' successfully to the dashboard 'andrew's Dashboard'
+2025-01-23 21:52:26 [http-nio-8080-exec-10] INFO  s.e.n.s.s.GroupMemberServiceImpl - Added member 'johnny' successfully to the dashboard 'andrew's Dashboard'
+2025-01-23 21:52:27 [http-nio-8080-exec-10] INFO  s.e.n.s.s.GroupMemberServiceImpl - Added member 'mary' successfully to the dashboard 'andrew's Dashboard'
+2025-01-23 21:52:27 [http-nio-8080-exec-10] INFO  s.e.n.s.s.GroupMemberServiceImpl - Added member 'manyu' successfully to the dashboard 'andrew's Dashboard'
+2025-01-23 21:52:27 [http-nio-8080-exec-10] INFO  s.e.n.s.s.GroupMemberServiceImpl - Added member 'joseph' successfully to the dashboard 'andrew's Dashboard'
+2025-01-23 21:52:28 [http-nio-8080-exec-10] INFO  s.e.n.s.s.GroupMemberServiceImpl - Added member 'andrew' successfully to the dashboard 'andrew's Dashboard'
+2025-01-23 21:52:28 [http-nio-8080-exec-10] INFO  s.e.n.s.s.GroupMemberServiceImpl - Added member 'bindu' successfully to the dashboard 'andrew's Dashboard'
+2025-01-23 21:52:28 [http-nio-8080-exec-10] INFO  s.e.n.s.s.GroupMemberServiceImpl - Successfully added all group members to the dashboard for username: andrew
+2025-01-23 21:52:53 [http-nio-8080-exec-2] INFO  s.e.n.s.service.ExpenseServiceImpl - Attempting to add expense to the active dashboard
+2025-01-23 21:52:55 [http-nio-8080-exec-2] INFO  s.e.n.s.service.ExpenseServiceImpl - Successfully added expense with ID: 1
+2025-01-23 21:52:58 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of expenses for username: andrew
+2025-01-23 21:52:59 [http-nio-8080-exec-3] INFO  s.e.n.s.service.ExpenseServiceImpl - Fetched 1 expenses from the database
+2025-01-23 21:52:59 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Total sum of expenses for username andrew is: 200.0
+2025-01-23 21:52:59 [http-nio-8080-exec-5] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of expenses for username: andrew
+2025-01-23 21:52:59 [http-nio-8080-exec-6] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of each expense type for username: andrew
+2025-01-23 21:53:00 [http-nio-8080-exec-5] INFO  s.e.n.s.service.DashboardServiceImpl - Total sum of expenses for username andrew is: 200.0
+2025-01-23 21:53:00 [http-nio-8080-exec-6] INFO  s.e.n.s.service.DashboardServiceImpl - Expenses grouped by type for username andrew: {Food=200.0}
+2025-01-23 21:53:00 [http-nio-8080-exec-7] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of each expense type for username: andrew
+2025-01-23 21:53:01 [http-nio-8080-exec-7] INFO  s.e.n.s.service.DashboardServiceImpl - Expenses grouped by type for username andrew: {Food=200.0}
+2025-01-23 21:53:21 [http-nio-8080-exec-8] INFO  s.e.n.s.service.ExpenseServiceImpl - Attempting to add expense to the active dashboard
+2025-01-23 21:53:24 [http-nio-8080-exec-8] INFO  s.e.n.s.service.ExpenseServiceImpl - Successfully added expense with ID: 2
+2025-01-23 21:53:27 [http-nio-8080-exec-10] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of expenses for username: andrew
+2025-01-23 21:53:28 [http-nio-8080-exec-9] INFO  s.e.n.s.service.ExpenseServiceImpl - Fetched 2 expenses from the database
+2025-01-23 21:53:28 [http-nio-8080-exec-10] INFO  s.e.n.s.service.DashboardServiceImpl - Total sum of expenses for username andrew is: 290.0
+2025-01-23 21:53:28 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of each expense type for username: andrew
+2025-01-23 21:53:29 [http-nio-8080-exec-2] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of expenses for username: andrew
+2025-01-23 21:53:29 [http-nio-8080-exec-1] INFO  s.e.n.s.service.DashboardServiceImpl - Expenses grouped by type for username andrew: {Transport=90.0, Food=200.0}
+2025-01-23 21:53:29 [http-nio-8080-exec-2] INFO  s.e.n.s.service.DashboardServiceImpl - Total sum of expenses for username andrew is: 290.0
+2025-01-23 21:53:29 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of each expense type for username: andrew
+2025-01-23 21:53:30 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Expenses grouped by type for username andrew: {Transport=90.0, Food=200.0}
+2025-01-23 21:53:54 [http-nio-8080-exec-4] INFO  s.e.n.s.service.ExpenseServiceImpl - Attempting to add expense to the active dashboard
+2025-01-23 21:53:58 [http-nio-8080-exec-4] INFO  s.e.n.s.service.ExpenseServiceImpl - Successfully added expense with ID: 3
+2025-01-23 21:54:01 [http-nio-8080-exec-6] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of expenses for username: andrew
+2025-01-23 21:54:02 [http-nio-8080-exec-5] INFO  s.e.n.s.service.ExpenseServiceImpl - Fetched 3 expenses from the database
+2025-01-23 21:54:03 [http-nio-8080-exec-6] INFO  s.e.n.s.service.DashboardServiceImpl - Total sum of expenses for username andrew is: 740.0
+2025-01-23 21:54:03 [http-nio-8080-exec-7] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of expenses for username: andrew
+2025-01-23 21:54:03 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of each expense type for username: andrew
+2025-01-23 21:54:04 [http-nio-8080-exec-7] INFO  s.e.n.s.service.DashboardServiceImpl - Total sum of expenses for username andrew is: 740.0
+2025-01-23 21:54:04 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Expenses grouped by type for username andrew: {Entertainment=450.0, Transport=90.0, Food=200.0}
+2025-01-23 21:54:04 [http-nio-8080-exec-10] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of each expense type for username: andrew
+2025-01-23 21:54:05 [http-nio-8080-exec-10] INFO  s.e.n.s.service.DashboardServiceImpl - Expenses grouped by type for username andrew: {Entertainment=450.0, Transport=90.0, Food=200.0}
+2025-01-23 21:54:54 [http-nio-8080-exec-9] INFO  s.e.n.s.service.ExpenseServiceImpl - Attempting to add expense to the active dashboard
+2025-01-23 21:54:57 [http-nio-8080-exec-9] INFO  s.e.n.s.service.ExpenseServiceImpl - Successfully added expense with ID: 4
+2025-01-23 21:55:00 [http-nio-8080-exec-2] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of expenses for username: andrew
+2025-01-23 21:55:01 [http-nio-8080-exec-1] INFO  s.e.n.s.service.ExpenseServiceImpl - Fetched 4 expenses from the database
+2025-01-23 21:55:01 [http-nio-8080-exec-2] INFO  s.e.n.s.service.DashboardServiceImpl - Total sum of expenses for username andrew is: 1080.0
+2025-01-23 21:55:01 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of each expense type for username: andrew
+2025-01-23 21:55:02 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Expenses grouped by type for username andrew: {Entertainment=450.0, Transport=90.0, Food=540.0}
+2025-01-23 21:55:02 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of expenses for username: andrew
+2025-01-23 21:55:03 [http-nio-8080-exec-4] INFO  s.e.n.s.service.DashboardServiceImpl - Total sum of expenses for username andrew is: 1080.0
+2025-01-23 21:55:03 [http-nio-8080-exec-5] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of each expense type for username: andrew
+2025-01-23 21:55:04 [http-nio-8080-exec-5] INFO  s.e.n.s.service.DashboardServiceImpl - Expenses grouped by type for username andrew: {Entertainment=450.0, Transport=90.0, Food=540.0}
+2025-01-23 21:55:31 [http-nio-8080-exec-6] INFO  s.e.n.s.service.ExpenseServiceImpl - Attempting to add expense to the active dashboard
+2025-01-23 21:55:34 [http-nio-8080-exec-6] INFO  s.e.n.s.service.ExpenseServiceImpl - Successfully added expense with ID: 5
+2025-01-23 21:55:39 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of expenses for username: andrew
+2025-01-23 21:55:40 [http-nio-8080-exec-7] INFO  s.e.n.s.service.ExpenseServiceImpl - Fetched 5 expenses from the database
+2025-01-23 21:55:40 [http-nio-8080-exec-8] INFO  s.e.n.s.service.DashboardServiceImpl - Total sum of expenses for username andrew is: 1630.0
+2025-01-23 21:55:40 [http-nio-8080-exec-10] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of each expense type for username: andrew
+2025-01-23 21:55:41 [http-nio-8080-exec-10] INFO  s.e.n.s.service.DashboardServiceImpl - Expenses grouped by type for username andrew: {Entertainment=450.0, Shopping=550.0, Transport=90.0, Food=540.0}
+2025-01-23 21:55:42 [http-nio-8080-exec-9] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of expenses for username: andrew
+2025-01-23 21:55:42 [http-nio-8080-exec-9] INFO  s.e.n.s.service.DashboardServiceImpl - Total sum of expenses for username andrew is: 1630.0
+2025-01-23 21:55:42 [http-nio-8080-exec-2] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating total sum of each expense type for username: andrew
+2025-01-23 21:55:43 [http-nio-8080-exec-2] INFO  s.e.n.s.service.DashboardServiceImpl - Expenses grouped by type for username andrew: {Entertainment=450.0, Shopping=550.0, Transport=90.0, Food=540.0}
+2025-01-23 21:55:46 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating settlement transactions for all members on andrew's dashboard
+2025-01-23 21:55:46 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Calculating net balances for all members on andrew's dashboard
+2025-01-23 21:55:47 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Initialized balances for all group members to zero.
+2025-01-23 21:55:47 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Processing expense paid by: james
+2025-01-23 21:55:47 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Expense shared by: [james, johnny, joseph, andrew]
+2025-01-23 21:55:47 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Total amount: 200.0, Individual share: 50.00
+2025-01-23 21:55:47 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for payer 'james': 150.00
+2025-01-23 21:55:47 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'johnny': -50.00
+2025-01-23 21:55:47 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'joseph': -50.00
+2025-01-23 21:55:47 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'andrew': -50.00
+2025-01-23 21:55:47 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Processing expense paid by: joseph
+2025-01-23 21:55:48 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Expense shared by: [june, mary, johnny, joseph, andrew]
+2025-01-23 21:55:48 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Total amount: 90.0, Individual share: 18.00
+2025-01-23 21:55:48 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for payer 'joseph': 22.00
+2025-01-23 21:55:48 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'june': -18.00
+2025-01-23 21:55:48 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'mary': -18.00
+2025-01-23 21:55:48 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'johnny': -68.00
+2025-01-23 21:55:48 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'andrew': -68.00
+2025-01-23 21:55:48 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Processing expense paid by: andrew
+2025-01-23 21:55:48 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Expense shared by: [james, johnny, joseph, andrew]
+2025-01-23 21:55:48 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Total amount: 450.0, Individual share: 112.50
+2025-01-23 21:55:48 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for payer 'andrew': 269.50
+2025-01-23 21:55:48 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'james': 37.50
+2025-01-23 21:55:48 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'johnny': -180.50
+2025-01-23 21:55:48 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'joseph': -90.50
+2025-01-23 21:55:48 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Processing expense paid by: june
+2025-01-23 21:55:48 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Expense shared by: [june, mary, manyu, bindu]
+2025-01-23 21:55:48 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Total amount: 340.0, Individual share: 85.00
+2025-01-23 21:55:48 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for payer 'june': 237.00
+2025-01-23 21:55:48 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'mary': -103.00
+2025-01-23 21:55:48 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'manyu': -85.00
+2025-01-23 21:55:48 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'bindu': -85.00
+2025-01-23 21:55:48 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Processing expense paid by: manyu
+2025-01-23 21:55:48 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Expense shared by: [june, james, johnny, manyu, joseph, bindu]
+2025-01-23 21:55:48 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Total amount: 550.0, Individual share: 91.67
+2025-01-23 21:55:48 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for payer 'manyu': 373.33
+2025-01-23 21:55:48 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'june': 145.33
+2025-01-23 21:55:48 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'james': -54.17
+2025-01-23 21:55:48 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'johnny': -272.17
+2025-01-23 21:55:48 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'joseph': -182.17
+2025-01-23 21:55:48 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Updated balance for sharer 'bindu': -176.67
+2025-01-23 21:55:48 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Calculated net balances for username all members: {june=145.33, james=-54.17, mary=-103.00, johnny=-272.17, manyu=373.33, joseph=-182.17, andrew=269.50, bindu=-176.67}
+2025-01-23 21:55:48 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Net balances calculated: {june=145.33, james=-54.17, mary=-103.00, johnny=-272.17, manyu=373.33, joseph=-182.17, andrew=269.50, bindu=-176.67}
+2025-01-23 21:55:48 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Processing debtor: MemberBalance{member='james', amount=54.17}
+2025-01-23 21:55:48 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Processing creditor: MemberBalance{member='manyu', amount=373.33}
+2025-01-23 21:55:48 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - james should pay 54.20 to manyu
+2025-01-23 21:55:48 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Processing debtor: MemberBalance{member='mary', amount=103.00}
+2025-01-23 21:55:48 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Processing creditor: MemberBalance{member='manyu', amount=319.13}
+2025-01-23 21:55:48 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - mary should pay 103.00 to manyu
+2025-01-23 21:55:48 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Processing debtor: MemberBalance{member='bindu', amount=176.67}
+2025-01-23 21:55:48 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Processing creditor: MemberBalance{member='andrew', amount=269.50}
+2025-01-23 21:55:48 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - bindu should pay 176.70 to andrew
+2025-01-23 21:55:48 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Processing debtor: MemberBalance{member='joseph', amount=182.17}
+2025-01-23 21:55:48 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Processing creditor: MemberBalance{member='manyu', amount=216.13}
+2025-01-23 21:55:48 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - joseph should pay 182.20 to manyu
+2025-01-23 21:55:48 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Processing debtor: MemberBalance{member='johnny', amount=272.17}
+2025-01-23 21:55:48 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Processing creditor: MemberBalance{member='june', amount=145.33}
+2025-01-23 21:55:48 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - johnny should pay 145.40 to june
+2025-01-23 21:55:48 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Processing debtor: MemberBalance{member='johnny', amount=126.77}
+2025-01-23 21:55:48 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Processing creditor: MemberBalance{member='andrew', amount=92.80}
+2025-01-23 21:55:48 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - johnny should pay 92.80 to andrew
+2025-01-23 21:55:48 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Processing debtor: MemberBalance{member='johnny', amount=33.97}
+2025-01-23 21:55:48 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Processing creditor: MemberBalance{member='manyu', amount=33.93}
+2025-01-23 21:55:48 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - johnny should pay 34.00 to manyu
+2025-01-23 21:55:48 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Calculated settlements for all members: {james=[pays 54.20 to manyu], johnny=[pays 145.40 to june, pays 92.80 to andrew, pays 34.00 to manyu], mary=[pays 103.00 to manyu], joseph=[pays 182.20 to manyu], bindu=[pays 176.70 to andrew]}

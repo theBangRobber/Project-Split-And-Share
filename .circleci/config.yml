@@ -17,8 +17,7 @@ executors:
     working_directory: ~/repo
 
 jobs:
-
-# Job to setup PostgreSQL service
+  # Job to setup PostgreSQL service
   setup-postgresql:
     docker:
       - image: circleci/postgres:latest
@@ -60,13 +59,13 @@ jobs:
       - run:
           name: Build Docker Image
           command: |
-            docker build -t bindugopinathan/project_split_and_share:tagname .
+            docker build -t thebangrobber/project_split_and_share:tagname .
 
       - run:
           name: Push Docker Image to Docker Hub
           command: |
             echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker push bindugopinathan/project_split_and_share:tagname
+            docker push thebangrobber/project_split_and_share:tagname
   deploy:
     executor: maven-executor
     steps:
@@ -94,12 +93,12 @@ jobs:
           SPRING_DATASOURCE_PASSWORD: $SPRING_PASSWORD
           # Assign the value of SPRING_PASSWORD
     steps:
-      - checkout  # Checkout the source code
+      - checkout # Checkout the source code
       - setup_remote_docker
       - snyk/install
       - run:
           name: Run Snyk Vulnerability Scan (Dependencies Only)
-          command: snyk test  # Snyk will scan the project dependencies (e.g., pom.xml or package.json)
+          command: snyk test # Snyk will scan the project dependencies (e.g., pom.xml or package.json)
 
   code_scan:
     docker:
@@ -111,13 +110,12 @@ jobs:
           SPRING_DATASOURCE_PASSWORD: $SPRING_PASSWORD
           # Assign the value of SPRING_PASSWORD
     steps:
-      - checkout  # Checkout the source code
+      - checkout # Checkout the source code
       - setup_remote_docker
       - snyk/install
       - run:
           name: Run Snyk Code Vulnerability Scan
           command: snyk code test --severity-threshold=medium #To ignore low vulnerabilities and only fail for medium, high, or critical issues
-
 
 workflows:
   ci_flow:
@@ -157,7 +155,7 @@ workflows:
             branches:
               only:
                 - release
-      
+
       - code_scan:
           requires:
             - build
