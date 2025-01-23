@@ -1,0 +1,169 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - develop
+      - release
+  pull_request:
+    branches:
+      - develop
+      - release
+
+env:
+  DOCKER_IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/project_split_and_share
+  HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
+
+jobs:
+  setup-postgresql:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Start PostgreSQL container
+        run: |
+          docker run -d \
+            --name split_and_share_db \
+            -e POSTGRES_DB=split_and_share \
+            -e POSTGRES_USER=postgres \
+            -e POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD || '' }} \
+            -p 5432:5432 \
+            postgis/postgis:15-3.3
+
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-22.04, macos-latest, windows-latest]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: "17"
+          distribution: "temurin"
+
+      - name: Build with Maven
+        run: mvn clean install -DskipTests
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifacts-${{ matrix.os }}
+          path: target/
+
+  test:
+    runs-on: ${{ matrix.os }}
+    needs: [setup-postgresql, build]
+    strategy:
+      matrix:
+        os: [ubuntu-22.04, macos-latest]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: "17"
+          distribution: "temurin"
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: build-artifacts-${{ matrix.os }}
+          path: target/
+
+      - name: Run Tests
+        run: |
+          mvn test -Dtest=sg.edu.ntu.split_and_share.service.UserServiceImplTest,sg.edu.ntu.split_and_share.service.ExpenseServiceImplTest,sg.edu.ntu.split_and_share.controller.ExpenseControllerTest
+        env:
+          SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/split_and_share
+          SPRING_DATASOURCE_USERNAME: postgres
+          SPRING_DATASOURCE_PASSWORD: ${{ secrets.POSTGRES_PASSWORD || '' }}
+
+  dependencies_scan:
+    runs-on: ubuntu-22.04
+    needs: build
+    if: github.ref == 'refs/heads/release'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: "17"
+          distribution: "temurin"
+
+      - name: Install Snyk
+        run: npm install -g snyk
+
+      - name: Run Snyk Vulnerability Scan (Dependencies Only)
+        run: snyk test
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
+  code_scan:
+    runs-on: ubuntu-22.04
+    needs: build
+    if: github.ref == 'refs/heads/release'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: "17"
+          distribution: "temurin"
+
+      - name: Install Snyk
+        run: npm install -g snyk
+
+      - name: Run Snyk Code Vulnerability Scan
+        run: snyk code test --severity-threshold=medium
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
+  build-docker-image:
+    runs-on: ubuntu-22.04
+    needs: [test, dependencies_scan, code_scan]
+    if: github.ref == 'refs/heads/release'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Log in to Docker Hub
+        run: echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+
+      - name: Build Docker Image
+        run: docker build -t ${{ env.DOCKER_IMAGE_NAME }}:${{ github.sha }} .
+
+      - name: Push Docker Image to Docker Hub
+        run: docker push ${{ env.DOCKER_IMAGE_NAME }}:${{ github.sha }}
+
+  deploy:
+    runs-on: ubuntu-22.04
+    needs: build-docker-image
+    if: github.ref == 'refs/heads/release'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Heroku CLI
+        run: |
+          curl https://cli-assets.heroku.com/install.sh | sh
+
+      - name: Log in to Heroku
+        run: |
+          heroku container:login
+          heroku stack:set container -a ${{ env.HEROKU_APP_NAME }}
+
+      - name: Push Docker Image to Heroku
+        run: |
+          heroku container:push web -a ${{ env.HEROKU_APP_NAME }}
+          heroku container:release web -a ${{ env.HEROKU_APP_NAME }}
