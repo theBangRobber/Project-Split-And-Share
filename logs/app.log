@@ -1019,3 +1019,36 @@ Caused by: org.postgresql.util.PSQLException: This connection has been closed.
 2025-01-23 21:55:48 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Processing creditor: MemberBalance{member='manyu', amount=33.93}
 2025-01-23 21:55:48 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - johnny should pay 34.00 to manyu
 2025-01-23 21:55:48 [http-nio-8080-exec-3] INFO  s.e.n.s.service.DashboardServiceImpl - Calculated settlements for all members: {james=[pays 54.20 to manyu], johnny=[pays 145.40 to june, pays 92.80 to andrew, pays 34.00 to manyu], mary=[pays 103.00 to manyu], joseph=[pays 182.20 to manyu], bindu=[pays 176.70 to andrew]}
+2025-01-23 23:08:24 [restartedMain] INFO  s.e.n.s.SplitAndShareApplication - Starting SplitAndShareApplication using Java 23.0.1 with PID 7309 (/Users/andrewto/Desktop/SCTP/Project-Split-And-Share/target/classes started by andrewto in /Users/andrewto/Desktop/SCTP/Project-Split-And-Share)
+2025-01-23 23:08:24 [restartedMain] INFO  s.e.n.s.SplitAndShareApplication - No active profile set, falling back to 1 default profile: "default"
+2025-01-23 23:08:24 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-23 23:08:24 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 3 ms. Found 4 JPA repository interfaces.
+2025-01-23 23:08:24 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-01-23 23:08:24 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-01-23 23:08:24 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-01-23 23:08:24 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-01-23 23:08:24 [restartedMain] INFO  o.a.c.c.C.[Tomcat-1].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-01-23 23:08:24 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 89 ms
+2025-01-23 23:08:24 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-23 23:08:24 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-01-23 23:08:24 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-23 23:08:24 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-5 - Starting...
+2025-01-23 23:08:29 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-5 - Added connection org.postgresql.jdbc.PgConnection@453e7abd
+2025-01-23 23:08:29 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-5 - Start completed.
+2025-01-23 23:08:29 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-23 23:08:29 [restartedMain] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-5)']
+	Database driver: undefined/unknown
+	Database version: 16.4
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-01-23 23:08:30 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-23 23:08:36 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-23 23:08:36 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-23 23:08:36 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-01-23 23:08:36 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-01-23 23:08:36 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-01-23 23:08:36 [restartedMain] INFO  s.e.n.s.SplitAndShareApplication - Started SplitAndShareApplication in 12.426 seconds (process running for 5575.13)
+2025-01-23 23:08:36 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
