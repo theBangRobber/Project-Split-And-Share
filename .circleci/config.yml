@@ -85,8 +85,8 @@ jobs:
 
   scan:
     docker:
-      - cimg/openjdk:17.0
-      environment:
+      - image: cimg/openjdk:17.0
+        environment:
           SPRING_PROFILES_ACTIVE: "ci"
           SPRING_DATASOURCE_URL: "jdbc:postgresql://localhost:5432/split_and_share"
           SPRING_DATASOURCE_USERNAME: "postgres"
