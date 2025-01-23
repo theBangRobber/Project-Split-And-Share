@@ -116,7 +116,7 @@ jobs:
       - snyk/install
       - run:
           name: Run Snyk Code Vulnerability Scan
-          command: snyk code test --all-projects --exclude UserServiceImplTest.java,GroupMemberServiceImplTest.java  # This scans your codebase for security vulnerabilities less test files
+          command: snyk code test --all-projects --exclude src/test/
 
 
 workflows:
