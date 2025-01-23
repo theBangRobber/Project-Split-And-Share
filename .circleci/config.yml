@@ -18,18 +18,6 @@ executors:
 
 jobs:
 
-# Job to setup PostgreSQL service
-  setup-postgresql:
-    docker:
-      - image: circleci/postgres:latest
-        environment:
-          POSTGRES_DB: split_and_share
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: $POSTGRES_PASSWORD
-          # Assign the value of POSTGRES_PASSWORD
-    steps:
-      - checkout
-
   build:
     executor: maven-executor
     steps:
@@ -61,12 +49,12 @@ jobs:
           name: Build Docker Image
           command: |
             docker build -t bindugopinathan/project_split_and_share:tagname .
-
       - run:
           name: Push Docker Image to Docker Hub
           command: |
             echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
             docker push bindugopinathan/project_split_and_share:tagname
+
   deploy:
     executor: maven-executor
     steps:
@@ -122,17 +110,11 @@ jobs:
 workflows:
   ci_flow:
     jobs:
-      - setup-postgresql:
-          filters:
-            branches:
-              only:
-                - develop
-
       - build:
-          filters:
-            branches:
-              only:
-                - develop
+            filters:
+              branches:
+                only:
+                  - develop
 
       - test:
           requires:
