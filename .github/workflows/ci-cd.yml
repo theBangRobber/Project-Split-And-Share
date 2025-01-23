@@ -131,7 +131,7 @@ jobs:
 
   build-docker-image:
     runs-on: ubuntu-22.04
-    needs: [test, dependencies_scan, code_scan]
+    needs: [test, code_scan]
     if: github.ref == 'refs/heads/release'
     steps:
       - name: Checkout code
