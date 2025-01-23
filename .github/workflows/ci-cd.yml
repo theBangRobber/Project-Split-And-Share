@@ -13,13 +13,14 @@ on:
 env:
   DOCKER_IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/project_split_and_share
   HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
+  HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY}}
 
 jobs:
   setup-postgresql:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Start PostgreSQL container
         run: |
@@ -35,13 +36,13 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
+        os: [ubuntu-22.04, macos-latest, windows-latest]
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up JDK 17
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
           java-version: "17"
           distribution: "temurin"
@@ -50,31 +51,31 @@ jobs:
         run: mvn clean install -DskipTests
 
       - name: Upload build artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
-          name: build-artifacts
+          name: build-artifacts-${{ matrix.os }}
           path: target/
 
   test:
     runs-on: ${{ matrix.os }}
-    needs: [setup-postgresql, build]
+    needs: [setup-postgresql, build, code_scan]
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
+        os: [ubuntu-22.04, macos-latest]
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up JDK 17
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
           java-version: "17"
           distribution: "temurin"
 
       - name: Download build artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
-          name: build-artifacts
+          name: build-artifacts-${{ matrix.os }}
           path: target/
 
       - name: Run Tests
@@ -86,14 +87,15 @@ jobs:
           SPRING_DATASOURCE_PASSWORD: ${{ secrets.POSTGRES_PASSWORD || '' }}
 
   dependencies_scan:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     needs: build
+    if: github.ref == 'refs/heads/release'
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up JDK 17
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
           java-version: "17"
           distribution: "temurin"
@@ -107,14 +109,14 @@ jobs:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
   code_scan:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     needs: build
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up JDK 17
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
           java-version: "17"
           distribution: "temurin"
@@ -128,11 +130,12 @@ jobs:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
   build-docker-image:
-    runs-on: ubuntu-latest
-    needs: [test, dependencies_scan, code_scan]
+    runs-on: ubuntu-22.04
+    needs: [test, code_scan]
+    if: github.ref == 'refs/heads/release'
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Log in to Docker Hub
         run: echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
@@ -144,46 +147,33 @@ jobs:
         run: docker push ${{ env.DOCKER_IMAGE_NAME }}:${{ github.sha }}
 
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     needs: build-docker-image
+    if: github.ref == 'refs/heads/release'
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Install Heroku CLI
         run: |
           curl https://cli-assets.heroku.com/install.sh | sh
 
-      - name: Log in to Heroku
+      - name: Authenticate with Heroku
         run: |
-          heroku container:login
-          heroku stack:set container -a ${{ env.HEROKU_APP_NAME }}
+          echo "${{ secrets.HEROKU_API_KEY }}" | heroku auth:token
+
+      - name: Log in to Heroku Container Registry
+        run: |
+          echo "${{ secrets.HEROKU_API_KEY }}" | heroku container:login
+
+      - name: Set Heroku stack to container
+        run: |
+          heroku stack:set container -a ${{ secrets.HEROKU_APP_NAME }}
 
       - name: Push Docker Image to Heroku
         run: |
-          heroku container:push web -a ${{ env.HEROKU_APP_NAME }}
-          heroku container:release web -a ${{ env.HEROKU_APP_NAME }}
+          heroku container:push web -a ${{ secrets.HEROKU_APP_NAME }}
 
-workflows:
-  ci_flow:
-    if: github.ref == 'refs/heads/develop'
-    jobs:
-      - setup-postgresql
-      - build
-      - test:
-          needs: [setup-postgresql, build]
-
-  cicd_flow:
-    if: github.ref == 'refs/heads/release'
-    jobs:
-      - build
-      - dependencies_scan:
-          needs: build
-      - code_scan:
-          needs: build
-      - test:
-          needs: [dependencies_scan, code_scan]
-      - build-docker-image:
-          needs: test
-      - deploy:
-          needs: build-docker-image
+      - name: Release Docker Image on Heroku
+        run: |
+          heroku container:release web -a ${{ secrets.HEROKU_APP_NAME }}
