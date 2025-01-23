@@ -79,7 +79,7 @@ jobs:
 
       - name: Run Tests
         run: |
-          mvn test -Dtest=sg.edu.ntu.split_and_share.service.UserServiceImplTest,sg.edu.ntu.split_and_share.service.ExpenseServiceImplTest,sg.edu.ntu.split_and_share.controller.ExpenseControllerTest -e
+          mvn test -Dtest=sg.edu.ntu.split_and_share.service.UserServiceImplTest,sg.edu.ntu.split_and_share.service.ExpenseServiceImplTest,sg.edu.ntu.split_and_share.controller.ExpenseControllerTest
         env:
           SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/split_and_share
           SPRING_DATASOURCE_USERNAME: postgres
