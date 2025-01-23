@@ -89,7 +89,6 @@ jobs:
   dependencies_scan:
     runs-on: ubuntu-22.04
     needs: build
-    if: github.ref == 'refs/heads/release'
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
