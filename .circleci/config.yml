@@ -86,10 +86,19 @@ jobs:
   # scan:
   #   docker:
   #     - cimg/openjdk:17.0
+  #     environment:
+  #         SPRING_PROFILES_ACTIVE: "ci"
+  #         SPRING_DATASOURCE_URL: "jdbc:postgresql://localhost:5432/split_and_share"
+  #         SPRING_DATASOURCE_USERNAME: "postgres"
+  #         SPRING_DATASOURCE_PASSWORD: $SPRING_PASSWORD
+  #         # Assign the value of SPRING_PASSWORD
   #   steps:
+  #     - checkout  # Checkout the source code
   #     - setup_remote_docker
   #     - snyk/install
-
+  #     - run: |
+  #         snyk code test --all-projects
+  #       # Skip Maven Test scan
 
 workflows:
   ci_flow:
