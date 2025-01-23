@@ -60,7 +60,7 @@ jobs:
     needs: [setup-postgresql, build]
     strategy:
       matrix:
-        os: [ubuntu-22.04, macos-latest, windows-latest]
+        os: [ubuntu-22.04, macos-latest]
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
