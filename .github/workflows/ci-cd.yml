@@ -88,6 +88,7 @@ jobs:
   dependencies_scan:
     runs-on: ubuntu-latest
     needs: build
+    if: github.ref == 'refs/heads/release'
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -109,6 +110,7 @@ jobs:
   code_scan:
     runs-on: ubuntu-latest
     needs: build
+    if: github.ref == 'refs/heads/release'
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -130,6 +132,7 @@ jobs:
   build-docker-image:
     runs-on: ubuntu-latest
     needs: [test, dependencies_scan, code_scan]
+    if: github.ref == 'refs/heads/release'
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -146,6 +149,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: build-docker-image
+    if: github.ref == 'refs/heads/release'
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -163,27 +167,3 @@ jobs:
         run: |
           heroku container:push web -a ${{ env.HEROKU_APP_NAME }}
           heroku container:release web -a ${{ env.HEROKU_APP_NAME }}
-
-workflows:
-  ci_flow:
-    if: github.ref == 'refs/heads/develop'
-    jobs:
-      - setup-postgresql
-      - build
-      - test:
-          needs: [setup-postgresql, build]
-
-  cicd_flow:
-    if: github.ref == 'refs/heads/release'
-    jobs:
-      - build
-      - dependencies_scan:
-          needs: build
-      - code_scan:
-          needs: build
-      - test:
-          needs: [dependencies_scan, code_scan]
-      - build-docker-image:
-          needs: test
-      - deploy:
-          needs: build-docker-image
