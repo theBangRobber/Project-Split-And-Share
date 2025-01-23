@@ -110,8 +110,8 @@ workflows:
                 - develop
 
       - scan:
-        requires:
-          - build
+          requires:
+            - build
           filters:
             branches:
               only:
@@ -122,7 +122,8 @@ workflows:
             - build
           filters:
             branches:
-              only: develop
+              only:
+                - develop
 
   cicd_flow:
     jobs:
