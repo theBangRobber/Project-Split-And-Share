@@ -83,12 +83,12 @@ jobs:
             heroku container:push web -a bindu-split-and-share
             heroku container:release web -a bindu-split-and-share
 
-  scan:
-    docker:
-      - cimg/openjdk:17.0
-    steps:
-      - setup_remote_docker
-      - snyk/install
+  # scan:
+  #   docker:
+  #     - cimg/openjdk:17.0
+  #   steps:
+  #     - setup_remote_docker
+  #     - snyk/install
 
 
 workflows:
@@ -98,14 +98,13 @@ workflows:
           filters:
             branches:
               only:
-                - develop 
+                - develop
       - test:
           requires:
             - build
           filters:
-            branches: 
-              only: develop  
-       
+            branches:
+              only: develop
 
   cicd_flow:
     jobs:
@@ -113,25 +112,25 @@ workflows:
           filters:
             branches:
               only:
-                - release 
+                - release
       - test:
           requires:
             - build
           filters:
             branches:
               only:
-                - release   
+                - release
       - build-docker-image:
           requires:
             - test
           filters:
             branches:
               only:
-                - release   
+                - release
       - deploy:
           requires:
             - build-docker-image
           filters:
             branches:
               only:
-                - release   
+                - release
