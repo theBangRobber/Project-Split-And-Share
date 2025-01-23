@@ -158,9 +158,21 @@ jobs:
         run: |
           curl https://cli-assets.heroku.com/install.sh | sh
 
+      - name: Check Heroku CLI version
+        run: |
+          heroku --version
+
+      - name: Debug Heroku API Key
+        run: |
+          echo "Heroku API Key: ${{ secrets.HEROKU_API_KEY }}"
+
       - name: Log in to Heroku
         run: |
           echo "${{ secrets.HEROKU_API_KEY }}" | heroku container:login
+
+      - name: Verify Heroku login
+        run: |
+          heroku auth:whoami
 
       - name: Set Heroku stack to container
         run: |
