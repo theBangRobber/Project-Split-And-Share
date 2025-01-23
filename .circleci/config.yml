@@ -98,7 +98,7 @@ jobs:
       - setup_remote_docker
       - run:
           name: Install Snyk
-          command: npm install -g snyk
+          command: snyk/install
       - run:
           name: Run Snyk Vulnerability Scan (Dependencies Only)
           command: snyk test  # Snyk will scan the project dependencies (e.g., pom.xml or package.json)
