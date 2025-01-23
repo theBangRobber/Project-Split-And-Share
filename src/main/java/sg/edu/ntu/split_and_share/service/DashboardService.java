@@ -8,7 +8,7 @@ import sg.edu.ntu.split_and_share.entity.Expense;
 
 public interface DashboardService {
 
-  // Calculate the total sum of all expenses
+  // Calculate the total sum of all expenses.  
   double calculateTotalSum(String username);
 
   // Sum of expenses by type
