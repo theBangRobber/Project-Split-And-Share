@@ -134,7 +134,7 @@ workflows:
 
       - test:
           requires:
-            - scan
+            - build
           filters:
             branches:
               only:
