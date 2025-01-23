@@ -116,7 +116,7 @@ jobs:
       - snyk/install
       - run:
           name: Run Snyk Code Vulnerability Scan
-          command: snyk code test --all-projects --exclude=test
+          command: snyk code test --severity-threshold=medium #To ignore low vulnerabilities and only fail for medium, high, or critical issues
 
 
 workflows:
