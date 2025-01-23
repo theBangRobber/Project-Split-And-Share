@@ -96,9 +96,7 @@ jobs:
     steps:
       - checkout  # Checkout the source code
       - setup_remote_docker
-      - run:
-          name: Install Snyk
-          command: snyk/install
+      - snyk/install
       - run:
           name: Run Snyk Vulnerability Scan (Dependencies Only)
           command: snyk test  # Snyk will scan the project dependencies (e.g., pom.xml or package.json)
@@ -115,9 +113,7 @@ jobs:
     steps:
       - checkout  # Checkout the source code
       - setup_remote_docker
-      - run:
-          name: Install Snyk
-          command: snyk/install
+      - snyk/install
       - run:
           name: Run Snyk Code Vulnerability Scan
           command: snyk code test --all-projects  # This scans your codebase for security vulnerabilities
