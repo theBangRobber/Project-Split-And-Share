@@ -59,7 +59,7 @@ jobs:
       - run:
           name: Build Docker Image
           command: |
-            docker build -t bindugopinathan/project_c1split_and_share:tagname .
+            docker build -t bindugopinathan/project_split_and_share:tagname .
 
       - run:
           name: Push Docker Image to Docker Hub
@@ -82,6 +82,14 @@ jobs:
             heroku stack:set container -a bindu-split-and-share
             heroku container:push web -a bindu-split-and-share
             heroku container:release web -a bindu-split-and-share
+
+  scan:
+    docker:
+      - cimg/openjdk:17.0
+    steps:
+      - setup_remote_docker
+      - snyk/install
+
 
 workflows:
   ci_flow:
