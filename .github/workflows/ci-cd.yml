@@ -163,9 +163,9 @@ jobs:
         run: |
           echo "${{ secrets.HEROKU_API_KEY }}" | heroku auth:token
 
-      - name: Verify Heroku login
+      - name: Log in to Heroku Container Registry
         run: |
-          heroku auth:whoami
+          echo "${{ secrets.HEROKU_API_KEY }}" | heroku container:login
 
       - name: Set Heroku stack to container
         run: |
