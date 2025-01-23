@@ -58,7 +58,7 @@ jobs:
 
   test:
     runs-on: ${{ matrix.os }}
-    needs: [setup-postgresql, build]
+    needs: [setup-postgresql, build, code_scan]
     strategy:
       matrix:
         os: [ubuntu-22.04, macos-latest]
