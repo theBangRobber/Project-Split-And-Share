@@ -13,6 +13,7 @@ on:
 env:
   DOCKER_IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/project_split_and_share
   HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
+  HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY}}
 
 jobs:
   setup-postgresql:
