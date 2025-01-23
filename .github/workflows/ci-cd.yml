@@ -169,12 +169,12 @@ jobs:
 
       - name: Set Heroku stack to container
         run: |
-          heroku stack:set container -a ${{ env.HEROKU_APP_NAME }}
+          heroku stack:set container -a ${{ secrets.HEROKU_APP_NAME }}
 
       - name: Push Docker Image to Heroku
         run: |
-          heroku container:push web -a ${{ env.HEROKU_APP_NAME }}
+          heroku container:push web -a ${{ secrets.HEROKU_APP_NAME }}
 
       - name: Release Docker Image on Heroku
         run: |
-          heroku container:release web -a ${{ env.HEROKU_APP_NAME }}
+          heroku container:release web -a ${{ secrets.HEROKU_APP_NAME }}
