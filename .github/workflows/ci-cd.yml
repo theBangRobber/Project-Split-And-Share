@@ -13,6 +13,7 @@ on:
 env:
   DOCKER_IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/project_split_and_share
   HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
+  HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY}}
 
 jobs:
   setup-postgresql:
@@ -57,7 +58,7 @@ jobs:
 
   test:
     runs-on: ${{ matrix.os }}
-    needs: [setup-postgresql, build]
+    needs: [setup-postgresql, build, code_scan]
     strategy:
       matrix:
         os: [ubuntu-22.04, macos-latest]
@@ -131,7 +132,7 @@ jobs:
 
   build-docker-image:
     runs-on: ubuntu-22.04
-    needs: [test, dependencies_scan, code_scan]
+    needs: [test, code_scan]
     if: github.ref == 'refs/heads/release'
     steps:
       - name: Checkout code
@@ -158,12 +159,22 @@ jobs:
         run: |
           curl https://cli-assets.heroku.com/install.sh | sh
 
-      - name: Log in to Heroku
+      - name: Authenticate with Heroku
         run: |
-          heroku container:login
-          heroku stack:set container -a ${{ env.HEROKU_APP_NAME }}
+          echo "${{ secrets.HEROKU_API_KEY }}" | heroku auth:token
+
+      - name: Log in to Heroku Container Registry
+        run: |
+          echo "${{ secrets.HEROKU_API_KEY }}" | heroku container:login
+
+      - name: Set Heroku stack to container
+        run: |
+          heroku stack:set container -a ${{ secrets.HEROKU_APP_NAME }}
 
       - name: Push Docker Image to Heroku
         run: |
-          heroku container:push web -a ${{ env.HEROKU_APP_NAME }}
-          heroku container:release web -a ${{ env.HEROKU_APP_NAME }}
+          heroku container:push web -a ${{ secrets.HEROKU_APP_NAME }}
+
+      - name: Release Docker Image on Heroku
+        run: |
+          heroku container:release web -a ${{ secrets.HEROKU_APP_NAME }}
